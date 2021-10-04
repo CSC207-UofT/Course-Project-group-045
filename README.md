@@ -14,7 +14,7 @@ Use Cases:
 - using an item (effect varies)
 
 Controllers
--mouse input, keyboard inputs
+- mouse input, keyboard inputs
 
 Command Line Interface
 -used to close/open game
@@ -30,3 +30,19 @@ Command Line Interface
 
 
 CRC Cards
+
+Character (Abstract/interface)
+- Subclasses: whatever we come up with
+- Responsibilities: stores information regarding stats, has inventory of items, can perform actions
+- Collaborators: item, subclasses, actions
+
+Item (Abstract/interface)
+- Subclasses: whatever we come up with
+- Responsiblities: stores information (durability?), performs some sort of effect upon use
+- Collaborators: character
+
+Map
+- Subclasses: 
+- Responsibilites: Stores position of characters on grid
+- Collaborators:
+- takes terrain types of varied properties (stat bonuses, block movement)
