@@ -46,3 +46,11 @@ Map
 - Responsibilites: Stores position of characters on grid
 - Collaborators:
 - takes terrain types of varied properties (stat bonuses, block movement)
+
+Weapon
+- Subclasses: diff weapon types
+- responsibilities:
+      providing more attack points for character ontop of their basic stats.
+      provide multiplier for when combating characters with diff weapon types.
+- Collaborators:
+      Character, Item
