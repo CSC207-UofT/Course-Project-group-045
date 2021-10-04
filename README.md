@@ -2,16 +2,20 @@
 
 Project Specification
 - Turn based game, similar to fire emblem
+
 Entity Classes
 - Characters: represent in game characters, have stats(health, attack), have a class type, store weapon item and other items. Can perform actions (move, attack, heal)
 - Item: has durability, has ability depending on type
 - Map: stores position of characters
+
 Use Cases:
 - moving a character (changes character's position on map),
 - using a character to attack (change character's health stat based on attack stats), 
 - using an item (effect varies)
+
 Controllers
 -mouse input, keyboard inputs
+
 Command Line Interface
 -used to close/open game
   
