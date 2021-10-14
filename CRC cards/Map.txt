@@ -9,4 +9,4 @@ Responsibilities:
 - A few items are scattered around the map to be picked up. 
 
 Collaborators:
-Character, Map 
+Character, Actions
