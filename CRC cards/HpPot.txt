@@ -1,0 +1,10 @@
+Class name: HpPot
+Parent class: Item
+
+Subclasses: None
+
+Responsibilities:
+Heals a fixed amount of the HP of the character who used it.
+
+Collaborators:
+Character, Actions

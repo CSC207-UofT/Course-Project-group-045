@@ -1,0 +1,10 @@
+Class name: DefPot
+Parent class: Item
+
+Subclasses: None
+
+Responsibilities:
+Gives a defense boost to the characters who uses it.
+
+Collaborators:
+Character, Actions

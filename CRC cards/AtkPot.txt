@@ -1,0 +1,10 @@
+Class name: AtkPot
+Parent class: Item
+
+Subclasses: None
+
+Responsibilities:
+Gives an attack bonus to the character that uses it.
+
+Collaborators:
+Character, Actions
