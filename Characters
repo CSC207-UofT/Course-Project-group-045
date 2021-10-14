@@ -2,6 +2,10 @@ Class name: Characters
 Parent class: None
 
 Subclasses:
+Character 1
+Character 2
+Character 3
+Character 4
 
 Responsibilities:
 stores information (durability), performs some sort of effect upon use
