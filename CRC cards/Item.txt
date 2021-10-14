@@ -1,0 +1,18 @@
+Class: Item <abstract>
+
+Sub class: 
+- HpPot
+- DefPot
+- AtkPot
+
+
+Responsibility:
+- Store information on status of item
+- perform some sort of action upon use 
+- pick up this item. 
+- drop this item. 
+
+
+
+Collaborator:
+- Character 
