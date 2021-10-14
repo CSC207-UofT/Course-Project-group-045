@@ -1,0 +1,8 @@
+Class: Inventory
+
+Responsibility:
+- store items 
+
+Collaborator:
+- Character, Item, Action 
+
