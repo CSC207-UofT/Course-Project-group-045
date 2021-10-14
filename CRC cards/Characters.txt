@@ -1,14 +1,18 @@
-Class name: Characters
+Class name: Character
 Parent class: None
 
 Subclasses:
-Character 1
-Character 2
-Character 3
-Character 4
+Friend:
+  - Character1
+  - Character2
+ Foe:
+  - Bot1
+  - Bot2
 
 Responsibilities:
-Stores information (durability), performs some sort of effect upon use
+- Has inventary of items.
+- Store stats regarding character.
+- Perform actions.
 
 Collaborators:
-Item, subclasses, actions
+Item, Action, Map
