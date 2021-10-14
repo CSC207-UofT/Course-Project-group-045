@@ -15,4 +15,5 @@ Responsibility:
 
 
 Collaborator:
-- Character 
+- Character
+- Map
