@@ -1,0 +1,10 @@
+Class name: Characters
+Parent class: None
+
+Subclasses:
+
+Responsibilities:
+stores information (durability), performs some sort of effect upon use
+
+Collaborators:
+item, subclasses, actions
