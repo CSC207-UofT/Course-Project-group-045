@@ -1,0 +1,10 @@
+Class name: UI
+Parent class: None
+
+Subclasses:
+
+Responsibilities:
+Create the main UI and image for the game
+
+Collaborators:
+Everything
