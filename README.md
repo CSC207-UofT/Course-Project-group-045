@@ -51,4 +51,4 @@ Weapon
       providing more attack points for character ontop of their basic stats.
       provide multiplier for when combating characters with diff weapon types.
 - Collaborators:
-      Character, Item 01101
+      Character, Item
