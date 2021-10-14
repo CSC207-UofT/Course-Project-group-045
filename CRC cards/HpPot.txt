@@ -4,7 +4,8 @@ Parent class: Item
 Subclasses: None
 
 Responsibilities:
-Heals a fixed amount of the HP of the character who used it.
+- inherit methods from parent.
+- Specify the amount of buff this pot is providing, in this case an attack buff.  
 
 Collaborators:
-Character, Actions
+Character, Actions, Map, Item
