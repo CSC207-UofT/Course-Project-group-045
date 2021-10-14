@@ -8,7 +8,7 @@ Character 3
 Character 4
 
 Responsibilities:
-stores information (durability), performs some sort of effect upon use
+Stores information (durability), performs some sort of effect upon use
 
 Collaborators:
-item, subclasses, actions
+Item, subclasses, actions
