@@ -1,7 +1,7 @@
 Class name: Character <abstract>
 Parent class: None
 
-Subclasses:
+Subclass:
 Friend:
   - Character1
   - Character2
@@ -9,10 +9,10 @@ Friend:
   - Bot1
   - Bot2
 
-Responsibilities:
+Responsibility:
 - Has inventary of items.
 - Store stats regarding character.
 - Perform actions.
 
-Collaborators:
+Collaborator:
 Item, Action, Map
