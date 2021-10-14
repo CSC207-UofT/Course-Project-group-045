@@ -7,4 +7,4 @@ Responsibilities:
 The default terrain type, which does not have any benefits or penalties for characters.
 
 Collaborators:
-Character
+Character, Action
