@@ -27,8 +27,6 @@ Command Line Interface
 
 
 
-Testtesttest
-
 CRC Cards
 
 Character (Abstract/interface)
