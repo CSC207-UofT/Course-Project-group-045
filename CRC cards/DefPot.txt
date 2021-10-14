@@ -4,7 +4,8 @@ Parent class: Item
 Subclasses: None
 
 Responsibilities:
-Gives a defense boost to the characters who uses it.
+- inherit methods from parent.
+- Specify the amount of buff this pot is providing, in this case a defence buff.  
 
 Collaborators:
-Character, Actions
+Character, Actions, Map, Item
