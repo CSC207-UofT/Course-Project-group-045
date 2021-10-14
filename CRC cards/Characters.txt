@@ -1,4 +1,4 @@
-Class name: Character
+Class name: Character <abstract>
 Parent class: None
 
 Subclasses:
