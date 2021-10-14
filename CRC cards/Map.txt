@@ -1,0 +1,11 @@
+Class name: Map
+Parent class: None
+
+Subclasses:
+Grass
+
+Responsibilities:
+- Serves as the playing area which characters are placed on.
+
+Collaborators:
+Character
