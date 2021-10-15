@@ -27,4 +27,15 @@ public class Map {
         return null;
     }
 
+    public void removeChar(Character character) {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                if (this.map[i][j] == character) {
+                    this.map[i][j] = null;
+                }
+            }
+        }
+    }
+
+
 }

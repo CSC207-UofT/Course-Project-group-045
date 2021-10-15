@@ -47,6 +47,7 @@ public class Game {
                                 if (target.getCurrHealth() <= 0) {
                                     System.out.println(target.getName() + " perished");
                                     EnemyChar.remove(target);
+                                    map1.removeChar(target);
                                 }
                             } else {
                                 System.out.println("Not a valid target");
