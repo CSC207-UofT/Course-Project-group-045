@@ -2,14 +2,13 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import java.math.*;
 
 public class Game extends JFrame implements MouseListener{
     static int state = -1;
     static int X = 1;
     static int Y = 1;
     static int Allowed = 0;
-    static int Selected = -1;;
+    static int Selected = -1;
     static int ESelected = -1;
     static int Animation = 0;
 
