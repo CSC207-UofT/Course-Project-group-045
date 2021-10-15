@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
     private final String name;
 
     public Character(String name) {
