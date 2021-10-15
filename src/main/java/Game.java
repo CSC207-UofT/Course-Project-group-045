@@ -9,7 +9,8 @@ public class Game extends JFrame implements MouseListener{
     static int X = 1;
     static int Y = 1;
     static int Allowed = 0;
-    static int Selected = 2;
+    static int Selected = -1;;
+    static int ESelected = -1;
     static int Animation = 0;
 
     public void mousePressed(MouseEvent e) {
@@ -18,7 +19,7 @@ public class Game extends JFrame implements MouseListener{
             Y = (int) (Math.ceil((e.getY() - 180) / 75));
             if (X == 1 && Y == 1) {
                 if (Selected == 1) {
-                    Selected = 2;
+                    Selected = -1;
                     Allowed = 0;
                     state = 0;
                 } else {
@@ -27,16 +28,36 @@ public class Game extends JFrame implements MouseListener{
                 }
             } else if (X == 2 && Y == 1) {
                 if (Selected == 0) {
-                    Selected = 2;
+                    Selected = -1;
                     Allowed = 0;
                     state = 0;
                 } else {
                     Selected = 1;
                     Allowed = 1;
                 }
+            }else if (X == 1 && Y == 2) {
+                if (Selected != 0) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    ESelected = 0;
+                    Allowed = 1;
+                }
+            }else if (X == 2 && Y == 2) {
+                if (Selected != 1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    ESelected = 1;
+                    Allowed = 1;
+                }
             } else {
                 Allowed = 0;
-                Selected = 2;
+                Selected = -1;
                 state = 0;
             }
         }
