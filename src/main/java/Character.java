@@ -1,5 +1,5 @@
 public class Character {
-    private String name;
+    private final String name;
 
     public Character(String name) {
         this.name = name;
