@@ -31,11 +31,14 @@ public class Game {
                         " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
             System.out.println("Player Turn");
+            // loop runs while at least one player character has action available
             while (checkActions(PlayerChar)) {
                 System.out.println("enter position character to perform action");
                 int inputInt = sc.nextInt();
                 Character user = map.get(inputInt);
+                // checks that there is a player character at the map index of the input
                 if (PlayerChar.contains(user)){
+                    // checks whether the player character has used their action
                     if (user.isActionUsed()){
                         System.out.println("Character has already used action");
                     }
@@ -43,8 +46,10 @@ public class Game {
                         System.out.println("enter position of target");
                         int targetInt = sc.nextInt();
                         Character target = map.get(targetInt);
+                        // checks if there is an enemy at the map index of the input
                         if (EnemyChar.contains(target)) {
                             user.attack(user, target);
+                            // checks if the enemy's health is 0 or below after attack
                             if (target.getCurrHealth() <= 0) {
                                 System.out.println(target.getName() + " perished");
                                 map.remove(targetInt);
@@ -61,6 +66,7 @@ public class Game {
 
 
             }
+            // refreshes all actions
             setActions(PlayerChar);
             System.out.println("Enemy Turn");
 
