@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class UI extends JPanel implements Runnable{
   private Thread animator;
-  private Image Background,Combat,Selected,Slash,Unit1,Unit2;
+  private Image Background,Combat,Selected,Slash,Unit1,Unit2,Foe1,Foe2;
   private int y = 0;
   private ArrayList <Image> Units = new ArrayList<>();
   private ArrayList <Integer> LocationX = new ArrayList<>();
@@ -18,20 +18,28 @@ public class UI extends JPanel implements Runnable{
   private void initUI() {
     Units.add(0,Unit1);
     Units.add(1,Unit2);
-    LocationX.add(0,235 + Game.X*75);
-    LocationY.add(0,25 + Game.Y*75);
-    LocationX.add(1,235 + 2*75);
-    LocationY.add(1,25 + 75);
+    LocationX.add(0,310);
+    LocationY.add(0,100);
+    LocationX.add(1,385);
+    LocationY.add(1,100);
+    LocationX.add(2,310);
+    LocationY.add(2,175);
+    LocationX.add(3,385);
+    LocationY.add(3,175);
     ImageIcon background = new ImageIcon("src/Images/Background.png");
     ImageIcon blank = new ImageIcon("");
     ImageIcon unit1 = new ImageIcon("src/Images/Marth/S1.png");
     ImageIcon unit2 = new ImageIcon("src/Images/Hector/S1.png");
+    ImageIcon foe1 = new ImageIcon("src/Images/Axe1/S1.png");
+    ImageIcon foe2 = new ImageIcon("src/Images/Sword1/S1.png");
     ImageIcon slash1 = new ImageIcon("src/Images/Marth/AS0.png");
     Background = background.getImage();
     Combat = blank.getImage();
     Selected = blank.getImage();
     Unit1 = unit1.getImage();
     Unit2 = unit2.getImage();
+    Foe1 = foe1.getImage();
+    Foe2 = foe2.getImage();
     Slash = slash1.getImage();
     setPreferredSize(new Dimension(1000, 675));
   }
@@ -54,7 +62,9 @@ public class UI extends JPanel implements Runnable{
     g.drawImage(Combat, 275, 0, this);
     g.drawImage(Selected,350 + Game.X*75,225,this);
     g.drawImage(Unit1,LocationX.get(0),LocationY.get(0),this);
-    g.drawImage(Unit2,LocationX.get(1),LocationY.get(1),this);
+    g.drawImage(Unit2,LocationX.get(1),LocationY.get(1),this);;
+    g.drawImage(Foe1,LocationX.get(2),LocationY.get(2),this);
+    g.drawImage(Foe2,LocationX.get(3),LocationY.get(3),this);
     g.drawImage(Slash,300,130,this);
     Toolkit.getDefaultToolkit().sync();
   }
@@ -63,6 +73,10 @@ public class UI extends JPanel implements Runnable{
     if (Game.state == -1) {
       ImageIcon unit1 = new ImageIcon("src/Images/Marth/S" + y + ".png");
       ImageIcon unit2 = new ImageIcon("src/Images/Hector/S" + y + ".png");
+      ImageIcon foe1 = new ImageIcon("src/Images/Axe1.png");
+      ImageIcon foe2 = new ImageIcon("src/Images/Sword1.png");
+      Foe1 = foe1.getImage();
+      Foe2 = foe2.getImage();
       Unit1 = unit1.getImage();
       Unit2 = unit2.getImage();
       Game.Animation = 1;
@@ -101,6 +115,19 @@ public class UI extends JPanel implements Runnable{
       Slash = slash.getImage();
       Unit2 = blank.getImage();
       Combat = combat.getImage();
+      if (Game.ESelected == 0){
+        ImageIcon foe = new ImageIcon("src/Images/Axe2.png");
+        Foe1 = foe.getImage();
+        Foe2 = blank.getImage();
+        LocationX.set(2,500);
+        LocationY.set(2,300);
+      }else if (Game.ESelected == 1){
+        ImageIcon foe = new ImageIcon("src/Images/Sword2.png");
+        Foe2 = foe.getImage();
+        Foe1 = blank.getImage();
+        LocationX.set(3,500);
+        LocationY.set(3,300);
+      }
       Selected = blank.getImage();
       if (Game.Selected == 0){
         if (y < 23) {
@@ -134,6 +161,17 @@ public class UI extends JPanel implements Runnable{
           LocationX.set(1,385);
           LocationY.set(1,100);
         }
+        if (Game.ESelected == 0){
+          LocationX.set(2,310);
+          LocationY.set(2,175);
+        }else if (Game.ESelected == 1){
+          LocationX.set(3,385);
+          LocationY.set(3,175);
+        }
+        ImageIcon foe1 = new ImageIcon("src/Images/Axe1.png");
+        ImageIcon foe2 = new ImageIcon("src/Images/Sword1.png");
+        Foe1 = foe1.getImage();
+        Foe2 = foe2.getImage();
         Slash = blank.getImage();
         Combat = blank.getImage();
         Time = 0;
