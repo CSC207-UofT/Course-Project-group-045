@@ -5,43 +5,48 @@ import java.awt.*;
 import java.math.*;
 
 public class Game extends JFrame implements MouseListener{
-    static int state = 0;
+    static int state = -1;
     static int X = 1;
     static int Y = 1;
     static int Allowed = 0;
     static int Selected = 2;
+    static int Animation = 0;
 
     public void mousePressed(MouseEvent e) {
-        X = (int) (Math.ceil((e.getX() - 355) / 75));
-        Y = (int) (Math.ceil((e.getY() - 180) / 75));
-        if (X == 1 && Y == 1) {
-            if (Selected == 1){
-                Selected = 2;
+        if (Animation == 0) {
+            X = (int) (Math.ceil((e.getX() - 355) / 75));
+            Y = (int) (Math.ceil((e.getY() - 180) / 75));
+            if (X == 1 && Y == 1) {
+                if (Selected == 1) {
+                    Selected = 2;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    Selected = 0;
+                    Allowed = 1;
+                }
+            } else if (X == 2 && Y == 1) {
+                if (Selected == 0) {
+                    Selected = 2;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    Selected = 1;
+                    Allowed = 1;
+                }
+            } else {
                 Allowed = 0;
-                state = 0;
-            }else {
-                Selected = 0;
-                Allowed = 1;
-            }
-        } else if (X == 2 && Y == 1){
-            if (Selected == 0){
                 Selected = 2;
-                Allowed = 0;
                 state = 0;
-            }else {
-                Selected = 1;
-                Allowed = 1;
             }
-        }else {
-            Allowed = 0;
-            Selected = 2;
-            state = 0;
         }
     }
 
     public void mouseReleased(MouseEvent e) {
-        if (Allowed == 1) {
-            state++;
+        if (Animation == 0) {
+            if (Allowed == 1) {
+                state++;
+            }
         }
     }
 
