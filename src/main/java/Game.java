@@ -3,66 +3,59 @@ import java.util.Scanner;
 
 public class Game {
     public static void main(String[] args){
-        ArrayList<Character> map = new ArrayList<Character>(10);
-        for (int i = 0; i < 10; i++){
-            map.add(null);
-        }
+        Map map1 = new Map();
         ArrayList<Character> PlayerChar = new ArrayList<Character>();
         ArrayList<Character> EnemyChar = new ArrayList<Character>();
         PlayerChar player1 = new PlayerChar("Player 1");
         PlayerChar player2 = new PlayerChar("Player 2");
         EnemyChar enemy1 = new EnemyChar("Enemy 1");
+        EnemyChar enemy2 = new EnemyChar("Enemy 2");
         PlayerChar.add(player1);
         PlayerChar.add(player2);
         EnemyChar.add(enemy1);
-        map.set(4, player1);
-        map.set(5, enemy1);
-        map.set(6, player2);
+        EnemyChar.add(enemy2);
+        map1.addEnemyChar(enemy1, enemy2);
+        map1.addPlayerChar(player1, player2);
         Scanner sc = new Scanner(System.in);
-        System.out.println(map.size());
 
-        while(map.contains(player1) && map.contains(enemy1)) {
+        while(!PlayerChar.isEmpty() && !EnemyChar.isEmpty()) {
             for (Character currChar : PlayerChar) {
                 System.out.println("player character " + currChar.getName() +
-                        " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
+                        " at position " + map1.charPosition(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
             for (Character currChar : EnemyChar) {
                 System.out.println("enemy character " + currChar.getName() +
-                        " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
+                        " at position " + map1.charPosition(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
             System.out.println("Player Turn");
             // loop runs while at least one player character has action available
             while (checkActions(PlayerChar)) {
-                System.out.println("enter position character to perform action");
-                int inputInt = sc.nextInt();
-                Character user = map.get(inputInt);
-                // checks that there is a player character at the map index of the input
-                if (PlayerChar.contains(user)){
-                    // checks whether the player character has used their action
-                    if (user.isActionUsed()){
-                        System.out.println("Character has already used action");
-                    }
-                    else {
-                        System.out.println("enter position of target");
-                        int targetInt = sc.nextInt();
-                        Character target = map.get(targetInt);
-                        // checks if there is an enemy at the map index of the input
-                        if (EnemyChar.contains(target)) {
-                            Action.attack(user, target);
-                            if (target.getCurrHealth() <= 0) {
-                                System.out.println(target.getName() + " perished");
-                                map.remove(targetInt);
+                System.out.println("enter character name to perform action");
+                String inputString = sc.nextLine();
+                if (isValidInput(inputString, PlayerChar)) {
+                    Character user = getCharacterByName(inputString, PlayerChar);
+                    // checks that there is a player character at the map index of the input
+                        if (user.isActionUsed()) {
+                            System.out.println("Character has already used action");
+                        } else {
+                            System.out.println("enter name of target");
+                            String targetStr = sc.nextLine();
+                            // checks if there is an enemy at the map index of the input
+                            if (isValidInput(targetStr, EnemyChar)) {
+                                Character target = getCharacterByName(targetStr, EnemyChar);
+                                Action.attack(user, target);
+                                if (target.getCurrHealth() <= 0) {
+                                    System.out.println(target.getName() + " perished");
+                                    EnemyChar.remove(target);
+                                }
+                            } else {
+                                System.out.println("Not a valid target");
                             }
                         }
-                        else{
-                            System.out.println("Not a valid target");
-                        }
-                    }
                 }
                 else{
-                    System.out.println("invaid selection");
+                    System.out.println("not a valid character name");
                 }
-
 
             }
             // refreshes all actions
@@ -70,7 +63,7 @@ public class Game {
             System.out.println("Enemy Turn");
 
         }
-    if (map.contains(player1)){
+    if (EnemyChar.isEmpty()){
         System.out.println("Victory for the Righteous");
     }
     else{
@@ -92,5 +85,23 @@ public class Game {
         for (Character character: list){
             character.restoreAction();
         }
+    }
+    public static boolean isValidInput(String input, ArrayList<Character> list){
+        for (Character character: list){
+            if (input.equals(character.getName())) {
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Character getCharacterByName(String name, ArrayList<Character> list){
+        for (Character character: list){
+            if (name.equals(character.getName())){
+                return character;
+            }
+        }
+        return null;
     }
 }
