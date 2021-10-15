@@ -46,7 +46,7 @@ public class Game {
                         int targetInt = sc.nextInt();
                         Character target = map.get(targetInt);
                         if (EnemyChar.contains(target)) {
-                            user.attack(user, target);
+                            Action.attack(user, target);
                             if (target.getCurrHealth() <= 0) {
                                 System.out.println(target.getName() + " perished");
                                 map.remove(targetInt);
