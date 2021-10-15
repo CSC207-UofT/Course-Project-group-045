@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Game {
     public static void main(String[] args){
         ArrayList<Character> map = new ArrayList<Character>();
-        ArrayList<Character> PlayerChar = new ArrayList<Character>();
-        ArrayList<Character> EnemyChar = new ArrayList<Character>();
+        ArrayList<Character> PlayerChars = new ArrayList<Character>();
+        ArrayList<Character> EnemyChars = new ArrayList<Character>();
         PlayerChar player1 = new PlayerChar("Player");
         EnemyChar enemy1 = new EnemyChar("Enemy");
         map.add(player1);
