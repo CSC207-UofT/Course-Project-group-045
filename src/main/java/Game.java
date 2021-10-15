@@ -33,6 +33,7 @@ public class Game {
                         " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
             System.out.println("Player Turn");
+            // checks that there is at least one player character that has an unused action
             while (checkActions(PlayerChar)) {
                 System.out.println("enter position character to perform action");
                 int inputInt = sc.nextInt();
