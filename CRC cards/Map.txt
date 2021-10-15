@@ -2,10 +2,11 @@ Class name: Map
 Parent class: None
 
 Subclasses:
-Grass
+- Grass
 
 Responsibilities:
-- Serves as the playing area which characters are placed on.
+- Serves as the playing area where characters are placed on.
+- A few items are scattered around the map to be picked up. 
 
 Collaborators:
-Character
+Character, Action

@@ -1,0 +1,11 @@
+Class name: DefPot
+Parent class: Item
+
+Subclasses: None
+
+Responsibilities:
+- inherit methods from parent.
+- Specify the amount of buff this pot is providing, in this case a defence buff.  
+
+Collaborators:
+Character, Actions, Map, Item
