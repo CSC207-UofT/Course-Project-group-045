@@ -77,18 +77,16 @@ public class Game {
     }
 
     public static boolean checkActions(ArrayList<Character> list){
-        boolean actionRemaining = false;
-        for (int i = 0; i < list.size(); i++){
-            if (!(list.get(i).isActionUsed())){
-                actionRemaining = true;
+        for (Character character : list){
+            if (!(character.isActionUsed())){
+                return true;
             }
-
         }
-        return actionRemaining;
+        return false;
     }
     public static void setActions(ArrayList<Character> list){
-        for (int i = 0; i < list.size(); i++){
-            list.get(i).restoreAction();
+        for (Character character: list){
+            character.restoreAction();
         }
     }
 }
