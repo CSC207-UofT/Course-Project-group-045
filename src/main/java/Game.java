@@ -1,5 +1,7 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
 public class Game extends JFrame implements MouseListener{
     static int state = -1;
