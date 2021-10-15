@@ -18,6 +18,8 @@ Information regarding game data (ex. Position of characters on the map, damage c
 
 Each character will be allowed to perform one action per turn. Once all of the player character’s actions have been completed, the turn ends and the enemy characters will take their turn performing actions. Turns repeat until the player is victorious or loses all of their characters.
 
+---------------------------------------------------------------------
+
 CRC model:
 
 We have a total of 11 CRC cards as of now, though not all of them have been implemented into code as of Phase 0.
@@ -79,6 +81,38 @@ Actions, map and of course its parent class Item
 
 Something to keep in mind is that as of now so far, we have decided that the AI will not have its
 own inventory and EnemyChar will not be able to pick up items
+
+------------------------------------
+
+What each group member has been working on
+
+We each have been working on specific aspects of the code as well as discussing together
+and checking on each other's work whenever we can as well as raising important questions
+about the state and potential future of our game.
+
+In particular Jack has been working on the graphics that we will be implementing for
+the game as well the UI, Antony and Jonathan constantly reviewed the work we have done by
+checking the structure of certain code and editing it to fit intellij's parameters as well
+as the rules of clean architechture, and refactoring the code. Jonathan specifically
+worked on making a test case for our program, while Antony wrote the progress report and
+added the necessary modifications to the CRC cards to match the code that we have so far
+as much as possible. Zihao in particular coded the map class and actions class, while James
+wrote the Game class.
+
+----------------------------------------------------------------
+
+What has worked well so far with your design as you have started implementing your code
+
+I would say that our interactions between the characters through our action class, has worked
+as well as we have expected it to work so far, as it performs the basic actions like attack
+and modifies the attributes of the characters exactly as it should.
+
+-----------------------------------------------------------------
+
+We do have one important question for the TA that involves the graphics and UI we are implementing
+and that is if we are allowed to use assets that are not personally created by us,
+specifically sprites that we will use and if that is allowed. Another question we do have
+is
 
 
 
