@@ -68,7 +68,7 @@ public class UI extends JPanel implements Runnable{
   
   private void cycle(){
     if (Game.state == -1) {
-      ImageIcon unit1 = new ImageIcon("src/Images/Marth/S" + y + ".png");
+    ImageIcon unit1 = new ImageIcon("src/Images/Marth/S" + y + ".png");
       ImageIcon unit2 = new ImageIcon("src/Images/Hector/S" + y + ".png");
       ImageIcon foe1 = new ImageIcon("src/Images/Axe1.png");
       ImageIcon foe2 = new ImageIcon("src/Images/Sword1.png");
