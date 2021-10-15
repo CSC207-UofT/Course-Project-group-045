@@ -4,13 +4,15 @@ import java.util.Scanner;
 public class Game {
     public static void main(String[] args){
         ArrayList<Character> map = new ArrayList<Character>();
+        ArrayList<Character> PlayerChar = new ArrayList<Character>();
+        ArrayList<Character> EnemyChar = new ArrayList<Character>();
         PlayerChar player1 = new PlayerChar("Player");
         EnemyChar enemy1 = new EnemyChar("Enemy");
         map.add(player1);
         map.add(enemy1);
         Scanner sc = new Scanner(System.in);
 
-        while(map.contains(player1) || map.contains(enemy1)) {
+        while(map.contains(player1) && map.contains(enemy1)) {
             System.out.println("player character at position " + map.indexOf(player1) + ", health " + player1.getCurrHealth() + "/" + player1.getMaxHealth());
             System.out.println("enemy character at position " + map.indexOf(enemy1) + " health " + enemy1.getCurrHealth() + "/" + enemy1.getMaxHealth());
             System.out.println("enter position character to perform action");
