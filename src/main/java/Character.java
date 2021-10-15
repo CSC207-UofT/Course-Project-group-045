@@ -1,5 +1,6 @@
 public abstract class Character {
     private final String name;
+
     private int currHealth, attack, defense, speed;
     private final int maxHealth;
     private boolean actionUsed;
@@ -40,5 +41,6 @@ public abstract class Character {
         System.out.println(target.getName() + "'s health is now " + target.getCurrHealth());
         this.actionUsed = true;
     }
+
 
 }

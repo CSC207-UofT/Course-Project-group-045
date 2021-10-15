@@ -1,0 +1,12 @@
+Class name: Game
+Parent class: None
+
+Subclass: None
+
+Responsibility:
+- Track turns
+- Take mouse inputs
+- Initialize values
+
+Collaborator:
+Character, Map, Item, 

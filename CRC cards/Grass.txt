@@ -1,0 +1,10 @@
+Class name: Grass
+Parent class: Map
+
+Subclasses: None
+
+Responsibilities:
+The default terrain type, which does not have any benefits or penalties for characters.
+
+Collaborators:
+Character, Action

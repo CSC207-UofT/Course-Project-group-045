@@ -1,0 +1,11 @@
+Class name: AtkPot
+Parent class: Item
+
+Subclasses: None
+
+Responsibilities:
+- inherit methods from parent.
+- Specify the amount of buff this pot is providing, in this case an attack buff.  
+
+Collaborators:
+Character, Actions, Map, Item

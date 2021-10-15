@@ -1,0 +1,12 @@
+Class: Action
+Parent class: None
+Sub class: <can be expanded on>
+
+Responsibility:
+- perform all actions e.g.,
+    - pick up/use items
+    - attack
+    - move
+
+Collaborator:
+Character, Inventory, Item, Map, Game.
