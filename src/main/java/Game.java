@@ -18,7 +18,7 @@ public class Game extends JFrame implements MouseListener{
             X = (int) (Math.ceil((e.getX() - 355) / 75));
             Y = (int) (Math.ceil((e.getY() - 180) / 75));
             if (X == 1 && Y == 1) {
-                if (Selected == 1) {
+                if (Selected != -1) {
                     Selected = -1;
                     Allowed = 0;
                     state = 0;
@@ -27,7 +27,7 @@ public class Game extends JFrame implements MouseListener{
                     Allowed = 1;
                 }
             } else if (X == 2 && Y == 1) {
-                if (Selected == 0) {
+                if (Selected != -1) {
                     Selected = -1;
                     Allowed = 0;
                     state = 0;
