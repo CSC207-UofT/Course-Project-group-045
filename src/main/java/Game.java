@@ -1,7 +1,98 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
-public class Game {
+public class Game extends JFrame implements MouseListener{
+    static int state = -1;
+    static int X = 1;
+    static int Y = 1;
+    static int Allowed = 0;
+    static int Selected = -1;
+    static int ESelected = -1;
+    static int Animation = 0;
+
+    public void mousePressed(MouseEvent e) {
+        if (Animation == 0) {
+            X = (int) (Math.ceil((e.getX() - 355) / 75));
+            Y = (int) (Math.ceil((e.getY() - 180) / 75));
+            if (X == 1 && Y == 1) {
+                if (Selected != -1) {
+                    Selected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    Selected = 0;
+                    Allowed = 1;
+                }
+            } else if (X == 2 && Y == 1) {
+                if (Selected != -1) {
+                    Selected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    Selected = 1;
+                    Allowed = 1;
+                }
+            }else if (X == 1 && Y == 2) {
+                if (Selected != 0) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    ESelected = 0;
+                    Allowed = 1;
+                }
+            }else if (X == 2 && Y == 2) {
+                if (Selected != 1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    ESelected = 1;
+                    Allowed = 1;
+                }
+            } else {
+                Allowed = 0;
+                Selected = -1;
+                state = 0;
+            }
+        }
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        if (Animation == 0) {
+            if (Allowed == 1) {
+                state++;
+            }
+        }
+    }
+
+    public void mouseClicked(MouseEvent e) {
+    }
+    public void mouseExited(MouseEvent e) {
+    }
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public Game() {
+        initUI();
+    }
+
+    private void initUI() {
+        add(new UI());
+        setResizable(false);
+        pack();
+        setTitle("Course Project");
+        setLocation(150,20);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+        addMouseListener(this);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
     public static void main(String[] args){
         Map map1 = new Map();
         ArrayList<Character> PlayerChar = new ArrayList<Character>();
@@ -17,6 +108,10 @@ public class Game {
         map1.addEnemyChar(enemy1, enemy2);
         map1.addPlayerChar(player1, player2);
         Scanner sc = new Scanner(System.in);
+        EventQueue.invokeLater(() -> {
+            JFrame ex = new Game();
+            ex.setVisible(true);
+        });
 
         while(!PlayerChar.isEmpty() && !EnemyChar.isEmpty()) {
             for (Character currChar : PlayerChar) {
