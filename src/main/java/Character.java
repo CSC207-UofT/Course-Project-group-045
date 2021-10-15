@@ -35,6 +35,14 @@ public abstract class Character {
         this.currHealth = this.currHealth - damage;
     }
 
+    public boolean isActionUsed(){
+        return actionUsed;
+    }
+
+    public void restoreAction(){
+        this.actionUsed = false;
+    }
+
     public void attack(Character user, Character target){
         target.reduceCurrHealth(user.getAttack());
         System.out.println(this.name + " attacked " + target.getName() + " for " + user.getAttack() + " damage!");

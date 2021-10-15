@@ -5,7 +5,7 @@ public class UI extends JPanel implements Runnable{
   private Thread animator;
   private Image Background;
   
-  public Board() {
+  public void Board() {
     initBoard();
   }
   
@@ -33,7 +33,7 @@ public class UI extends JPanel implements Runnable{
     Toolkit.getDefaultToolkit().sync();
   }
   
-  private void cycle{
+  private void cycle(){
   }
   
   @Override
