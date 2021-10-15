@@ -12,8 +12,8 @@ public class UI extends JPanel implements Runnable{
   }
   
   private void initUI() {
-    ImageIcon background = new ImageIcon("C:/BlueJ/Medieval Battles/Backgrounds/Background7.png");
-    ImageIcon selected = new ImageIcon("C:/BlueJ/Medieval Battles/Maps/Forest1.png");
+    ImageIcon background = new ImageIcon("src/Images/Background7.png");
+    ImageIcon selected = new ImageIcon("src/Images/Forest1.png");
     ImageIcon blank = new ImageIcon("");
     Background = background.getImage();
     Background1 = blank.getImage();
@@ -43,8 +43,8 @@ public class UI extends JPanel implements Runnable{
   
   private void cycle(){
     if (Game.x == 1) {
-      ImageIcon selected = new ImageIcon("C:/BlueJ/Medieval Battles/Maps/Forest1 Grid.png");
-      ImageIcon background = new ImageIcon("C:/BlueJ/Medieval Battles/Backgrounds/Background8.png");
+      ImageIcon selected = new ImageIcon("src/Images/Forest1 Grid.png");
+      ImageIcon background = new ImageIcon("src/Images/Background8.png");
       Selected = selected.getImage();
       Background1 = background.getImage();
     }
