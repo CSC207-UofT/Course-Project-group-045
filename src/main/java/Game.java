@@ -5,13 +5,25 @@ import java.awt.*;
 import java.math.*;
 
 public class Game extends JFrame implements MouseListener{
-    static int x = 0;
+    static int state = 0;
+    static int X = 1;
+    static int Y = 1;
+    static int Allowed = 0;
 
     public void mousePressed(MouseEvent e) {
-        x = 1;
+        X = (int)(Math.ceil((e.getX()-355)/75));
+        Y = (int)(Math.ceil((e.getY()-180)/75));
+        if (X == 1 && Y == 1){
+            Allowed = 1;
+        }else {
+            Allowed = 0;
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
+        if (Allowed == 1) {
+            state++;
+        }
     }
 
     public void mouseClicked(MouseEvent e) {
