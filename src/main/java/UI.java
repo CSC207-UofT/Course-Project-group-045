@@ -1,17 +1,23 @@
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
+
 public class UI extends JPanel implements Runnable{
   private Thread animator;
-  private Image Background;
+  private Image Background,Background1,Selected;
+  private int x;
   
-  public Board() {
-    initBoard();
+  public UI() {
+    initUI();
   }
   
-  private void initBoard() {
-    ImageIcon background = new ImageIcon("C:/BlueJ/Medieval Battles/Backgrounds/Background1.png");
+  private void initUI() {
+    ImageIcon background = new ImageIcon("C:/BlueJ/Medieval Battles/Backgrounds/Background7.png");
+    ImageIcon selected = new ImageIcon("C:/BlueJ/Medieval Battles/Maps/Forest1.png");
+    ImageIcon blank = new ImageIcon("");
     Background = background.getImage();
+    Background1 = blank.getImage();
+    Selected = selected.getImage();
     setPreferredSize(new Dimension(1000, 675));
   }
   
@@ -30,10 +36,18 @@ public class UI extends JPanel implements Runnable{
   
   private void drawBackground(Graphics g) {
     g.drawImage(Background, 0, 0, this);
+    g.drawImage(Background1, 0, 0, this);
+    g.drawImage(Selected, 275, 0, this);
     Toolkit.getDefaultToolkit().sync();
   }
   
-  private void cycle{
+  private void cycle(){
+    if (Game.x == 1) {
+      ImageIcon selected = new ImageIcon("C:/BlueJ/Medieval Battles/Maps/Forest1 Grid.png");
+      ImageIcon background = new ImageIcon("C:/BlueJ/Medieval Battles/Backgrounds/Background8.png");
+      Selected = selected.getImage();
+      Background1 = background.getImage();
+    }
   }
   
   @Override
