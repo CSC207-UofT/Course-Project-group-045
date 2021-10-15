@@ -60,15 +60,29 @@ public class UI extends JPanel implements Runnable{
   }
   
   private void cycle(){
-    if (Game.state == 0) {
+    if (Game.state == -1) {
+      ImageIcon unit1 = new ImageIcon("src/Images/Marth/S" + y + ".png");
+      ImageIcon unit2 = new ImageIcon("src/Images/Hector/S" + y + ".png");
+      Unit1 = unit1.getImage();
+      Unit2 = unit2.getImage();
+      Game.Animation = 1;
+      y++;
+      Time++;
+      if (Time == 25){
+        Game.state = 0;
+        y = 0;
+        Time = 0;
+        Game.Animation = 0;
+      }
+    }else if (Game.state == 0) {
       ImageIcon blank = new ImageIcon("");
       Selected = blank.getImage();
     }else if (Game.state == 1) {
       ImageIcon selected = new ImageIcon("src/Images/Base.png");
       Selected = selected.getImage();
-
     }else if (Game.state == 2) {
       int End = 0;
+      Game.Animation = 1;
       LocationX.set(0,200);
       LocationY.set(0,200);
       String Character = "Marth";
@@ -100,7 +114,7 @@ public class UI extends JPanel implements Runnable{
       }
       Time++;
       if (Time == End) {
-        Game.state = 0;
+        Game.state = -1;
         if (Game.Selected == 0) {
           ImageIcon unit3 = new ImageIcon("src/Images/Marth/S0.png");
           ImageIcon unit4 = new ImageIcon("src/Images/Hector/S1.png");
@@ -124,6 +138,7 @@ public class UI extends JPanel implements Runnable{
         Combat = blank.getImage();
         Time = 0;
         y = 0;
+        Game.Animation = 0;
       }
     }
   }
