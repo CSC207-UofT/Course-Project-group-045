@@ -22,23 +22,23 @@ public class Game {
         System.out.println(map.size());
 
         while(map.contains(player1) && map.contains(enemy1)) {
-            for (int i = 0; i < PlayerChar.size(); i++){
-                Character currChar = PlayerChar.get(i);
+            for (Character currChar : PlayerChar) {
                 System.out.println("player character " + currChar.getName() +
                         " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
-            for (int i = 0; i < EnemyChar.size(); i++){
-                Character currChar = EnemyChar.get(i);
+            for (Character currChar : EnemyChar) {
                 System.out.println("enemy character " + currChar.getName() +
                         " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
             System.out.println("Player Turn");
-            // checks that there is at least one player character that has an unused action
+            // loop runs while at least one player character has action available
             while (checkActions(PlayerChar)) {
                 System.out.println("enter position character to perform action");
                 int inputInt = sc.nextInt();
                 Character user = map.get(inputInt);
+                // checks that there is a player character at the map index of the input
                 if (PlayerChar.contains(user)){
+                    // checks whether the player character has used their action
                     if (user.isActionUsed()){
                         System.out.println("Character has already used action");
                     }
@@ -46,6 +46,7 @@ public class Game {
                         System.out.println("enter position of target");
                         int targetInt = sc.nextInt();
                         Character target = map.get(targetInt);
+                        // checks if there is an enemy at the map index of the input
                         if (EnemyChar.contains(target)) {
                             Action.attack(user, target);
                             if (target.getCurrHealth() <= 0) {
@@ -64,6 +65,7 @@ public class Game {
 
 
             }
+            // refreshes all actions
             setActions(PlayerChar);
             System.out.println("Enemy Turn");
 
@@ -82,6 +84,7 @@ public class Game {
             if (!(character.isActionUsed())){
                 return true;
             }
+
         }
         return false;
     }
