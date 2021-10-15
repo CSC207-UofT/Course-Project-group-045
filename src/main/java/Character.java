@@ -3,6 +3,8 @@ public class Character {
     private int maxHealth;
     private int currHealth;
     private int attack;
+    private int defense;
+    private int speed;
     private boolean actionUsed;
 
     public Character(String name) {
@@ -10,6 +12,8 @@ public class Character {
         maxHealth = 100;
         currHealth = maxHealth;
         attack = 10;
+        defense = 10;
+        speed = 10;
         actionUsed = false;
     }
 
