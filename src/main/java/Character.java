@@ -1,6 +1,7 @@
 public abstract class Character {
     private String name;
-    private int maxHealth, currHealth, attack, defense, speed;
+    private int currHealth, attack, defense, speed;
+    private final int maxHealth;
     private boolean actionUsed;
 
     public Character(String name) {
