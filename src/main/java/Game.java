@@ -30,17 +30,18 @@ public class Game {
             System.out.println("Player Turn");
             // loop runs while at least one player character has action available
             while (checkActions(PlayerChar)) {
-                System.out.println("enter character name to perform action");
+                System.out.println("enter character name to perform attack");
                 String inputString = sc.nextLine();
+                // checks if input is a character name
                 if (isValidInput(inputString, PlayerChar)) {
                     Character user = getCharacterByName(inputString, PlayerChar);
-                    // checks that there is a player character at the map index of the input
+                    // checks if character's action has been used
                         if (user.isActionUsed()) {
                             System.out.println("Character has already used action");
                         } else {
                             System.out.println("enter name of target");
                             String targetStr = sc.nextLine();
-                            // checks if there is an enemy at the map index of the input
+                            // checks if input is an enemy name
                             if (isValidInput(targetStr, EnemyChar)) {
                                 Character target = getCharacterByName(targetStr, EnemyChar);
                                 Action.attack(user, target);
