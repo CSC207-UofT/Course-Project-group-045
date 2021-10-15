@@ -62,7 +62,7 @@ public class UI extends JPanel implements Runnable{
     g.drawImage(Unit2,LocationX.get(1),LocationY.get(1),this);
     g.drawImage(Foe1,LocationX.get(2),LocationY.get(2),this);
     g.drawImage(Foe2,LocationX.get(3),LocationY.get(3),this);
-    g.drawImage(Slash,300,130,this);
+    g.drawImage(Slash,350,130,this);
     Toolkit.getDefaultToolkit().sync();
   }
   
