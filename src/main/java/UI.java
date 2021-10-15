@@ -6,7 +6,6 @@ public class UI extends JPanel implements Runnable{
   private Thread animator;
   private Image Background,Combat,Selected,Slash,Unit1,Unit2,Foe1,Foe2;
   private int y = 0;
-  private ArrayList <Image> Units = new ArrayList<>();
   private ArrayList <Integer> LocationX = new ArrayList<>();
   private ArrayList <Integer> LocationY = new ArrayList<>();
   private int Time = 0;
@@ -16,8 +15,6 @@ public class UI extends JPanel implements Runnable{
   }
   
   private void initUI() {
-    Units.add(0,Unit1);
-    Units.add(1,Unit2);
     LocationX.add(0,310);
     LocationY.add(0,100);
     LocationX.add(1,385);
@@ -62,7 +59,7 @@ public class UI extends JPanel implements Runnable{
     g.drawImage(Combat, 275, 0, this);
     g.drawImage(Selected,350 + Game.X*75,225,this);
     g.drawImage(Unit1,LocationX.get(0),LocationY.get(0),this);
-    g.drawImage(Unit2,LocationX.get(1),LocationY.get(1),this);;
+    g.drawImage(Unit2,LocationX.get(1),LocationY.get(1),this);
     g.drawImage(Foe1,LocationX.get(2),LocationY.get(2),this);
     g.drawImage(Foe2,LocationX.get(3),LocationY.get(3),this);
     g.drawImage(Slash,300,130,this);
