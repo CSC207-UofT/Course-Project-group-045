@@ -1,5 +1,5 @@
 public abstract class Character {
-    private String name;
+    private final String name;
     private int currHealth, attack, defense, speed;
     private final int maxHealth;
     private boolean actionUsed;
