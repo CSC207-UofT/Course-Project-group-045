@@ -22,13 +22,11 @@ public class Game {
         System.out.println(map.size());
 
         while(map.contains(player1) && map.contains(enemy1)) {
-            for (int i = 0; i < PlayerChar.size(); i++){
-                Character currChar = PlayerChar.get(i);
+            for (Character currChar : PlayerChar) {
                 System.out.println("player character " + currChar.getName() +
                         " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
-            for (int i = 0; i < EnemyChar.size(); i++){
-                Character currChar = EnemyChar.get(i);
+            for (Character currChar : EnemyChar) {
                 System.out.println("enemy character " + currChar.getName() +
                         " at position " + map.indexOf(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
@@ -77,15 +75,16 @@ public class Game {
     }
 
     public static boolean checkActions(ArrayList<Character> list){
-        for (Character character : list){
-            if (!(character.isActionUsed())){
+        for (Character character : list) {
+            if (!(character.isActionUsed())) {
                 return true;
             }
+
         }
         return false;
     }
     public static void setActions(ArrayList<Character> list){
-        for (Character character: list){
+        for (Character character : list) {
             character.restoreAction();
         }
     }
