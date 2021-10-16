@@ -32,6 +32,16 @@ When all EnemyChar are removed from Map, the program ends.
 As of Phase 0, many classes such as Item and its subclasses have not been implemented, but are planned to be 
 later on.
 
+----------------------------------------------------------------------------------------------------
+Skeleton Program Summary:
+
+For our skeleton project, we have implemented a single map, a turn tracking system, dummy player characters and enemy characters
+that have identical stats, and the attack action. Player characters can be commanded to attack enemy characters. Player
+characters are restricted to one action per turn, and when all player characters have taken their action,
+the turn ends. When an enemy character has 0 health or below, they are removed from the map.
+When all enemy characters are removed from the map, the game ends. All game information is displayed in the terminal/console, 
+and all inputs are also taken through the console.
+
 
 ----------------------------------------------------------------
 

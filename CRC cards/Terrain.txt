@@ -1,0 +1,10 @@
+Class name: Terrain
+Parent class: None
+
+Subclasses: Grass
+
+Responsibilities:
+abstract class, lays out properties and methods of terrain type subclasses
+
+Collaborators:
+Character, Action, Map
