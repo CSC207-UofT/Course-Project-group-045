@@ -26,7 +26,9 @@ We have a total of 11 CRC cards as of now, though not all of them have been impl
 
 So far for our CRC cards that are implemented into code.
 
-Game Class: The Game class includes many features that tie the code together. It includes the mouse listeners, which takes mouse imputs on the JFrame also created in the Game class. 
+Game Class: The Game class includes many features that tie the code together. It includes the mouse listeners, which takes mouse imputs on the JFrame also created in the Game class.
+This class initializes several other classes and is in charge of keeping track of turns adn taking in inputs from the player. It will collaborate with
+classes like Character, its subclasses, Map, Action and UI
 
 Character Class: we have an abstract character class of which its methods and
 attributes are inherited by its subclasses of PlayerChar and EnemyChar.

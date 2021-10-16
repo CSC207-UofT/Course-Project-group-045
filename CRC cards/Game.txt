@@ -9,4 +9,4 @@ Responsibility:
 - Initialize values
 
 Collaborator:
-Character, Map, Item, 
+Character, Map, UI, Action
