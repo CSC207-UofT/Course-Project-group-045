@@ -2,9 +2,10 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
-public class CharacterTest {
+public class MapTest {
     private PlayerChar c;
     private EnemyChar e;
+    private Map m = new Map();
 
     @Before
     public void setUp() {
@@ -17,8 +18,7 @@ public class CharacterTest {
     }
 
     @Test(timeout = 50)
-    public void testCharacterDamage() {
-        Action.attack(c, e);
-        assertEquals(90, e.getCurrHealth());
+    public void testCharacterPosition() {
+
     }
 }
