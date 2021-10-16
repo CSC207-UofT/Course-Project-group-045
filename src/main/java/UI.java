@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class UI extends JPanel implements Runnable{
-  private Image Background,Combat,Selected,Slash,Unit1,Unit2,Foe1,Foe2;
+  private Image Background,Combat,Selected,Red,Slash,Unit1,Unit2,Foe1,Foe2;
   private int y = 0;
   private final ArrayList <Integer> LocationX = new ArrayList<>();
   private final ArrayList <Integer> LocationY = new ArrayList<>();
@@ -32,6 +32,7 @@ public class UI extends JPanel implements Runnable{
     Background = background.getImage();
     Combat = blank.getImage();
     Selected = blank.getImage();
+    Red = blank.getImage();
     Unit1 = unit1.getImage();
     Unit2 = unit2.getImage();
     Foe1 = foe1.getImage();
@@ -58,6 +59,7 @@ public class UI extends JPanel implements Runnable{
     g.drawImage(Background, 0, 0, this);
     g.drawImage(Combat, 275, 0, this);
     g.drawImage(Selected,350 + Game.X*75,225,this);
+    g.drawImage(Red,350 + Game.X*75,300,this);
     g.drawImage(Unit1,LocationX.get(0),LocationY.get(0),this);
     g.drawImage(Unit2,LocationX.get(1),LocationY.get(1),this);
     g.drawImage(Foe1,LocationX.get(2),LocationY.get(2),this);
@@ -88,10 +90,16 @@ public class UI extends JPanel implements Runnable{
     }else if (Game.state == 0) {
       ImageIcon blank = new ImageIcon("");
       Selected = blank.getImage();
+      Red = blank.getImage();
     }else if (Game.state == 1) {
       ImageIcon selected = new ImageIcon("src/Images/Base.png");
+      ImageIcon red = new ImageIcon("src/Images/Red.png");
       Selected = selected.getImage();
+      Red = red.getImage();
     }else if (Game.state == 2) {
+      ImageIcon red = new ImageIcon("src/Images/EBase.png");
+      Red = red.getImage();
+    }else if (Game.state == 3) {
       int End = 0;
       Game.Animation = 1;
       LocationX.set(0,200);
@@ -126,6 +134,7 @@ public class UI extends JPanel implements Runnable{
         LocationY.set(3,300);
       }
       Selected = blank.getImage();
+      Red = blank.getImage();
       if (Game.Selected == 0){
         if (y < 23) {
           y++;
