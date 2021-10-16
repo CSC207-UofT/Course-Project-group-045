@@ -20,5 +20,7 @@ public class CharacterTest {
     public void testCharacterDamage() {
         Action.attack(c, e);
         assertEquals(90, e.getCurrHealth());
+        Action.attack(c, e);
+        assertEquals(80, e.getCurrHealth());
     }
 }
