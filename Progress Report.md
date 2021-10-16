@@ -1,22 +1,31 @@
 Phase 0 Progress Report:
 
-Specification:
+Specification Summary:
 
-Running the project will open a turn-based game where a player will be able to issue commands to characters with the goal of defeating all enemies on the map.
+Turn based grid based strategy game inspired by the likes of fire emblem, advance wars, and xcom.
 
-The game map will be represented by a 2D grid on which characters will be placed. Each cell of the map contains a terrain type which may provide certain stat bonuses or be impassable to certain character types.
+Goal of the game is to clear all enemies characters off the map while keeping player characters alive.
 
-Characters will have stats that determine their damage in combat as well as other utility. When a character’s health stat reaches zero, they will be removed from the map.
+Game commands will be represented and issued by GUI through mouse and keyboard commands.
 
-By selecting characters on the graphical interface and using keyboard and mouse commands, the player will be able to:
--	Move characters across the map based on their movement stat
--	Use a character to attack an opposing character
--	Have a character use an item
--	Have a character equip/change weapons
+Additional information will also be printed in the console/terminal
 
-Information regarding game data (ex. Position of characters on the map, damage calculation of a battle) will appear in the command line
+-------------------------------------------------------------------------------------
 
-Each character will be allowed to perform one action per turn. Once all of the player character’s actions have been completed, the turn ends and the enemy characters will take their turn performing actions. Turns repeat until the player is victorious or loses all of their characters.
+Scenario Walkthrough Summary:
+
+Game class main is run to start the program, and instances of Map, PlayerChar and EnemyChar are created.
+
+Map class takes character classes and places them onto the map.
+
+Game class loops, takes inputs and performs checks to ensure inputs can be translated into commands issued through Action class.
+
+If an Action results in a character having less than 0 health, character is removed from Map.
+
+When all EnemyChar are removed from Map, the program ends.
+
+
+
 
 ----------------------------------------------------------------
 
