@@ -1,5 +1,8 @@
 Scenario Walkthrough
 
+Note: *UI is implemented but not connected to rest of the skeleton program. 
+Instead, skeleton program prints and takes text input from the console/terminal*
+
 Program is started by running the main of the Game class.
 
 Game initializes one instance of Map, as well
@@ -13,4 +16,6 @@ The class Game runs a loop that takes inputs from the terminal and makes the cha
 
 Game also makes checks to ensure that the inputs are usable, and prints to the terminal if they are not.
 
-When a character's health reaches 0, they are removed from Map
+When a character's health reaches 0, they are removed from Map.
+
+When all instances of EnemyChar are removed from Map, the program ends.

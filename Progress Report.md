@@ -14,6 +14,8 @@ Additional information will also be printed in the console/terminal
 
 Scenario Walkthrough Summary:
 
+Note:*UI is implemented but not connected to skeleton program. Instead, skeleton program prints and takes text inputs from the console/terminal*
+
 Game class main is run to start the program, and instances of Map, PlayerChar and EnemyChar are created.
 
 Map class takes character classes and places them onto the map.
