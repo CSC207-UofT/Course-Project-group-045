@@ -26,16 +26,18 @@ We have a total of 11 CRC cards as of now, though not all of them have been impl
 
 So far for our CRC cards that are implemented into code.
 
+Game Class: The Game class includes many features that tie the code together. It includes the mouse listeners, which takes mouse imputs on the JFrame also created in the Game class. 
+
 Character Class: we have an abstract character class of which its methods and
 attributes are inherited by its subclasses of PlayerChar and EnemyChar.
 
-As of phase 0 we have two subclasses for the abstract character class
+As of phase 0 we have two subclasses for the abstract character class:
 
-Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
-a personal name for the PlayerChar object
+  Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
+  a personal name for the PlayerChar object
 
-Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
-its own personal name for this specific EnemyChar object
+  Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
+  its own personal name for this specific EnemyChar object
 
 Action Class: Action class that modifies the attributes of other classes, when an action is performed by a player. It is in charge
 of making the necessary changes in other classes when an action if performed by a player, this includes
@@ -51,12 +53,10 @@ characters to be placed on and move around in the array. Although we have yet to
 in the future items will be scattered across coordinates of the 2D array that can be picked up by characters
 on the map.
 
-As if phase 0 we have 1 subclass for the Map Class
+As if phase 0 we have 1 subclass for the Map Class:
 
-CLass Grass: This would be a subclass of Class Map and would serve as a default terrain type, not
-giving any benefits or penalties for characters
-
-Game Class:
+  Grass Class: This would be a subclass of Class Map and would serve as a default terrain type, not
+  giving any benefits or penalties for characters
 
 Classes that we have planned in our CRC model, but have yet to implement it as of phase 0.
 
