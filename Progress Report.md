@@ -33,6 +33,7 @@ As of Phase 0, many classes such as Item and its subclasses have not been implem
 later on.
 
 ----------------------------------------------------------------------------------------------------
+
 Skeleton Program Summary:
 
 For our skeleton project, we have implemented a single map, a turn tracking system, dummy player characters and enemy characters
