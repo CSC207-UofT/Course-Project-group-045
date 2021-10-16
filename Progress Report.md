@@ -73,17 +73,17 @@ with the character and map classes
 
 As of phase 0 we have 3 subclasses or unique items for the abstract class item
 
-Class AtkPot: As a subclass of item is inherits methods from its parents, enhances a character's
-attack power by a certain amount, it will collaborate with classes Characters, any character subclasses,
-Actions, map and of course its parent class Item
+- Class AtkPot: As a subclass of item is inherits methods from its parents, enhances a character's
+  attack power by a certain amount, it will collaborate with classes Characters, any character subclasses,
+  Actions, map and of course its parent class Item
 
-Class DefPot: As a subclass of item is inherits methods from its parents, enhances a character's
-defense power by a certain amount, it will collaborate with classes Characters, any character subclasses,
-Actions, map and of course its parent class Item
+- Class DefPot: As a subclass of item is inherits methods from its parents, enhances a character's
+  defense power by a certain amount, it will collaborate with classes Characters, any character subclasses,
+  Actions, map and of course its parent class Item
 
-Class HpPot: As a subclass of item is inherits methods from its parents, enhances a character's
-total health by a certain amount, it will collaborate with classes Characters, any character subclasses,
-Actions, map and of course its parent class Item
+- Class HpPot: As a subclass of item is inherits methods from its parents, enhances a character's
+  total health by a certain amount, it will collaborate with classes Characters, any character subclasses,
+  Actions, map and of course its parent class Item
 
 Something to keep in mind is that as of now so far, we have decided that the AI will not have its
 own inventory and EnemyChar will not be able to pick up items
