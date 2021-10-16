@@ -12,7 +12,10 @@ public class CharacterTest {
     }
 
     @Test(timeout = 50)
-    public void testSomething() {
-
+    public void testCharacterDamage() {
+        PlayerChar c = new PlayerChar("Dummy Character");
+        EnemyChar e = new EnemyChar("Dummy Enemy");
+        Action.attack(c, e);
+        assertEquals(90, e.getCurrHealth());
     }
 }

@@ -82,7 +82,7 @@ public class Game extends JFrame implements MouseListener{
     }
 
     private void initUI() {
-        add(new UI());
+        // add(new UI());
         setResizable(false);
         pack();
         setTitle("Course Project");
