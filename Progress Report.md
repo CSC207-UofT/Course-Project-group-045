@@ -10,6 +10,9 @@ Game commands will be represented and issued by GUI through mouse and keyboard c
 
 Additional information will also be printed in the console/terminal
 
+As of Phase 0, commands and outputs are displayed through the terminal 
+but are intended to be implemented through the UI later on.
+
 -------------------------------------------------------------------------------------
 
 Scenario Walkthrough Summary:
@@ -26,7 +29,8 @@ If an Action results in a character having less than 0 health, character is remo
 
 When all EnemyChar are removed from Map, the program ends.
 
-
+As of Phase 0, many classes such as Item and its subclasses have not been implemented, but are planned to be 
+later on.
 
 
 ----------------------------------------------------------------
