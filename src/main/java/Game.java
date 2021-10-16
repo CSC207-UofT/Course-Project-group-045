@@ -19,6 +19,7 @@ public class Game extends JFrame implements MouseListener{
             if (X == 1 && Y == 1) {
                 if (Selected != -1) {
                     Selected = -1;
+                    ESelected = -1;
                     Allowed = 0;
                     state = 0;
                 } else {
@@ -28,6 +29,7 @@ public class Game extends JFrame implements MouseListener{
             } else if (X == 2 && Y == 1) {
                 if (Selected != -1) {
                     Selected = -1;
+                    ESelected = -1;
                     Allowed = 0;
                     state = 0;
                 } else {
@@ -40,12 +42,22 @@ public class Game extends JFrame implements MouseListener{
                     ESelected = -1;
                     Allowed = 0;
                     state = 0;
+                } else if (ESelected == 1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
                 } else {
                     ESelected = 0;
                     Allowed = 1;
                 }
             }else if (X == 2 && Y == 2) {
                 if (Selected != 1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else if (ESelected == 0) {
                     Selected = -1;
                     ESelected = -1;
                     Allowed = 0;

@@ -51,33 +51,39 @@ We have a total of 11 CRC cards as of now, though not all of them have been impl
 
 So far for our CRC cards that are implemented into code.
 
+Game Class: The Game class includes many features that tie the code together. It includes the mouse listeners, which takes mouse imputs on the JFrame also created in the Game class.
+This class initializes several other classes and is in charge of keeping track of turns adn taking in inputs from the player. It will collaborate with
+classes like Character, its subclasses, Map, Action and UI
+
 Character Class: we have an abstract character class of which its methods and
 attributes are inherited by its subclasses of PlayerChar and EnemyChar.
 
-As of phase 0 we have two subclasses for the abstract character class
+As of phase 0 we have two subclasses for the abstract character class:
 
-Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
-a personal name for the PlayerChar object
+- Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
+  a personal name for the PlayerChar object
 
-Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
-its own personal name for this specific EnemyChar object
+- Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
+  its own personal name for this specific EnemyChar object
 
 Action Class: Action class that modifies the attributes of other classes, when an action is performed by a player. It is in charge
 of making the necessary changes in other classes when an action if performed by a player, this includes
 attributes within classes of character, map and game, which is what we implemented so far as of now, but
 in the future it will also modify attributes within classes inventory and item.
 
+UI Class: The UI class is responsible for implimenting the features of the JFrame created in the Game class. It creates all of the 
+graphics and animations for the game. This feature is currently not fully finished as the UI is not connected to the other classes
+other than Game, it is currently more of a demonstration of what the UI would look like when it's fully connected to the other classes.
+
 Map Class: The Map class essentially creates a 2D array that functions as our grid and coordinates for
 characters to be placed on and move around in the array. Although we have yet to implement this feature yet
 in the future items will be scattered across coordinates of the 2D array that can be picked up by characters
 on the map.
 
-As if phase 0 we have 1 subclass for the Map Class
+As if phase 0 we have 1 subclass for the Map Class:
 
-CLass Grass: This would be a subclass of Class Map and would serve as a default terrain type, not
-giving any benefits or penalties for characters
-
-Game Class:
+- Grass Class: This would be a subclass of Class Map and would serve as a default terrain type, not
+  giving any benefits or penalties for characters
 
 Classes that we have planned in our CRC model, but have yet to implement it as of phase 0.
 
@@ -92,17 +98,17 @@ with the character and map classes
 
 As of phase 0 we have 3 subclasses or unique items for the abstract class item
 
-Class AtkPot: As a subclass of item is inherits methods from its parents, enhances a character's
-attack power by a certain amount, it will collaborate with classes Characters, any character subclasses,
-Actions, map and of course its parent class Item
+- Class AtkPot: As a subclass of item is inherits methods from its parents, enhances a character's
+  attack power by a certain amount, it will collaborate with classes Characters, any character subclasses,
+  Actions, map and of course its parent class Item
 
-Class DefPot: As a subclass of item is inherits methods from its parents, enhances a character's
-defense power by a certain amount, it will collaborate with classes Characters, any character subclasses,
-Actions, map and of course its parent class Item
+- Class DefPot: As a subclass of item is inherits methods from its parents, enhances a character's
+  defense power by a certain amount, it will collaborate with classes Characters, any character subclasses,
+  Actions, map and of course its parent class Item
 
-Class HpPot: As a subclass of item is inherits methods from its parents, enhances a character's
-total health by a certain amount, it will collaborate with classes Characters, any character subclasses,
-Actions, map and of course its parent class Item
+- Class HpPot: As a subclass of item is inherits methods from its parents, enhances a character's
+  total health by a certain amount, it will collaborate with classes Characters, any character subclasses,
+  Actions, map and of course its parent class Item
 
 Something to keep in mind is that as of now so far, we have decided that the AI will not have its
 own inventory and EnemyChar will not be able to pick up items
@@ -140,5 +146,4 @@ and modifies the attributes of the characters exactly as it should.
 
 We do have one important question for the TA that involves the graphics and UI we are implementing
 and that is if we are allowed to use assets that are not personally created by us,
-specifically sprites that we will use and if that is allowed. Another question we do have
-is
+specifically sprites that we will use and if that is allowed.
