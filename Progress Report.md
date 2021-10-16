@@ -115,4 +115,4 @@ and modifies the attributes of the characters exactly as it should.
 
 We do have one important question for the TA that involves the graphics and UI we are implementing
 and that is if we are allowed to use assets that are not personally created by us,
-specifically sprites that we will use and if that is allowed. 
+specifically sprites that we will use and if that is allowed.
