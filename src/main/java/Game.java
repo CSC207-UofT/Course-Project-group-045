@@ -107,16 +107,16 @@ public class Game extends JFrame implements MouseListener{
     
     public static void main(String[] args){
         Map map1 = new Map();
-        ArrayList<Character> PlayerChar = new ArrayList<>();
-        ArrayList<Character> EnemyChar = new ArrayList<>();
+        ArrayList<Character> playerChar = new ArrayList<>();
+        ArrayList<Character> enemyChar = new ArrayList<>();
         PlayerChar player1 = new PlayerChar("Player 1");
         PlayerChar player2 = new PlayerChar("Player 2");
         EnemyChar enemy1 = new EnemyChar("Enemy 1");
         EnemyChar enemy2 = new EnemyChar("Enemy 2");
-        PlayerChar.add(player1);
-        PlayerChar.add(player2);
-        EnemyChar.add(enemy1);
-        EnemyChar.add(enemy2);
+        playerChar.add(player1);
+        playerChar.add(player2);
+        enemyChar.add(enemy1);
+        enemyChar.add(enemy2);
         map1.addEnemyChar(enemy1, enemy2);
         map1.addPlayerChar(player1, player2);
         Scanner sc = new Scanner(System.in);
@@ -125,21 +125,21 @@ public class Game extends JFrame implements MouseListener{
             ex.setVisible(true);
         });
 
-        while(!PlayerChar.isEmpty() && !EnemyChar.isEmpty()) {
-            for (Character currChar : PlayerChar) {
+        while(!playerChar.isEmpty() && !enemyChar.isEmpty()) {
+            for (Character currChar : playerChar) {
                 System.out.println("player character " + currChar.getName() +
                         " at position " + map1.charPosition(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
-            for (Character currChar : EnemyChar) {
+            for (Character currChar : enemyChar) {
                 System.out.println("enemy character " + currChar.getName() +
                         " at position " + map1.charPosition(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
             }
             System.out.println("Player Turn");
             // loop runs while at least one player character has action available
-            while (checkActions(PlayerChar)) {
+            while (checkActions(playerChar)) {
                 System.out.println("enter character name to perform attack");
                 String inputString = sc.nextLine();
-                Character user = getCharacterByName(inputString, PlayerChar);
+                Character user = getCharacterByName(inputString, playerChar);
                 // checks if user is null
                 if (!(user == null)) {
                     // checks if character's action has been used
@@ -148,14 +148,14 @@ public class Game extends JFrame implements MouseListener{
                         } else {
                             System.out.println("enter name of target");
                             String targetStr = sc.nextLine();
-                            Character target = getCharacterByName(targetStr, EnemyChar);
+                            Character target = getCharacterByName(targetStr, enemyChar);
                             // checks if target it null
                             if (!(target == null)) {
 
                                 Action.attack(user, target);
                                 if (target.getCurrHealth() <= 0) {
                                     System.out.println(target.getName() + " perished");
-                                    EnemyChar.remove(target);
+                                    enemyChar.remove(target);
                                     map1.removeChar(target);
                                 }
                             } else {
@@ -169,11 +169,11 @@ public class Game extends JFrame implements MouseListener{
 
             }
             // refreshes all actions
-            setActions(PlayerChar);
+            setActions(playerChar);
             System.out.println("Enemy Turn");
 
         }
-    if (EnemyChar.isEmpty()){
+    if (enemyChar.isEmpty()){
         System.out.println("Victory for the Righteous");
     }
     else{
