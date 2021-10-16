@@ -42,6 +42,10 @@ of making the necessary changes in other classes when an action if performed by 
 attributes within classes of character, map and game, which is what we implemented so far as of now, but
 in the future it will also modify attributes within classes inventory and item.
 
+UI Class: The UI class is responsible for implimenting the features of the JFrame created in the Game class. It creates all of the 
+graphics and animations for the game. This feature is currently not fully finished as the UI is not connected to the other classes
+other than Game, it is currently more of a demonstration of what the UI would look like when it's fully connected to the other classes.
+
 Map Class: The Map class essentially creates a 2D array that functions as our grid and coordinates for
 characters to be placed on and move around in the array. Although we have yet to implement this feature yet
 in the future items will be scattered across coordinates of the 2D array that can be picked up by characters
