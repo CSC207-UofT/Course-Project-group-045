@@ -33,10 +33,10 @@ attributes are inherited by its subclasses of PlayerChar and EnemyChar.
 
 As of phase 0 we have two subclasses for the abstract character class:
 
-  Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
+- Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
   a personal name for the PlayerChar object
 
-  Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
+- Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
   its own personal name for this specific EnemyChar object
 
 Action Class: Action class that modifies the attributes of other classes, when an action is performed by a player. It is in charge
@@ -55,7 +55,7 @@ on the map.
 
 As if phase 0 we have 1 subclass for the Map Class:
 
-  Grass Class: This would be a subclass of Class Map and would serve as a default terrain type, not
+- Grass Class: This would be a subclass of Class Map and would serve as a default terrain type, not
   giving any benefits or penalties for characters
 
 Classes that we have planned in our CRC model, but have yet to implement it as of phase 0.
