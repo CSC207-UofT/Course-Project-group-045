@@ -27,12 +27,28 @@ public abstract class Character {
         return this.attack;
     }
 
+    public int getSpeed() {
+        return this.speed;
+    }
+
     public int getCurrHealth(){
         return this.currHealth;
     }
 
     public void reduceCurrHealth(int damage){
         this.currHealth = this.currHealth - damage;
+    }
+
+    public void increaseCurrHealth(int boost) {
+        this.currHealth += boost;
+    }
+
+    public void increaseCurrAttack(int power) {
+        this.attack += power;
+    }
+
+    public void increaseCurrSpeed(int stamina) {
+        this.speed += stamina;
     }
 
     public boolean isActionUsed(){
