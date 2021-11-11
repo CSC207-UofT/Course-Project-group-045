@@ -8,8 +8,8 @@ public class ItemTest {
 
     @Before
     public void setUp() {
-        c = new PlayerChar("Dummy Character");
-        e = new EnemyChar("Dummy Enemy");
+        c = new PlayerChar("Dummy Character", 100, 40, 2);
+        e = new EnemyChar("Dummy Enemy", 100, 40, 2);
     }
 
     @After
