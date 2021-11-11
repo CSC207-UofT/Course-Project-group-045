@@ -5,7 +5,7 @@ public class SpdPot extends consumable_Item {
 
     public SpdPot() {
         this.name = "Mercury's Blessing";
-        this.description = "This potion will grant a character 10 extra points of speed once";
+        this.description = "This potion will grant a character 1 extra points of speed once";
         this.curr_usage = 100;
     }
 
@@ -31,7 +31,7 @@ public class SpdPot extends consumable_Item {
 
     @Override
     public void char_effect(Character avatar) {
-        avatar.increaseCurrSpeed(10);
+        avatar.increaseCurrSpeed(1);
     }
 
     @Override
