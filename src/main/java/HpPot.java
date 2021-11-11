@@ -22,8 +22,8 @@ public class HpPot extends consumable_Item {
         int excess_health;
         int total_health = avatar.getCurrHealth() + 10;
         int increase_value = 10;
-        if (total_health > 100) {
-            excess_health = total_health - 100;
+        if (total_health > avatar.getMaxHealth()) {
+            excess_health = total_health - avatar.getMaxHealth();
             increase_value -= excess_health;
         }
         avatar.increaseCurrHealth(increase_value);
