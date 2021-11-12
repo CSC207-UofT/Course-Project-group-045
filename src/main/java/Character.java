@@ -3,12 +3,14 @@ public abstract class Character {
 
     private int currHealth, maxHealth, attack, speed;
     private boolean actionUsed;
+    protected boolean ally;
 
     public Character(String name, int maxHealth, int attack, int speed) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.attack = attack;
         this.speed = speed;
+        this.ally = false;
         currHealth = maxHealth;
         actionUsed = false;
     }
@@ -31,6 +33,10 @@ public abstract class Character {
 
     public int getCurrHealth(){
         return this.currHealth;
+    }
+
+    public boolean get_team() {
+        return this.ally;
     }
 
     public void reduceCurrHealth(int damage){
