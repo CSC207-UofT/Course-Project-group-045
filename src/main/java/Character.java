@@ -1,17 +1,15 @@
 public abstract class Character {
     private final String name;
 
-    private int currHealth, attack, defense, speed;
-    private final int maxHealth;
+    private int currHealth, maxHealth, attack, speed;
     private boolean actionUsed;
 
-    public Character(String name) {
+    public Character(String name, int maxHealth, int attack, int speed) {
         this.name = name;
-        maxHealth = 100;
+        this.maxHealth = maxHealth;
+        this.attack = attack;
+        this.speed = speed;
         currHealth = maxHealth;
-        attack = 10;
-        defense = 10;
-        speed = 10;
         actionUsed = false;
     }
 
