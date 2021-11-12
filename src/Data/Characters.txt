@@ -1,0 +1,39 @@
+Bruiser - Irelia
+Normal - QA, Ultimate - WRQAQ
+Damage: Medium
+Range: Normal
+HP: Normal
+Special trait: None
+Ultimate: Self-heals percentage of damage dealt
+
+Assassin - Zed
+Normal - WEQ, Ultimate: WREQA
+Damage: High
+Range: Normal
+HP: low
+Special trait: Can move one extra square every turn
+Ultimate: Takes a percentage of enemy attack if kills
+
+Marksman - Jhin
+Normal - QA, Ultimate - R x4
+Damage: High
+Range: High
+HP: Low
+Special trait: 4th shot does extra damage/Chance to critically strike for extra damage
+Ultimate: Extremely high damage, 4th shot does %HP damage
+
+Tank - Leona
+Normal - EQ, Ultimate - RWEQ
+Damage: Low
+Range: Normal
+HP: High
+Special trait: Chance to stun the enemy for 1 turn
+Ultimate: Stuns enemy for 2 turns
+
+Healer/Support - Senna
+Normal - AQ, Ultimate - R
+Damage: Low
+Range: High
+HP: Low
+Special trait: Can heal allies
+Ultimate: Grants nearby allies a shield for 2 turns
