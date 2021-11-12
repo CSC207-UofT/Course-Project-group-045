@@ -1,7 +1,7 @@
 public class Jhin extends Character {
     private final boolean ally;
-    public Jhin(String name, boolean team) {
-        super(name, 75, );
+    public Jhin(boolean team) {
+        super("Jhin", 75, 60, 2);
         this.ally = team;
     }
 
