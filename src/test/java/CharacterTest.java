@@ -32,6 +32,7 @@ public class CharacterTest {
         assertEquals(75, jihn.getMaxHealth());
         assertEquals(60, jihn.getAttack());
         assertEquals(2, jihn.getSpeed());
+        assertTrue(jihn.get_team());
     }
 
 
