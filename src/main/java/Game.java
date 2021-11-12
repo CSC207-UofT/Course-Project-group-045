@@ -5,27 +5,81 @@ import java.awt.*;
 
 public class Game extends JFrame implements MouseListener{
     static int state = -1;
-    static int X = -1;
-    static int Y = -1;
+    static int X = 1;
+    static int Y = 1;
     static int Allowed = 0;
     static int Selected = -1;
     static int ESelected = -1;
     static int Animation = 0;
-    static int Map = 1;
-    static ArrayList <String> Chars = new ArrayList<>();
-    static ArrayList <Integer> SelectedChars = new ArrayList<>();
-    static ArrayList <Integer> UnitLocationX = new ArrayList<>();
-    static ArrayList <Integer> UnitLocationY = new ArrayList<>();
-    static ArrayList <Integer> EnemyLocationX = new ArrayList<>();
-    static ArrayList <Integer> EnemyLocationY = new ArrayList<>();
 
     public void mousePressed(MouseEvent e) {
-        X = (int) (Math.ceil((e.getX() - 205) / 75));
-        Y = (int) (Math.ceil((e.getY() + 45) / 75));
-        AllyCheck();
+        if (Animation == 0) {
+            X = (int) (Math.ceil((e.getX() - 355) / 75));
+            Y = (int) (Math.ceil((e.getY() - 180) / 75));
+            if (X == 1 && Y == 1) {
+                if (Selected != -1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    Selected = 0;
+                    Allowed = 1;
+                }
+            } else if (X == 2 && Y == 1) {
+                if (Selected != -1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    Selected = 1;
+                    Allowed = 1;
+                }
+            }else if (X == 1 && Y == 2) {
+                if (Selected != 0) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else if (ESelected == 1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    ESelected = 0;
+                    Allowed = 1;
+                }
+            }else if (X == 2 && Y == 2) {
+                if (Selected != 1) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else if (ESelected == 0) {
+                    Selected = -1;
+                    ESelected = -1;
+                    Allowed = 0;
+                    state = 0;
+                } else {
+                    ESelected = 1;
+                    Allowed = 1;
+                }
+            } else {
+                Allowed = 0;
+                Selected = -1;
+                state = 0;
+            }
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
+        if (Animation == 0) {
+            if (Allowed == 1) {
+                state++;
+            }
+        }
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -33,18 +87,6 @@ public class Game extends JFrame implements MouseListener{
     public void mouseExited(MouseEvent e) {
     }
     public void mouseEntered(MouseEvent e) {
-    }
-
-    private void AllyCheck() {
-        Selected = -1;
-        if (Game.UnitLocationX.contains(X)) {
-            for (int i = 0; i < Game.UnitLocationX.size(); i++) {
-                if (Game.UnitLocationX.get(i) == X && Game.UnitLocationY.get(i) == Y) {
-                    Selected = i + 1;
-                    break;
-                }
-            }
-        }
     }
 
     public Game() {
@@ -62,48 +104,112 @@ public class Game extends JFrame implements MouseListener{
         addMouseListener(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
+    
     public static void main(String[] args){
-        ArrayList<Character> map = new ArrayList<Character>();
-        ArrayList<Character> PlayerChars = new ArrayList<Character>();
-        ArrayList<Character> EnemyChars = new ArrayList<Character>();
-        PlayerChar player1 = new PlayerChar("Player");
-        EnemyChar enemy1 = new EnemyChar("Enemy");
-        map.add(player1);
-        map.add(enemy1);
+        Map map1 = new Map();
+        ArrayList<Character> playerChar = new ArrayList<>();
+        ArrayList<Character> enemyChar = new ArrayList<>();
+        PlayerChar player1 = new PlayerChar("Irelia", 75, 40, 2);
+        PlayerChar player2 = new PlayerChar("Zed", 75, 60, 3);
+        PlayerChar player3 = new PlayerChar("Jhin", 100, 60, 2);
+        PlayerChar player4 = new PlayerChar("Leona", 150, 20, 2);
+        PlayerChar player5 = new PlayerChar("Senna", 100, 20, 2);
+        EnemyChar enemy1 = new EnemyChar("Enemy 1", 100, 10, 2);
+        EnemyChar enemy2 = new EnemyChar("Enemy 2", 100, 10, 2);
+        playerChar.add(player1);
+        playerChar.add(player2);
+        playerChar.add(player3);
+        playerChar.add(player4);
+        playerChar.add(player5);
+        enemyChar.add(enemy1);
+        enemyChar.add(enemy2);
+        map1.addEnemyChar(enemy1, enemy2);
+        map1.addPlayerChar(player1, player2);
         Scanner sc = new Scanner(System.in);
         EventQueue.invokeLater(() -> {
             JFrame ex = new Game();
             ex.setVisible(true);
         });
-        SelectedChars.add(0,1);
-        SelectedChars.add(1,2);
-        SelectedChars.add(2,3);
-        SelectedChars.add(3,4);
-        Chars.add(0, "");
-        Chars.add(1, "Marth");
-        Chars.add(2, "Hector");
-        Chars.add(3, "Irelia");
-        Chars.add(4, "Robin");
-        Chars.add(5, "Sakura");
 
+        while(!playerChar.isEmpty() && !enemyChar.isEmpty()) {
+            for (Character currChar : playerChar) {
+                System.out.println("player character " + currChar.getName() +
+                        " at position " + map1.charPosition(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
+            }
+            for (Character currChar : enemyChar) {
+                System.out.println("enemy character " + currChar.getName() +
+                        " at position " + map1.charPosition(currChar) + ", health " + currChar.getCurrHealth() + "/" + currChar.getMaxHealth());
+            }
+            System.out.println("Player Turn");
+            // loop runs while at least one player character has action available
+            while (checkActions(playerChar)) {
+                System.out.println("enter character name to perform attack");
+                String inputString = sc.nextLine();
+                Character user = getCharacterByName(inputString, playerChar);
+                // checks if user is null
+                if (!(user == null)) {
+                    // checks if character's action has been used
+                        if (user.isActionUsed()) {
+                            System.out.println("Character has already used action");
+                        } else {
+                            System.out.println("enter name of target");
+                            String targetStr = sc.nextLine();
+                            Character target = getCharacterByName(targetStr, enemyChar);
+                            // checks if target it null
+                            if (!(target == null)) {
 
-        while(map.contains(player1) && map.contains(enemy1)) {
-            System.out.println("player character at position " + map.indexOf(player1) + ", health " + player1.getCurrHealth() + "/" + player1.getMaxHealth());
-            System.out.println("enemy character at position " + map.indexOf(enemy1) + " health " + enemy1.getCurrHealth() + "/" + enemy1.getMaxHealth());
-            System.out.println("enter position character to perform action");
-            int inputInt = sc.nextInt();
-            System.out.println("type action to be performed");
-            String inputStr = sc.nextLine();
-            Character user = map.get(inputInt);
-            System.out.println("enter position of target");
-            int targetInt = sc.nextInt();
-            Character target = map.get(targetInt);
-            user.attack(user, target);
-            
+                                Action.attack(user, target);
+                                if (target.getCurrHealth() <= 0) {
+                                    System.out.println(target.getName() + " perished");
+                                    enemyChar.remove(target);
+                                    map1.removeChar(target);
+                                }
+                            } else {
+                                System.out.println("Not a valid target");
+                            }
+                        }
+                }
+                else{
+                    System.out.println("not a valid character name");
+                }
+
+            }
+            // refreshes all actions
+            setActions(playerChar);
+            System.out.println("Enemy Turn");
 
         }
+    if (enemyChar.isEmpty()){
+        System.out.println("Victory for the Righteous");
+    }
+    else{
+        System.out.println("Democracy dies in Darkness");
+    }
+
+    }
+
+    public static boolean checkActions(ArrayList<Character> list){
+        for (Character character : list){
+            if (!(character.isActionUsed())){
+                return true;
+            }
+
+        }
+        return false;
+    }
+    public static void setActions(ArrayList<Character> list){
+        for (Character character: list){
+            character.restoreAction();
+        }
+    }
 
 
+    public static Character getCharacterByName(String name, ArrayList<Character> list){
+        for (Character character: list){
+            if (name.equals(character.getName())){
+                return character;
+            }
+        }
+        return null;
     }
 }
