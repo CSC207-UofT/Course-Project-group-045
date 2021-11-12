@@ -19,13 +19,13 @@ public class ItemTest {
     @Test(timeout = 50)
     public void testItemUsage() {
         Action.attack(c, e);
-        assertEquals(90, e.getCurrHealth());
+        assertEquals(60, e.getCurrHealth());
         Item health_potion = new HpPot();
         health_potion.use_item(e);
-        assertEquals(100, e.getCurrHealth());
+        assertEquals(70, e.getCurrHealth());
         assertEquals(0, health_potion.check_usage());
         Item health_potion2 = new HpPot();
         health_potion2.use_item(e);
-        assertEquals(100, e.getCurrHealth());
+        assertEquals(80, e.getCurrHealth());
     }
 }

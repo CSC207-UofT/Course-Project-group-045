@@ -1,16 +1,17 @@
 public abstract class Character {
     private final String name;
-
+    private boolean ally;
     private int currHealth, maxHealth, attack, speed;
     private boolean actionUsed;
 
-    public Character(String name, int maxHealth, int attack, int speed) {
+    public Character(String name, int maxHealth, int attack, int speed, boolean ally) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.attack = attack;
         this.speed = speed;
-        currHealth = maxHealth;
-        actionUsed = false;
+        this.ally = ally;
+        this.currHealth = maxHealth;
+        this.actionUsed = false;
     }
 
     public String getName(){
@@ -33,6 +34,10 @@ public abstract class Character {
         return this.currHealth;
     }
 
+    public boolean is_Ally() {
+        return this.ally;
+    }
+
     public void reduceCurrHealth(int damage){
         this.currHealth = this.currHealth - damage;
     }
@@ -50,7 +55,7 @@ public abstract class Character {
     }
 
     public boolean isActionUsed(){
-        return actionUsed;
+        return this.actionUsed;
     }
 
     public void restoreAction(){
