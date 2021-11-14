@@ -18,6 +18,7 @@ public class Game extends JFrame implements MouseListener{
     static ArrayList <Integer> UnitLocationY = new ArrayList<>();
     static ArrayList <Integer> EnemyLocationX = new ArrayList<>();
     static ArrayList <Integer> EnemyLocationY = new ArrayList<>();
+    static ArrayList<Character> playerChar;
     static Character selectedChar;
     static Character selectedTar;
     static int selectedMoveX, selectedMoveY = -1;
@@ -28,6 +29,17 @@ public class Game extends JFrame implements MouseListener{
         Y = (int) (Math.ceil((e.getY() + 45) / 75));
         AllyCheck();
         Character currTile = currMap.getCharByPos(X, Y);
+        if (selectedChar != null && selectedTar != null){
+            Action.attack(selectedChar, selectedTar);
+            selectedChar = null;
+            selectedTar = null;
+        }
+        if (selectedChar != null && selectedMoveX != -1 && selectedMoveY != -1){
+            Action.move();
+            selectedChar = null;
+            selectedMoveY = -1;
+            selectedMoveX = -1;
+        }
         if (selectedChar != null && currMap.getEnemyList().contains(currTile) &&
                 Action.attackable(selectedChar, currTile)){
             selectedTar = currTile;
@@ -35,6 +47,9 @@ public class Game extends JFrame implements MouseListener{
         if (selectedChar != null && currTile == null && Action.moveable(selectedChar, X, Y)){
             selectedMoveX = X;
             selectedMoveY = Y;
+        }
+        if (!checkActions(playerChar)) {
+            System.out.print("End of Player Turn");
         }
     }
 
@@ -80,7 +95,7 @@ public class Game extends JFrame implements MouseListener{
     public static void main(String[] args) {
         Map map1 = new Map(6, 8);
         currMap = map1;
-        ArrayList<Character> playerChar = new ArrayList<>();
+        playerChar = new ArrayList<>();
         ArrayList<Character> enemyChar = new ArrayList<>();
         PlayerChar player1 = new PlayerChar("Irelia", 75, 40, 2);
         PlayerChar player2 = new PlayerChar("Zed", 75, 60, 3);
@@ -113,26 +128,6 @@ public class Game extends JFrame implements MouseListener{
             JFrame ex = new Game();
             ex.setVisible(true);
         });
-        //while win/lose not fulfilled
-        while (!playerChar.isEmpty() && !enemyChar.isEmpty()) {
-            System.out.println("Player Turn"); //indicate player turn
-            //while at least one player character still has an action
-            while(checkActions(playerChar)){
-                while (selectedChar != null){
-                    while (selectedTar != null){
-                        Action.attack(selectedChar, selectedTar);
-                        selectedChar = null;
-                        selectedTar = null;
-                    }
-                    while (selectedMoveX != -1 && selectedMoveY != -1){
-                        Action.move();
-                        selectedMoveY = -1;
-                        selectedMoveX = -1;
-                    }
-                }
-            }
-
-        }
     }
 
     public static boolean checkActions(ArrayList<Character> list){
