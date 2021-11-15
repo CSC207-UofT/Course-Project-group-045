@@ -1,4 +1,8 @@
 Design Documentation
+
+To run the program, run the main method in the Game class. The game uses mouse controls.
+
+
 Updated Specification: we have added movement for the characters, where we allow our characters to 
 mover around the map and change each charater's location each turn, the extent of how much they can
 move is dependent on their speed, basically it dictates how many spaces they can move like a chess board.
