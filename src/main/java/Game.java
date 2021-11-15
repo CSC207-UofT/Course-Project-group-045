@@ -32,6 +32,10 @@ public class Game extends JFrame implements MouseListener{
             //if the clicked tile is an enemy, perform the attack then deselect all characters
             if(enemyChar.contains(currTile) && Action.attackable(selectedChar, currTile)){
                 Action.attack(selectedChar, currTile);
+                if (currTile.getCurrHealth() <= 0){
+                    System.out.println(currTile.getName() + " has perished");
+                    currMap.removeChar(currTile);
+                }
                 selectedChar = null;
             }
             /*if an empty tile is also selected and is able to be moved into, move the character to the position
