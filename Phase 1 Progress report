@@ -1,0 +1,52 @@
+Design Documentation
+Updated Specification: we have added movement for the characters, where we allow our characters to 
+mover around the map and change each charater's location each turn, the extent of how much they can
+move is dependent on their speed, basically it dictates how many spaces they can move like a chess board.
+We expanded on solid characters for the games, rather than having dummy characters with the same stats,
+these characters all have different stats based on their unqiue traits and fighting styles.
+We also added the new Item features, objects that characters use and consume so far, only once to 
+modify a character's stats, like their health, attack power and speed.
+We also have a increased UI functionality to provide a better player experience for the game.
+As for the map we have also expanded the size of the map from 2x2 grid to a 6x8 grid. 
+
+Design Decisions: 
+
+Clean Architecture: We have segregated our classes into packages based on their roles in the clean architecture
+hierarchy. Characters, items and the map count as entities. The Action class is our use case. The Game class is
+a gateway, and the UI class is self-explanatory in its purpose.
+
+Solid Design Principles:
+
+Design Patterns Implemented:
+
+Progress Report: 
+What each group member is working on
+Jack: Jack has currently been working on the UI, making the sprites and the animations for the 
+different characters that we have implemented, and he will continue to do that as we work 
+towards Phase 2.
+
+Jonathan: Jonathan has been working on the abstract character class, while helping and inspecting the design
+pattern and functionality of our other classes such as items and the subclasses of characters, providing
+suggestions and implementing the core functions for every character as in the actions that they 
+can do, and he will continue to expand on implementing character functionality and new character 
+abilities that may be implemented in phase 2.
+
+Antony: Antony has been working on the item functionality, implementing the Item interface and 
+creating the new consumable class that implements the item interface, where it's subclasses are three
+new solid items that change the stats of a character upon consumption, while he also impemented 
+the new solid characters based on the ideas and implemtations made by Jonathan, he will continue to work
+on new subclass of items that implements item, known as weapons.
+
+James: James has been implemeting the game class, that starts the game and essentially ties everything 
+together, implementing functionality that conincides with the UI that Jack has been working on and 
+putting together other functionality like characters, items and the action class to essentially
+create tha skeleton of the game, and he has pretty much layed out how the game uses each specific functionality
+availible, and will continue to work on this while further functionality will be implemented in phase 2.
+
+Zihao: Zihao has built the action class that interacts with characters, items and as well as the map
+class that creates the grid where the characters would be layed out and would also interact with 
+the UI system. He has added additonal functionality to the action class to further interact with 
+new implementations like the Item interface and the new expanded character functionality, as well
+as expanind the map into a larger grid, specifically 6x8 map, and he will continue expand 
+on the action class to interact with new functionaities implemented in phase 2
+and further expansions of maps and terrain as we progress further.
