@@ -30,7 +30,7 @@ public class Game extends JFrame implements MouseListener{
         //if a player character is already selected
         if (selectedChar != null){
             //if the clicked tile is an enemy, perform the attack then deselect all characters
-            if(currMap.getEnemyList().contains(currTile) && Action.attackable(selectedChar, currTile)){
+            if(enemyChar.contains(currTile) && Action.attackable(selectedChar, currTile)){
                 Action.attack(selectedChar, currTile);
                 selectedChar = null;
             }
