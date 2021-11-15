@@ -34,6 +34,5 @@ public class Action {
         Game.currMap.removeChar(selected);
         Game.currMap.addChar(selected, x, y);
         selected.useAction();
-        System.out.println(selected.getName() + " has used action " + selected.isActionUsed());
     }
 }

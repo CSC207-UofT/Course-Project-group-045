@@ -42,7 +42,6 @@ public class Game extends JFrame implements MouseListener{
              then deselect all characters  */
             if (currTile == null && Action.moveable(selectedChar, X, Y)){
                 Action.move(selectedChar, X, Y);
-                System.out.println("moved");
                 UnitLocationX.set(playerChar.indexOf(selectedChar), X);
                 UnitLocationY.set(playerChar.indexOf(selectedChar), Y);
                 selectedChar = null;
@@ -63,7 +62,7 @@ public class Game extends JFrame implements MouseListener{
         }
         //if the click uses the last playable character action
         if (checkActionsUsed(playerChar)) {
-            System.out.print("End of Player Turn");
+            System.out.println("End of Player Turn");
             //this should ultimately be replaced with some method call that conducts the Enemy AI's turn
             setActions(playerChar);
         }
