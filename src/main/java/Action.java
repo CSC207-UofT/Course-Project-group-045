@@ -1,3 +1,4 @@
+
 public class Action {
 
     public static void attack(Character attacker, Character target) {
@@ -38,3 +39,4 @@ public class Action {
         selected.useAction();
     }
 }
+

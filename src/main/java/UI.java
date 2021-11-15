@@ -56,10 +56,12 @@ public class UI extends JPanel implements Runnable{
     for (int i = 0 ; i < 30 ; i++){
       ImageIcons.add(i, new ImageIcon(Data1.get(i)));
     }
-    for (int i = 0 ; i < 42 ; i++){
+    for (int i = 0 ; i < 43 ; i++){
       Images.add(i, ImageIcons.get(0).getImage());
     }
     Images.set(17,ImageIcons.get(26).getImage());
+    Images.set(7,ImageIcons.get(23).getImage());
+    Images.set(8,ImageIcons.get(24).getImage());
   }
 
   private void drawBackground(Graphics g) {
@@ -70,14 +72,15 @@ public class UI extends JPanel implements Runnable{
     for (int i = 0 ; i < 25 ; i++){
       g.drawImage(Images.get(i+17),BoardX.get(i) * 75 + 200,BoardY.get(i) * 75 - 75,this);
     }
-    for (int i = 0 ; i < 1 ; i++){
-      g.drawImage(Images.get(i+7),Game.currMap.charXPosition(Game.currMap.getEnemyList().get(0)) * 75 + 85,
-              Game.currMap.charYPosition(Game.currMap.getEnemyList().get(0)) * 75 - 200, this);
+    for (int i = 0 ; i < 2 ; i++){
+      g.drawImage(Images.get(i+7),Game.currMap.charXPosition(Game.enemyChar.get(i)) * 75 + 85,
+              Game.currMap.charYPosition(Game.enemyChar.get(i)) * 75 - 200, this);
     }
     for (int i = 0 ; i < 2 ; i++){
       g.drawImage(Images.get(i+2),Game.currMap.charXPosition(Game.playerChar.get(i)) * 75 + 85,
               Game.currMap.charYPosition(Game.playerChar.get(i)) * 75 - 200, this);
     }
+    g.drawImage(Images.get(42),0,0,this);
     Toolkit.getDefaultToolkit().sync();
   }
 
@@ -107,10 +110,11 @@ public class UI extends JPanel implements Runnable{
   }
   private void EnemyCheck() {
     EnemyMatch = 0;
-    for (int i = 0; i < Game.currMap.getEnemyList().size(); i++) {
-      if (Game.currMap.charXPosition(Game.currMap.getEnemyList().get(i)) == X &&
-              Game.currMap.charYPosition(Game.currMap.getEnemyList().get(i)) == Y) {
-        AllyMatch = 1;
+    for (int i = 0; i < Game.enemyChar.size(); i++) {
+      if (Game.currMap.charXPosition(Game.enemyChar.get(i)) == X &&
+              Game.currMap.charYPosition(Game.enemyChar.get(i)) == Y) {
+        EnemyMatch = 1;
+
         break;
       }
     }
@@ -337,10 +341,11 @@ public class UI extends JPanel implements Runnable{
     if (Game.state == -1) {
       Images.set(0, ImageIcons.get(1).getImage());
       Images.set(1, ImageIcons.get(Game.Map + 1).getImage());
-      for (int i = 0; i < Game.playerChar.size(); i++) {
-        ImageIcons.set(i * 3 + 5, new ImageIcon("src/Images/" +
+      for (int i = 0; i < 2; i++) {
+        ImageIcons.set(i * 3 + 8, new ImageIcon("src/Images/" +
                 Game.playerChar.get(i).getName() + "/S" + y + ".png"));
-        Images.set(i + 2, ImageIcons.get(i * 3 + 5).getImage());
+        Images.set(i + 2, ImageIcons.get(i * 3 + 8).getImage());
+
       }
       Game.Animation = 1;
       y++;
@@ -354,6 +359,12 @@ public class UI extends JPanel implements Runnable{
       }
     }else if (Game.state == 0){
       GetBoard();
+      if (Game.selectedChar != null){
+        ImageIcon side = new ImageIcon("src/Images/" + Game.selectedChar.getName() + "/side.png");
+        Images.set(42,side.getImage());
+      }else{
+        Images.set(42,ImageIcons.get(0).getImage());
+      }
     }
   }
 

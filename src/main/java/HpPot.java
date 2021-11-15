@@ -1,3 +1,5 @@
+
+
 public class HpPot extends consumable_Item {
     private final String name;
     private final String description;
@@ -45,3 +47,4 @@ public class HpPot extends consumable_Item {
         char_effect(avatar);
     }
 }
+
