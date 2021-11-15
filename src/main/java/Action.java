@@ -12,12 +12,14 @@ public class Action {
         if (target == null){
             return false;
         }
-        if (Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
-                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1){
+        if ((Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
+                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1)
+        && Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker)){
             return true;
         }
-        if (Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
-                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1){
+        if ((Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
+                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1)
+                        && Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker)){
             return true;
         }
         return false;
