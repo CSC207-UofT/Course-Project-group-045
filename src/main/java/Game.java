@@ -36,6 +36,11 @@ public class Game extends JFrame implements MouseListener{
                     System.out.println(currTile.getName() + " has perished");
                     currMap.removeChar(currTile);
                 }
+                if(!currMap.contains(enemyChar)){
+                    System.out.println("victory for the righteous");
+                    System.out.println("Game Over");
+                    end = 1;
+                }
                 selectedChar = null;
             }
             /*if an empty tile is also selected and is able to be moved into, move the character to the position
