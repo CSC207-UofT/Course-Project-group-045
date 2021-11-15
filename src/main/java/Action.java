@@ -23,8 +23,12 @@ public class Action {
     }
 
     public static boolean moveable(Character selected, int x , int y){
+        System.out.println(Math.abs(Game.currMap.charXPosition(selected) - x) +
+                Math.abs(Game.currMap.charYPosition(selected) - y));
         if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.col && y <= Game.currMap.row
-        && x > 0 && y > 0) {
+                && x > 0 && y > 0 &&
+                selected.getSpeed() >= Math.abs(Game.currMap.charXPosition(selected) - x) +
+                        Math.abs(Game.currMap.charYPosition(selected) - y)) {
             return true;
         }
 

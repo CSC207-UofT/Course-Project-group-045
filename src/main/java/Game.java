@@ -112,46 +112,22 @@ public class Game extends JFrame implements MouseListener{
         playerChar = new ArrayList<>();
         ArrayList<Character> enemyChar = new ArrayList<>();
         PlayerChar player1 = new PlayerChar("Marth", 75, 40, 2);
-        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 3);
-        /*PlayerChar player3 = new PlayerChar("Jhin", 100, 60, 2);
-        PlayerChar player4 = new PlayerChar("Leona", 150, 20, 2);
-        PlayerChar player5 = new PlayerChar("Senna", 100, 20, 2);\
-         */
+        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 2);
         EnemyChar enemy1 = new EnemyChar("Axe 1", 100, 10, 2);
         EnemyChar enemy2 = new EnemyChar("Sword 2", 100, 10, 2);
         playerChar.add(player1);
         playerChar.add(player2);
-        /*playerChar.add(player3);
-        playerChar.add(player4);
-        playerChar.add(player5);
-
-         */
         currMap.addEnemyToList(enemy1);
         currMap.addEnemyToList(enemy2);
-        /*SelectedChars.add(0, 1);
-        SelectedChars.add(1, 2);
-        SelectedChars.add(2, 3);
-        SelectedChars.add(3, 4);
-        Chars.add(0, "");
-        Chars.add(1, "Marth");
-        Chars.add(2, "Hector");
-        Chars.add(3, "Irelia");
-        Chars.add(4, "Robin");
-        Chars.add(5, "Sakura");
-        */
         map1.addChar(enemy1, 3,1);
         map1.addChar(enemy2, 4,1);
         map1.addChar(player1, 3,8);
         map1.addChar(player2, 4,8);
         for (int i = 0; i < playerChar.size(); i++){
             SelectedChars.add(i);
-            System.out.print(SelectedChars.get(i));
             Chars.add(playerChar.get(i).getName());
-            System.out.print(Chars.get(i));
             UnitLocationX.add(currMap.charXPosition(playerChar.get(i)));
-            System.out.print(UnitLocationX.get(i));
             UnitLocationY.add(currMap.charYPosition(playerChar.get(i)));
-            System.out.println(UnitLocationY.get(i));
         }
         for (int i = 0; i < currMap.getEnemyList().size(); i++){
             EnemyLocationX.add(currMap.charXPosition(currMap.getEnemyList().get(i)));
