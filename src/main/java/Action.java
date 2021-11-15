@@ -8,7 +8,7 @@ public class Action {
     }
 
     public static boolean attackable(Character attacker, Character target){
-        if (target != null){
+        if (target == null){
             return false;
         }
         if (Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
@@ -33,5 +33,7 @@ public class Action {
     public static void move(Character selected, int x, int y) {
         Game.currMap.removeChar(selected);
         Game.currMap.addChar(selected, x, y);
+        selected.useAction();
+        System.out.println(selected.getName() + " has used action " + selected.isActionUsed());
     }
 }

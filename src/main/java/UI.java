@@ -17,7 +17,7 @@ public class UI extends JPanel implements Runnable{
   }
   
   private void initUI() {
-    Game.UnitLocationX.add(0,3);
+    /*Game.UnitLocationX.add(0,3);
     Game.UnitLocationY.add(0,4);
     Game.UnitLocationX.add(1,4);
     Game.UnitLocationY.add(1,4);
@@ -33,6 +33,8 @@ public class UI extends JPanel implements Runnable{
       Game.EnemyLocationX.add(i+2,-1);
       Game.EnemyLocationY.add(i+2,-1);
     }
+
+     */
     for (int i = 0 ; i < 25 ; i++) {
       BoardX.add(i,-200);
       BoardY.add(i,-200);
@@ -86,11 +88,11 @@ public class UI extends JPanel implements Runnable{
     for (int i = 0 ; i < 25 ; i++){
       g.drawImage(Images.get(i+17),BoardX.get(i) * 75 + 200,BoardY.get(i) * 75 - 75,this);
     }
-    for (int i = 0 ; i < 10 ; i++){
+    for (int i = 0 ; i < Game.EnemyLocationX.size() ; i++){
       g.drawImage(Images.get(i+7),Game.EnemyLocationX.get(i) * 75 + 85,Game.EnemyLocationY.get(i) * 75 - 200,
               this);
     }
-    for (int i = 0 ; i < 4 ; i++){
+    for (int i = 0 ; i < Game.EnemyLocationX.size() ; i++){
       g.drawImage(Images.get(i+2),Game.UnitLocationX.get(i) * 75 + 85,Game.UnitLocationY.get(i) * 75 - 200,
               this);
     }
@@ -355,7 +357,7 @@ public class UI extends JPanel implements Runnable{
     if (Game.state == -1) {
       Images.set(0, ImageIcons.get(1).getImage());
       Images.set(1, ImageIcons.get(Game.Map + 1).getImage());
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 2; i++) {
         ImageIcons.set(Game.SelectedChars.get(i) * 3 + 5, new ImageIcon("src/Images/" +
                 Game.Chars.get(Game.SelectedChars.get(i)) + "/S" + y + ".png"));
         Images.set(i + 2, ImageIcons.get(Game.SelectedChars.get(i) * 3 + 5).getImage());

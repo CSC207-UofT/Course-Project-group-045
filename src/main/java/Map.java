@@ -13,18 +13,21 @@ public class Map {
     }
 
     public void addChar(Character char1, int col, int row) {
-        this.map[col][row] = char1;
+        this.map[col - 1][row - 1] = char1;
     }
 
     public ArrayList<Character> getEnemyList() {
         return enemyList;
     }
+    public void addEnemyToList(Character enemy){
+        enemyList.add(enemy);
+    }
 
     public int charXPosition(Character character) {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
-                    return i;
+                    return i + 1;
                 }
             }
         }
@@ -32,10 +35,10 @@ public class Map {
     }
 
     public int charYPosition(Character character) {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
-                    return j;
+                    return j + 1;
                 }
             }
         }
@@ -43,8 +46,8 @@ public class Map {
     }
 
     public void removeChar(Character character) {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
                     this.map[i][j] = null;
                 }
@@ -54,7 +57,7 @@ public class Map {
 
     public Character getCharByPos(int col, int row) {
         if (col <= map.length && row <= map[col].length) {
-            return map[col][row];
+            return map[col - 1][row - 1];
         }
         return null;
     }
