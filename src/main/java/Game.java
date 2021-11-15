@@ -12,17 +12,50 @@ public class Game extends JFrame implements MouseListener{
     static int ESelected = -1;
     static int Animation = 0;
     static int Map = 1;
-    static ArrayList <String> Chars = new ArrayList<>();
-    static ArrayList <Integer> SelectedChars = new ArrayList<>();
-    static ArrayList <Integer> UnitLocationX = new ArrayList<>();
-    static ArrayList <Integer> UnitLocationY = new ArrayList<>();
-    static ArrayList <Integer> EnemyLocationX = new ArrayList<>();
-    static ArrayList <Integer> EnemyLocationY = new ArrayList<>();
+    static ArrayList <Character> playerChar = new ArrayList<>();
+    static ArrayList <Character> enemyChar = new ArrayList<>();
+    static Character selectedChar;
+    static boolean itemSelect = false;
+    static ArrayList<Item> itemList = new ArrayList<>();
+    static Map currMap;
 
     public void mousePressed(MouseEvent e) {
         X = (int) (Math.ceil((e.getX() - 205) / 75));
         Y = (int) (Math.ceil((e.getY() + 45) / 75));
         AllyCheck();
+        //currtile is the map character associated with the tile clicked
+        Character currTile = currMap.getCharByPos(X, Y);
+        //if a player character is already selected
+        if (selectedChar != null){
+            //if the clicked tile is an enemy, perform the attack then deselect all characters
+            if(currMap.getEnemyList().contains(currTile) && Action.attackable(selectedChar, currTile)){
+                Action.attack(selectedChar, currTile);
+                selectedChar = null;
+            }
+            /*if an empty tile is also selected and is able to be moved into, move the character to the position
+             then deselect all characters  */
+            if (currTile == null && Action.moveable(selectedChar, X, Y)){
+                Action.move(selectedChar, X, Y);
+                selectedChar = null;
+            }
+            //presumeably a item is selected through the popup menu
+            if (selectedChar != null && itemSelect ){
+                //itemList.get().use_item(selectedChar);
+            }
+            if (X == 1 && Y == 9){
+                itemSelect = true;
+                //presumeably this triggers some popup in the UI listing all available items
+            }
+        }
+        //if no character is currently selected and tile has a player character on it, select the player character
+        if (selectedChar == null && playerChar.contains(currTile)){
+            selectedChar = currTile;
+        }
+        //if the click uses the last playable character action
+        if (!checkActions(playerChar)) {
+            System.out.print("End of Player Turn");
+            //this should ultimately be replaced with some method call that conducts the Enemy AI's turn
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
@@ -37,12 +70,11 @@ public class Game extends JFrame implements MouseListener{
 
     private void AllyCheck() {
         Selected = -1;
-        if (Game.UnitLocationX.contains(X)) {
-            for (int i = 0; i < Game.UnitLocationX.size(); i++) {
-                if (Game.UnitLocationX.get(i) == X && Game.UnitLocationY.get(i) == Y) {
-                    Selected = i + 1;
-                    break;
-                }
+        for (int i = 0; i < playerChar.size(); i++) {
+            if (currMap.charXPosition(playerChar.get(i)) == X &&
+                    currMap.charYPosition(Game.playerChar.get(i)) == Y) {
+                Selected = i + 1;
+                break;
             }
         }
     }
@@ -63,47 +95,49 @@ public class Game extends JFrame implements MouseListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args){
-        ArrayList<Character> map = new ArrayList<Character>();
-        ArrayList<Character> PlayerChars = new ArrayList<Character>();
-        ArrayList<Character> EnemyChars = new ArrayList<Character>();
-        PlayerChar player1 = new PlayerChar("Player");
-        EnemyChar enemy1 = new EnemyChar("Enemy");
-        map.add(player1);
-        map.add(enemy1);
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        Map map1 = new Map(7, 9);
+        currMap = map1;
+        PlayerChar player1 = new PlayerChar("Marth", 75, 40, 2);
+        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 3);
+        EnemyChar enemy1 = new EnemyChar("Enemy 1", 100, 10, 2);
+        EnemyChar enemy2 = new EnemyChar("Enemy 2", 100, 10, 2);
+        playerChar.add(player1);
+        playerChar.add(player2);
+        enemyChar.add(enemy1);
+        enemyChar.add(enemy2);
+        map1.addChar(enemy1, 3,1);
+        map1.addChar(enemy2, 4,1);
+        map1.addChar(player1, 3,8);
+        map1.addChar(player2, 4,8);
         EventQueue.invokeLater(() -> {
             JFrame ex = new Game();
             ex.setVisible(true);
         });
-        SelectedChars.add(0,1);
-        SelectedChars.add(1,2);
-        SelectedChars.add(2,3);
-        SelectedChars.add(3,4);
-        Chars.add(0, "");
-        Chars.add(1, "Marth");
-        Chars.add(2, "Hector");
-        Chars.add(3, "Irelia");
-        Chars.add(4, "Robin");
-        Chars.add(5, "Sakura");
+    }
 
-
-        while(map.contains(player1) && map.contains(enemy1)) {
-            System.out.println("player character at position " + map.indexOf(player1) + ", health " + player1.getCurrHealth() + "/" + player1.getMaxHealth());
-            System.out.println("enemy character at position " + map.indexOf(enemy1) + " health " + enemy1.getCurrHealth() + "/" + enemy1.getMaxHealth());
-            System.out.println("enter position character to perform action");
-            int inputInt = sc.nextInt();
-            System.out.println("type action to be performed");
-            String inputStr = sc.nextLine();
-            Character user = map.get(inputInt);
-            System.out.println("enter position of target");
-            int targetInt = sc.nextInt();
-            Character target = map.get(targetInt);
-            user.attack(user, target);
-            
+    public static boolean checkActions(ArrayList<Character> list){
+        for (Character character : list){
+            if (!(character.isActionUsed())){
+                return true;
+            }
 
         }
+        return false;
+    }
+    public static void setActions(ArrayList<Character> list){
+        for (Character character: list){
+            character.restoreAction();
+        }
+    }
 
 
+    public static Character getCharacterByName(String name, ArrayList<Character> list){
+        for (Character character: list){
+            if (name.equals(character.getName())){
+                return character;
+            }
+        }
+        return null;
     }
 }
