@@ -71,8 +71,8 @@ public class UI extends JPanel implements Runnable{
       g.drawImage(Images.get(i+17),BoardX.get(i) * 75 + 200,BoardY.get(i) * 75 - 75,this);
     }
     for (int i = 0 ; i < 1 ; i++){
-      g.drawImage(Images.get(i+7),Game.currMap.charXPosition(Game.enemyChar.get(0)) * 75 + 85,
-              Game.currMap.charYPosition(Game.enemyChar.get(0)) * 75 - 200, this);
+      g.drawImage(Images.get(i+7),Game.currMap.charXPosition(Game.currMap.getEnemyList().get(0)) * 75 + 85,
+              Game.currMap.charYPosition(Game.currMap.getEnemyList().get(0)) * 75 - 200, this);
     }
     for (int i = 0 ; i < 2 ; i++){
       g.drawImage(Images.get(i+2),Game.currMap.charXPosition(Game.playerChar.get(i)) * 75 + 85,
@@ -107,9 +107,9 @@ public class UI extends JPanel implements Runnable{
   }
   private void EnemyCheck() {
     EnemyMatch = 0;
-    for (int i = 0; i < Game.enemyChar.size(); i++) {
-      if (Game.currMap.charXPosition(Game.enemyChar.get(i)) == X &&
-              Game.currMap.charYPosition(Game.enemyChar.get(i)) == Y) {
+    for (int i = 0; i < Game.currMap.getEnemyList().size(); i++) {
+      if (Game.currMap.charXPosition(Game.currMap.getEnemyList().get(i)) == X &&
+              Game.currMap.charYPosition(Game.currMap.getEnemyList().get(i)) == Y) {
         AllyMatch = 1;
         break;
       }
@@ -337,10 +337,10 @@ public class UI extends JPanel implements Runnable{
     if (Game.state == -1) {
       Images.set(0, ImageIcons.get(1).getImage());
       Images.set(1, ImageIcons.get(Game.Map + 1).getImage());
-      for (int i = 0; i < 4; i++) {
-        ImageIcons.set(Game.SelectedChars.get(i) * 3 + 5, new ImageIcon("src/Images/" +
-                Game.Chars.get(Game.SelectedChars.get(i)) + "/S" + y + ".png"));
-        Images.set(i + 2, ImageIcons.get(Game.SelectedChars.get(i) * 3 + 5).getImage());
+      for (int i = 0; i < Game.playerChar.size(); i++) {
+        ImageIcons.set(i * 3 + 5, new ImageIcon("src/Images/" +
+                Game.playerChar.get(i).getName() + "/S" + y + ".png"));
+        Images.set(i + 2, ImageIcons.get(i * 3 + 5).getImage());
       }
       Game.Animation = 1;
       y++;
