@@ -2,22 +2,21 @@ import java.util.ArrayList;
 
 public class Map {
     private Character[][] map;
+    static int col;
+    static int row;
     private ArrayList<Character> enemyList = new ArrayList<Character>();
 
     public Map(int col, int row) {
-    this.map = new Character[col][row];
+        this.map = new Character[col][row];
+        this.col = col;
+        this.row = row;
     }
 
-    public void addPlayerChar(PlayerChar player1, int col, int row) {
-       this.map[col][row] = player1;
+    public void addChar(Character char1, int col, int row) {
+        this.map[col][row] = char1;
     }
 
-    public void addEnemyChar(EnemyChar enemy1, int col, int row) {
-        this.map[col][row] = enemy1;
-        enemyList.add(enemy1);
-    }
-
-    public  ArrayList<Character> getEnemyList(){
+    public ArrayList<Character> getEnemyList() {
         return enemyList;
     }
 
@@ -53,8 +52,10 @@ public class Map {
         }
     }
 
-    public Character getCharByPos(int col, int row){
-        return map[col][row];
+    public Character getCharByPos(int col, int row) {
+        if (col <= map.length && row <= map[col].length) {
+            return map[col][row];
+        }
+        return null;
     }
-
 }

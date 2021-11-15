@@ -8,6 +8,9 @@ public class Action {
     }
 
     public static boolean attackable(Character attacker, Character target){
+        if (target != null){
+            return false;
+        }
         if (Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
                 Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1){
             return true;
@@ -20,7 +23,15 @@ public class Action {
     }
 
     public static boolean moveable(Character selected, int x , int y){
-        return true;
+        if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.col && y <= Game.currMap.row
+        && x > 0 && y > 0) {
+            return true;
+        }
+
+        return false;
     }
-    public static void move() {}
+    public static void move(Character selected, int x, int y) {
+        Game.currMap.removeChar(selected);
+        Game.currMap.addChar(selected, x, y);
+    }
 }

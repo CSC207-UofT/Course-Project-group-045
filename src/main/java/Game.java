@@ -27,23 +27,24 @@ public class Game extends JFrame implements MouseListener{
     public void mousePressed(MouseEvent e) {
         X = (int) (Math.ceil((e.getX() - 205) / 75));
         Y = (int) (Math.ceil((e.getY() + 45) / 75));
+        AllyCheck();
         //currtile is the map character associated with the tile clicked
         Character currTile = currMap.getCharByPos(X, Y);
         //if a player character is already selected
-        if (selectedChar != -1){
+        if (selectedChar != null){
             //if the clicked tile is an enemy, perform the attack then deselect all characters
             if(currMap.getEnemyList().contains(currTile) && Action.attackable(selectedChar, currTile)){
                 Action.attack(selectedChar, currTile);
-                selectedChar = -1;
+                selectedChar = null;
             }
             /*if an empty tile is also selected and is able to be moved into, move the character to the position
              then deselect all characters  */
             if (currTile == null && Action.moveable(selectedChar, X, Y)){
-                Action.move();
-                selectedChar = -1;
+                Action.move(selectedChar, X, Y);
+                selectedChar = null;
             }
             //presumeably a item is selected through the popup menu
-            if (selectedChar != -1 && itemSelect ){
+            if (selectedChar != null && itemSelect ){
                 //itemList.get().use_item(selectedChar);
             }
             if (X == 1 && Y == 9){
@@ -52,7 +53,7 @@ public class Game extends JFrame implements MouseListener{
             }
         }
         //if no character is currently selected and tile has a player character on it, select the player character
-        if (selectedChar == -1 && playerChar.contains(currTile)){
+        if (selectedChar == null && playerChar.contains(currTile)){
             selectedChar = currTile;
         }
         //if the click uses the last playable character action
@@ -129,10 +130,10 @@ public class Game extends JFrame implements MouseListener{
         Chars.add(3, "Irelia");
         Chars.add(4, "Robin");
         Chars.add(5, "Sakura");
-        map1.addEnemyChar(enemy1, 3,1);
-        map1.addEnemyChar(enemy2, 4,1);
-        map1.addPlayerChar(player1, 3,8);
-        map1.addPlayerChar(player1, 4,8);
+        map1.addChar(enemy1, 2,0);
+        map1.addChar(enemy2, 3,0);
+        map1.addChar(player1, 2,7);
+        map1.addChar(player2, 3,7);
         Scanner sc = new Scanner(System.in);
         EventQueue.invokeLater(() -> {
             JFrame ex = new Game();
