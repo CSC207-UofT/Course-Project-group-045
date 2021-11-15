@@ -1,0 +1,13 @@
+Class name: EnemyChar
+Parent class: Character
+
+Subclass:
+None
+
+Responsibility:
+- Store stats regarding character.
+- Perform actions.
+- Stores a personal name for the character
+
+Collaborator:
+Item, Action, Map, Character

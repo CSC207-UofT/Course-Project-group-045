@@ -12,8 +12,10 @@ public class Game extends JFrame implements MouseListener{
     static int ESelected = -1;
     static int Animation = 0;
     static int Map = 1;
+
     static ArrayList <Character> playerChar = new ArrayList<>();
     static ArrayList <Character> enemyChar = new ArrayList<>();
+
     static Character selectedChar;
     static boolean itemSelect = false;
     static ArrayList<Item> itemList = new ArrayList<>();
@@ -37,6 +39,7 @@ public class Game extends JFrame implements MouseListener{
             if (currTile == null && Action.moveable(selectedChar, X, Y)){
                 Action.move(selectedChar, X, Y);
                 selectedChar = null;
+
             }
             //presumeably a item is selected through the popup menu
             if (selectedChar != null && itemSelect ){
@@ -48,13 +51,16 @@ public class Game extends JFrame implements MouseListener{
             }
         }
         //if no character is currently selected and tile has a player character on it, select the player character
-        if (selectedChar == null && playerChar.contains(currTile)){
+
+        if (playerChar.contains(currTile) && !currTile.isActionUsed()){
             selectedChar = currTile;
         }
         //if the click uses the last playable character action
-        if (!checkActions(playerChar)) {
-            System.out.print("End of Player Turn");
+        if (checkActionsUsed(playerChar)) {
+            System.out.println("End of Player Turn");
             //this should ultimately be replaced with some method call that conducts the Enemy AI's turn
+            setActions(playerChar);
+
         }
     }
 
@@ -96,16 +102,18 @@ public class Game extends JFrame implements MouseListener{
     }
 
     public static void main(String[] args) {
+
         Map map1 = new Map(7, 9);
         currMap = map1;
         PlayerChar player1 = new PlayerChar("Marth", 75, 40, 2);
-        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 3);
+        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 2);
         EnemyChar enemy1 = new EnemyChar("Enemy 1", 100, 10, 2);
         EnemyChar enemy2 = new EnemyChar("Enemy 2", 100, 10, 2);
         playerChar.add(player1);
         playerChar.add(player2);
         enemyChar.add(enemy1);
         enemyChar.add(enemy2);
+
         map1.addChar(enemy1, 3,1);
         map1.addChar(enemy2, 4,1);
         map1.addChar(player1, 3,8);
@@ -116,14 +124,16 @@ public class Game extends JFrame implements MouseListener{
         });
     }
 
-    public static boolean checkActions(ArrayList<Character> list){
+
+    public static boolean checkActionsUsed(ArrayList<Character> list){
         for (Character character : list){
             if (!(character.isActionUsed())){
-                return true;
+                return false;
             }
 
         }
-        return false;
+        return true;
+
     }
     public static void setActions(ArrayList<Character> list){
         for (Character character: list){
@@ -131,13 +141,4 @@ public class Game extends JFrame implements MouseListener{
         }
     }
 
-
-    public static Character getCharacterByName(String name, ArrayList<Character> list){
-        for (Character character: list){
-            if (name.equals(character.getName())){
-                return character;
-            }
-        }
-        return null;
-    }
 }

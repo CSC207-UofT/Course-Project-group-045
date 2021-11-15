@@ -1,3 +1,4 @@
+
 public class AtkPot extends consumable_Item {
     private final String name;
     private final String description;
@@ -41,3 +42,4 @@ public class AtkPot extends consumable_Item {
         this.curr_usage -= 100;
     }
 }
+

@@ -114,6 +114,7 @@ public class UI extends JPanel implements Runnable{
       if (Game.currMap.charXPosition(Game.enemyChar.get(i)) == X &&
               Game.currMap.charYPosition(Game.enemyChar.get(i)) == Y) {
         EnemyMatch = 1;
+
         break;
       }
     }
@@ -344,6 +345,7 @@ public class UI extends JPanel implements Runnable{
         ImageIcons.set(i * 3 + 8, new ImageIcon("src/Images/" +
                 Game.playerChar.get(i).getName() + "/S" + y + ".png"));
         Images.set(i + 2, ImageIcons.get(i * 3 + 8).getImage());
+
       }
       Game.Animation = 1;
       y++;

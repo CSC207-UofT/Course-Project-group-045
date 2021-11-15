@@ -1,0 +1,14 @@
+Class name: PlayerChar
+Parent class: Character
+
+Subclass:
+None
+
+Responsibility:
+- Has inventary of items.
+- Store stats regarding character.
+- Perform actions.
+- Stores a personal name for the character
+
+Collaborator:
+Item, Action, Map, Character

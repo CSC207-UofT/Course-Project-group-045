@@ -1,10 +1,11 @@
+
 import java.util.ArrayList;
 
 public class Map {
     private Character[][] map;
     static int col;
     static int row;
-    private ArrayList <Character> enemyList = new ArrayList<Character>();
+    private ArrayList<Character> enemyList = new ArrayList<Character>();
 
     public Map(int col, int row) {
         this.map = new Character[col][row];
@@ -24,8 +25,8 @@ public class Map {
     }
 
     public int charXPosition(Character character) {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
                     return i + 1;
                 }
@@ -35,8 +36,8 @@ public class Map {
     }
 
     public int charYPosition(Character character) {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
                     return j + 1;
                 }
@@ -62,3 +63,4 @@ public class Map {
         return null;
     }
 }
+

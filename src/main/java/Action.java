@@ -1,3 +1,4 @@
+
 public class Action {
 
     public static void attack(Character attacker, Character target) {
@@ -24,7 +25,9 @@ public class Action {
 
     public static boolean moveable(Character selected, int x , int y){
         if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.col && y <= Game.currMap.row
-                && x > 0 && y > 0) {
+                && x > 0 && y > 0 &&
+                selected.getSpeed() >= Math.abs(Game.currMap.charXPosition(selected) - x) +
+                        Math.abs(Game.currMap.charYPosition(selected) - y)) {
             return true;
         }
 
@@ -36,3 +39,4 @@ public class Action {
         selected.useAction();
     }
 }
+
