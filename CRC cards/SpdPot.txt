@@ -1,11 +1,12 @@
-Class name: HpPot
+Class name: SpdPot
 Parent class: consumable_Item
 
 Subclasses: None
 
 Responsibilities:
 - inherit methods from parent.
-- Specify the amount of buff this pot is providing, in this case a health boost, for a character by 10 points.
+- Specify the amount of buff this pot is providing, in this case a speed buff add 1 speed point to a
+character.
 
 Collaborators:
 Character, Actions, Map, Item
