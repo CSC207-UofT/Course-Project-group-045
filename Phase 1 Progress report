@@ -11,7 +11,9 @@ As for the map we have also expanded the size of the map from 2x2 grid to a 6x8 
 
 Design Decisions: 
 
-Clean Architechture:
+Clean Architecture: We have segregated our classes into packages based on their roles in the clean architecture
+hierarchy. Characters, items and the map count as entities. The Action class is our use case. The Game class is
+a gateway, and the UI class is self-explanatory in its purpose.
 
 Solid Design Principles:
 
