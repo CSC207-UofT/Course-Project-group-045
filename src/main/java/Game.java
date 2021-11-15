@@ -65,14 +65,15 @@ public class Game extends JFrame implements MouseListener{
             }
         }
         //if no character is currently selected and tile has a player character on it, select the player character
-        if (playerChar.contains(currTile)){
+        if (playerChar.contains(currTile) && !currTile.isActionUsed()){
             selectedChar = currTile;
         }
         //if the click uses the last playable character action
-        if (!checkActions(playerChar)) {
-            System.out.print("End of Player Turn");
+        if (checkActionsUsed(playerChar)) {
+            System.out.println("End of Player Turn");
             //this should ultimately be replaced with some method call that conducts the Enemy AI's turn
             setActions(playerChar);
+
         }
     }
 
@@ -123,15 +124,16 @@ public class Game extends JFrame implements MouseListener{
         });
     }
 
-    public static boolean checkActions(ArrayList<Character> list){
-        for (Character character : list){
-            if (!(character.isActionUsed())){
-                return true;
+    public static boolean checkActionsUsed(ArrayList<Character> list){
+            for (Character character : list){
+                if (!(character.isActionUsed())){
+                    return false;
+                }
+
             }
+            return true;
 
         }
-        return false;
-    }
     public static void setActions(ArrayList<Character> list){
         for (Character character: list){
             character.restoreAction();
