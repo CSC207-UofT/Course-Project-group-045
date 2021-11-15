@@ -7,7 +7,5 @@ public class Action {
         attacker.useAction();
     }
 
-    public static void move() {}
-
-
+    /*public static void move() {}*/
 }

@@ -1,35 +1,53 @@
+import java.util.ArrayList;
 
 public class Map {
-    private Object[][] map;
+    private Character[][] map;
+    static int col;
+    static int row;
+    private ArrayList<Character> enemyList = new ArrayList<Character>();
 
-    public Map() {
-    this.map = new Object[2][2];
+    public Map(int col, int row) {
+        this.map = new Character[col][row];
+        this.col = col;
+        this.row = row;
     }
 
-    public void addPlayerChar(PlayerChar player1, PlayerChar player2) {
-       this.map[0][0] = player1;
-       this.map[0][1] = player2;
+    public void addChar(Character char1, int col, int row) {
+        this.map[col - 1][row - 1] = char1;
     }
 
-    public void addEnemyChar(EnemyChar enemy1, EnemyChar enemy2) {
-        this.map[1][0] = enemy1;
-        this.map[1][1] = enemy2;
+    public ArrayList<Character> getEnemyList() {
+        return enemyList;
+    }
+    public void addEnemyToList(Character enemy){
+        enemyList.add(enemy);
     }
 
-    public String charPosition(Character character) {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+    public int charXPosition(Character character) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
-                    return "(" + i + "," + j + ")";
+                    return i + 1;
                 }
             }
         }
-        return null;
+        return -1;
+    }
+
+    public int charYPosition(Character character) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
+                if (this.map[i][j] == character) {
+                    return j + 1;
+                }
+            }
+        }
+        return -1;
     }
 
     public void removeChar(Character character) {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 if (this.map[i][j] == character) {
                     this.map[i][j] = null;
                 }
@@ -37,5 +55,10 @@ public class Map {
         }
     }
 
-
+    public Character getCharByPos(int col, int row) {
+        if (col <= map.length && row <= map[0].length && col > 0 && row > 0 ) {
+            return map[col - 1][row - 1];
+        }
+        return null;
+    }
 }
