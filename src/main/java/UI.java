@@ -4,8 +4,9 @@ import javax.swing.*;
 import java.io.*;
 
 public class UI extends JPanel implements Runnable{
-  private int X,Y,y = 0;
+  private int X,Y, y = 0;
   private int EnemyMatch,AllyMatch = 0;
+  private final ArrayList <Integer> Combat = new ArrayList<>();
   private final ArrayList <Image> Images = new ArrayList<>();
   private final ArrayList <ImageIcon> ImageIcons = new ArrayList<>();
   private final ArrayList <Integer> BoardX = new ArrayList<>();
@@ -56,12 +57,14 @@ public class UI extends JPanel implements Runnable{
     for (int i = 0 ; i < 30 ; i++){
       ImageIcons.add(i, new ImageIcon(Data1.get(i)));
     }
-    for (int i = 0 ; i < 43 ; i++){
+    for (int i = 0 ; i < 46 ; i++){
       Images.add(i, ImageIcons.get(0).getImage());
     }
     Images.set(17,ImageIcons.get(26).getImage());
     Images.set(7,ImageIcons.get(23).getImage());
     Images.set(8,ImageIcons.get(24).getImage());
+    Combat.add(200);
+    Combat.add(500);
   }
 
   private void drawBackground(Graphics g) {
@@ -80,12 +83,15 @@ public class UI extends JPanel implements Runnable{
       g.drawImage(Images.get(i+2),Game.currMap.charXPosition(Game.playerChar.get(i)) * 75 + 85,
               Game.currMap.charYPosition(Game.playerChar.get(i)) * 75 - 200, this);
     }
+    g.drawImage(Images.get(43), Combat.get(0), 200,this);
+    g.drawImage(Images.get(44), Combat.get(1), 300,this);
     g.drawImage(Images.get(42),0,0,this);
+    g.drawImage(Images.get(45), 0, 0, this);
     Toolkit.getDefaultToolkit().sync();
   }
 
   private void GetBoard() {
-    if (Game.Selected == -1){
+    if (Game.selectedChar == null){
       for (int i = 0 ; i < 25 ; i++){
         BoardX.set(i,-1);
         BoardY.set(i,-1);
@@ -114,7 +120,6 @@ public class UI extends JPanel implements Runnable{
       if (Game.currMap.charXPosition(Game.enemyChar.get(i)) == X &&
               Game.currMap.charYPosition(Game.enemyChar.get(i)) == Y) {
         EnemyMatch = 1;
-
         break;
       }
     }
@@ -343,19 +348,19 @@ public class UI extends JPanel implements Runnable{
       Images.set(1, ImageIcons.get(Game.Map + 1).getImage());
       for (int i = 0; i < 2; i++) {
         ImageIcons.set(i * 3 + 8, new ImageIcon("src/Images/" +
-                Game.playerChar.get(i).getName() + "/S" + y + ".png"));
+                Game.playerChar.get(i).getName() + "/S" + Time + ".png"));
         Images.set(i + 2, ImageIcons.get(i * 3 + 8).getImage());
-
+        Images.set(i + 7, new ImageIcon("src/Images/" + Game.enemyChar.get(i).getName() + "1.png").getImage());
       }
       Game.Animation = 1;
-      y++;
       Time++;
-      Game.Selected = 0;
       if (Time == 25) {
         Game.state = 0;
-        y = 0;
         Time = 0;
         Game.Animation = 0;
+        if (Game.End == 1){
+          Game.state = 1;
+        }
       }
     }else if (Game.state == 0){
       GetBoard();
@@ -365,6 +370,43 @@ public class UI extends JPanel implements Runnable{
       }else{
         Images.set(42,ImageIcons.get(0).getImage());
       }
+      if (Game.Combat == 1){
+        Time++;
+        Game.Animation = 1;
+        for (int i = 0 ; i < 25 ; i++){
+          BoardX.set(i,-1);
+          BoardY.set(i,-1);
+        }
+        for (int i = 0 ; i < 2 ; i++){
+          Images.set(i + 2, ImageIcons.get(0).getImage());
+          Images.set(i + 7, ImageIcons.get(0).getImage());
+        }
+        Images.set(43, new ImageIcon("src/Images/" +
+                Game.selectedChar.getName() + "/A" + Time + ".png").getImage());
+        Images.set(6, new ImageIcon("src/Images/" +
+                Game.selectedChar.getName() + "/AS" + Time + ".png").getImage());
+        Images.set(44, new ImageIcon("src/Images/" + Game.selectedEnemy.getName() + "2.png").getImage());
+        Images.set(1, new ImageIcon("src/Images/Combat.png").getImage());
+        if (Game.selectedChar.getName() == "Marth") {
+          y = 23;
+        }else{
+          y = 42;
+        }
+        if (Time == y){
+          Game.state = -1;
+          Game.Animation = 0;
+          Game.Combat = 0;
+          Time = 0;
+          Images.set(43,ImageIcons.get(0).getImage());
+          Images.set(44,ImageIcons.get(0).getImage());
+          Images.set(6,ImageIcons.get(0).getImage());
+          Images.set(42,ImageIcons.get(0).getImage());
+          Game.selectedChar = null;
+        }
+      }
+    }else if (Game.state == 1){
+      Images.set(45, new ImageIcon("src/Images/End.png").getImage());
+      Game.Animation = 1;
     }
   }
 
