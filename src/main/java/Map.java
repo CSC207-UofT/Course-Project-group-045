@@ -56,7 +56,7 @@ public class Map {
     }
 
     public Character getCharByPos(int col, int row) {
-        if (col <= map.length && row <= map[col].length) {
+        if (col <= map.length && row <= map[0].length && col > 0 && row > 0 ) {
             return map[col - 1][row - 1];
         }
         return null;

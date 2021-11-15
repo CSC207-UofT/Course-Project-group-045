@@ -107,7 +107,7 @@ public class Game extends JFrame implements MouseListener{
     }
 
     public static void main(String[] args) {
-        Map map1 = new Map(7, 9);
+        Map map1 = new Map(6, 8);
         currMap = map1;
         playerChar = new ArrayList<>();
         ArrayList<Character> enemyChar = new ArrayList<>();
