@@ -15,6 +15,16 @@ public class Action {
         if (attacker.getSpeed() + 1 >= Math.abs(Game.currMap.charXPosition(attacker) -
                         Game.currMap.charXPosition(target)) +
                         Math.abs(Game.currMap.charYPosition(attacker) - Game.currMap.charYPosition(target))) {
+            if ((Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
+                    Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1) &&
+                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker)){
+                return true;
+            }
+            if ((Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
+                    Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1) &&
+                            Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker)){
+                return true;
+            }
             ArrayList <Integer> list = new ArrayList <> ();
             list.add(0, Game.currMap.charXPosition(target) + 1);
             list.add(1, Game.currMap.charXPosition(target) - 1);
