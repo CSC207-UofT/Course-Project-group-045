@@ -12,15 +12,26 @@ public class Action {
         if (target == null){
             return false;
         }
-        if ((Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
-                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1)
-        && Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker)){
-            return true;
-        }
-        if ((Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
-                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1)
-                        && Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker)){
-            return true;
+        if (attacker.getSpeed() + 1 >= Math.abs(Game.currMap.charXPosition(attacker) -
+                        Game.currMap.charXPosition(target)) +
+                        Math.abs(Game.currMap.charYPosition(attacker) - Game.currMap.charYPosition(target))) {
+            ArrayList <Integer> list = new ArrayList <> ();
+            list.add(0, Game.currMap.charXPosition(target) + 1);
+            list.add(1, Game.currMap.charXPosition(target) - 1);
+            list.add(2, Game.currMap.charYPosition(target) + 1);
+            list.add(3, Game.currMap.charYPosition(target) - 1);
+            for (int i = 0 ; i < 2 ; i++){
+                if (moveable(attacker, list.get(i), Game.currMap.charYPosition(target))){
+                    move(attacker, list.get(i), Game.currMap.charYPosition(target));
+                    return true;
+                }
+            }
+            for (int i = 0 ; i < 2 ; i++){
+                if (moveable(attacker, Game.currMap.charXPosition(target), list.get(i + 2))){
+                    move(attacker, Game.currMap.charXPosition(target), list.get(i + 2));
+                    return true;
+                }
+            }
         }
         return false;
     }
