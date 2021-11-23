@@ -1,0 +1,12 @@
+Class name: consumable_Item
+Parent class: None
+Implements Interface: Item
+
+Subclasses: HpPot, AtkPot, SpdPot
+
+Responsibilities:
+- implements Item interface
+- is consumed meaning the item cannot be equipped and provide buffs upon usage
+
+Collaborators:
+Character, Actions, Map, Item, HpPot, AtkPot, SpdPot

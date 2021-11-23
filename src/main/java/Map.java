@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 public class Map {
@@ -61,4 +62,19 @@ public class Map {
         }
         return null;
     }
+    public boolean contains(ArrayList<Character> charList) {
+        for (Character character : charList) {
+            for (int i = 0; i < col; i++) {
+                for (int j = 0; j < row; j++) {
+                    if (this.map[i][j] == character) {
+                        return true;
+                    }
+
+                }
+
+            }
+        }
+        return false;
+    }
 }
+

@@ -7,45 +7,53 @@ public class Game extends JFrame implements MouseListener{
     static int state = -1;
     static int X = -1;
     static int Y = -1;
-    static int Allowed = 0;
-    static int Selected = -1;
-    static int ESelected = -1;
+    static int Combat = 0;
     static int Animation = 0;
     static int Map = 1;
-    static ArrayList <String> Chars = new ArrayList<>();
-    static ArrayList <Integer> SelectedChars = new ArrayList<>();
-    static ArrayList <Integer> UnitLocationX = new ArrayList<>();
-    static ArrayList <Integer> UnitLocationY = new ArrayList<>();
-    static ArrayList <Integer> EnemyLocationX = new ArrayList<>();
-    static ArrayList <Integer> EnemyLocationY = new ArrayList<>();
-    static ArrayList<Character> playerChar;
+    static int End = 0;
+    static ArrayList <Character> playerChar = new ArrayList<>();
+    static ArrayList <Character> enemyChar = new ArrayList<>();
     static Character selectedChar;
+    static Character selectedEnemy;
     static boolean itemSelect = false;
     static ArrayList<Item> itemList = new ArrayList<>();
     static Map currMap;
 
     public void mousePressed(MouseEvent e) {
-        X = (int) (Math.ceil((e.getX() - 205) / 75));
-        Y = (int) (Math.ceil((e.getY() + 45) / 75));
-        AllyCheck();
+        if (Game.Animation == 0){
+            X = (int) (Math.ceil((e.getX() - 205) / 75));
+            Y = (int) (Math.ceil((e.getY() + 45) / 75));
+            if (0 > X | X > 6 | 0 > Y | Y > 8){
+                selectedChar = null;
+            }
+        }else {
+            X = -1;
+            Y = -1;
+        }
         //currtile is the map character associated with the tile clicked
         Character currTile = currMap.getCharByPos(X, Y);
         //if a player character is already selected
-        if (selectedChar != null){
+        if (selectedChar != null) {
             //if the clicked tile is an enemy, perform the attack then deselect all characters
-            if(currMap.getEnemyList().contains(currTile) && Action.attackable(selectedChar, currTile)){
+            if (enemyChar.contains(currTile) && Action.attackable(selectedChar, currTile)) {
                 Action.attack(selectedChar, currTile);
-                System.out.println("attack");
-                selectedChar = null;
-            }
+                Combat = 1;
+                selectedEnemy = currTile;
+                if (currTile.getCurrHealth() <= 0){
+                    System.out.println(currTile.getName() + " has perished");
+                    currMap.removeChar(currTile);
+                }
+                if(!currMap.contains(enemyChar)){
+                    End = 1;
+                }
+
             /*if an empty tile is also selected and is able to be moved into, move the character to the position
              then deselect all characters  */
-            if (currTile == null && Action.moveable(selectedChar, X, Y)){
+            }else if (currTile == null && Action.moveable(selectedChar, X, Y)){
                 Action.move(selectedChar, X, Y);
-                UnitLocationX.set(playerChar.indexOf(selectedChar), X);
-                UnitLocationY.set(playerChar.indexOf(selectedChar), Y);
                 selectedChar = null;
-
+            } else if (!Action.moveable(selectedChar, X, Y)){
+                selectedChar = null;
             }
             //presumeably a item is selected through the popup menu
             if (selectedChar != null && itemSelect ){
@@ -57,7 +65,7 @@ public class Game extends JFrame implements MouseListener{
             }
         }
         //if no character is currently selected and tile has a player character on it, select the player character
-        if (selectedChar == null && playerChar.contains(currTile) && !currTile.isActionUsed()){
+        if (playerChar.contains(currTile) && !currTile.isActionUsed()){
             selectedChar = currTile;
         }
         //if the click uses the last playable character action
@@ -65,29 +73,18 @@ public class Game extends JFrame implements MouseListener{
             System.out.println("End of Player Turn");
             //this should ultimately be replaced with some method call that conducts the Enemy AI's turn
             setActions(playerChar);
+
         }
     }
 
+
     public void mouseReleased(MouseEvent e) {
     }
-
     public void mouseClicked(MouseEvent e) {
     }
     public void mouseExited(MouseEvent e) {
     }
     public void mouseEntered(MouseEvent e) {
-    }
-
-    private void AllyCheck() {
-        Selected = -1;
-        if (Game.UnitLocationX.contains(X)) {
-            for (int i = 0; i < Game.UnitLocationX.size(); i++) {
-                if (Game.UnitLocationX.get(i) == X && Game.UnitLocationY.get(i) == Y) {
-                    Selected = i + 1;
-                    break;
-                }
-            }
-        }
     }
 
     public Game() {
@@ -109,32 +106,18 @@ public class Game extends JFrame implements MouseListener{
     public static void main(String[] args) {
         Map map1 = new Map(6, 8);
         currMap = map1;
-        playerChar = new ArrayList<>();
-        ArrayList<Character> enemyChar = new ArrayList<>();
         PlayerChar player1 = new PlayerChar("Marth", 75, 40, 2);
-        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 2);
-        EnemyChar enemy1 = new EnemyChar("Axe 1", 100, 10, 2);
-        EnemyChar enemy2 = new EnemyChar("Sword 2", 100, 10, 2);
+        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 3);
+        EnemyChar enemy1 = new EnemyChar("Sword", 100, 10, 2);
+        EnemyChar enemy2 = new EnemyChar("Axe", 100, 10, 2);
         playerChar.add(player1);
         playerChar.add(player2);
-        currMap.addEnemyToList(enemy1);
-        currMap.addEnemyToList(enemy2);
+        enemyChar.add(enemy1);
+        enemyChar.add(enemy2);
         map1.addChar(enemy1, 3,1);
         map1.addChar(enemy2, 4,1);
         map1.addChar(player1, 3,8);
         map1.addChar(player2, 4,8);
-        for (int i = 0; i < playerChar.size(); i++){
-            SelectedChars.add(i);
-            Chars.add(playerChar.get(i).getName());
-            UnitLocationX.add(currMap.charXPosition(playerChar.get(i)));
-            UnitLocationY.add(currMap.charYPosition(playerChar.get(i)));
-        }
-        for (int i = 0; i < currMap.getEnemyList().size(); i++){
-            EnemyLocationX.add(currMap.charXPosition(currMap.getEnemyList().get(i)));
-            EnemyLocationY.add(currMap.charYPosition(currMap.getEnemyList().get(i)));
-        }
-
-        Scanner sc = new Scanner(System.in);
         EventQueue.invokeLater(() -> {
             JFrame ex = new Game();
             ex.setVisible(true);
@@ -142,14 +125,15 @@ public class Game extends JFrame implements MouseListener{
     }
 
     public static boolean checkActionsUsed(ArrayList<Character> list){
-        for (Character character : list){
-            if (!(character.isActionUsed())){
-                return false;
+            for (Character character : list){
+                if (!(character.isActionUsed())){
+                    return false;
+                }
+
             }
+            return true;
 
         }
-        return true;
-    }
     public static void setActions(ArrayList<Character> list){
         for (Character character: list){
             character.restoreAction();
@@ -159,7 +143,6 @@ public class Game extends JFrame implements MouseListener{
 
     public static Character getCharacterByName(String name, ArrayList<Character> list){
         for (Character character: list){
-
             if (name.equals(character.getName())){
                 return character;
             }
