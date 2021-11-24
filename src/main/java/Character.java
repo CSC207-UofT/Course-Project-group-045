@@ -1,8 +1,9 @@
 public abstract class Character {
     private final String name;
     private boolean ally;
-    private int currHealth, maxHealth, attack, speed;
+    private int currHealth, maxHealth, attack, speed, mana;
     private boolean actionUsed;
+
 
     public Character(String name, int maxHealth, int attack, int speed, boolean ally) {
         this.name = name;
@@ -12,6 +13,17 @@ public abstract class Character {
         this.ally = ally;
         this.currHealth = maxHealth;
         this.actionUsed = false;
+        this.mana = 0;
+    }
+
+    public void increase_mana() {
+        if (this.mana < 3) {
+            this.mana++;
+        }
+    }
+
+    public int get_mana() {
+        return this.mana;
     }
 
     public String getName(){
