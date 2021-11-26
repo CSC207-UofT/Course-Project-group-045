@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Action {
 
@@ -12,13 +13,31 @@ public class Action {
         if (target == null){
             return false;
         }
-        if (Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
-                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1){
+        if ((Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
+                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1) &&
+                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker)){
             return true;
         }
-        if (Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
-                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1){
+        if ((Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
+                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1) &&
+                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker)){
             return true;
+        }
+        // Checks if the two squares to the left and right of the target can be moved to, if possible move to that
+        // square and attack
+        for (int i = 0 ; i < 2 ; i++){
+            if (moveable(attacker, Game.currMap.charXPosition(target) + i*2 - 1, Game.currMap.charYPosition(target))){
+                move(attacker, Game.currMap.charXPosition(target) + i*2 - 1, Game.currMap.charYPosition(target));
+                return true;
+            }
+        }
+        // Checks if the two squares above and below the target can be moved to, if possible move to that square 
+        // and attack
+        for (int i = 0 ; i < 2 ; i++){
+            if (moveable(attacker, Game.currMap.charXPosition(target), Game.currMap.charYPosition(target) + i*2 - 1)){
+                move(attacker, Game.currMap.charXPosition(target), Game.currMap.charYPosition(target) + i*2 - 1);
+                return true;
+            }
         }
         return false;
     }

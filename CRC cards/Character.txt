@@ -2,8 +2,8 @@ Class name: Character <abstract>
 Parent class: None
 
 Subclass:
-PlayerChar
-EnemyChar
+Jhin
+Irelia
 
 Responsibility:
 - Has inventary of items.
