@@ -4,8 +4,14 @@ public class Action {
         target.reduceCurrHealth(attacker.getAttack());
         System.out.println(attacker.getName() + " attacked " + target.getName() + " for " + attacker.getAttack() + " damage!");
         System.out.println(target.getName() + "'s health is now " + target.getCurrHealth());
-        attacker.increase_mana();
+        attacker.increase_Meter();
         attacker.useAction();
+    }
+
+    public static void use_Ultimate(Character attacker, Character target) {
+        if (attacker.get_Meter() == attacker.get_maxMeter()) {
+            attacker.ultimate(target);
+        }
     }
 
     /*public static void move() {}*/

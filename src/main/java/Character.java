@@ -1,11 +1,11 @@
 public abstract class Character {
     private final String name;
     private boolean ally;
-    private int currHealth, maxHealth, attack, speed, mana;
+    private int currHealth, maxHealth, attack, speed, max_meter, meter;
     private boolean actionUsed;
 
 
-    public Character(String name, int maxHealth, int attack, int speed, boolean ally) {
+    public Character(String name, int maxHealth, int attack, int speed, boolean ally, int max_meter) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.attack = attack;
@@ -13,18 +13,29 @@ public abstract class Character {
         this.ally = ally;
         this.currHealth = maxHealth;
         this.actionUsed = false;
-        this.mana = 0;
+        this.meter = 0;
+        this.max_meter = max_meter;
     }
 
-    public void increase_mana() {
-        if (this.mana < 3) {
-            this.mana++;
+    public void increase_Meter() {
+        if (this.meter < this.max_meter) {
+            this.meter++;
         }
     }
 
-    public int get_mana() {
-        return this.mana;
+    public void reset_Meter() {
+        this.meter = 0;
     }
+
+    public int get_Meter() {
+        return this.meter;
+    }
+
+    public int get_maxMeter() {
+        return this.max_meter;
+    }
+
+    public abstract void ultimate(Character target);
 
     public String getName(){
         return name;

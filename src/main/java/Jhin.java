@@ -1,6 +1,6 @@
 public class Jhin extends Character {
     public Jhin(boolean team) {
-        super("Jhin", 75, 60, 2, team);
+        super("Jhin", 75, 60, 2, team, 3);
     }
 
     /*A few ideas about this is how we can instead use a use ultimate method where we can determine
@@ -13,11 +13,8 @@ public class Jhin extends Character {
     * health into another general class where you could send char stats and it finds the solution for
     * you */
 
-    public int ultimate() {
-        int powerUp = 90;
-        if (get_mana() == 3) {
-            return powerUp;
-        }
-        return 0;
+    public void ultimate(Character target) {
+
     }
+
 }
