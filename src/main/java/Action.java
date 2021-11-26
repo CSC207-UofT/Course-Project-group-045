@@ -13,35 +13,30 @@ public class Action {
         if (target == null){
             return false;
         }
-        if (attacker.getSpeed() + 1 >= Math.abs(Game.currMap.charXPosition(attacker) -
-                        Game.currMap.charXPosition(target)) +
-                        Math.abs(Game.currMap.charYPosition(attacker) - Game.currMap.charYPosition(target))) {
-            if ((Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
-                    Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1) &&
+        if ((Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) + 1 ||
+                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker) - 1) &&
                 Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker)){
+            return true;
+        }
+        if ((Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
+                Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1) &&
+                Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker)){
+            return true;
+        }
+        // Checks if the two squares to the left and right of the target can be moved to, if possible move to that
+        // square and attack
+        for (int i = 0 ; i < 2 ; i++){
+            if (moveable(attacker, Game.currMap.charXPosition(target) + i*2 - 1, Game.currMap.charYPosition(target))){
+                move(attacker, Game.currMap.charXPosition(target) + i*2 - 1, Game.currMap.charYPosition(target));
                 return true;
             }
-            if ((Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) + 1 ||
-                    Game.currMap.charYPosition(target) == Game.currMap.charYPosition(attacker) - 1) &&
-                            Game.currMap.charXPosition(target) == Game.currMap.charXPosition(attacker)){
+        }
+        // Checks if the two squares above and below the target can be moved to, if possible move to that square 
+        // and attack
+        for (int i = 0 ; i < 2 ; i++){
+            if (moveable(attacker, Game.currMap.charXPosition(target), Game.currMap.charYPosition(target) + i*2 - 1)){
+                move(attacker, Game.currMap.charXPosition(target), Game.currMap.charYPosition(target) + i*2 - 1);
                 return true;
-            }
-            ArrayList <Integer> list = new ArrayList <> ();
-            list.add(0, Game.currMap.charXPosition(target) + 1);
-            list.add(1, Game.currMap.charXPosition(target) - 1);
-            list.add(2, Game.currMap.charYPosition(target) + 1);
-            list.add(3, Game.currMap.charYPosition(target) - 1);
-            for (int i = 0 ; i < 2 ; i++){
-                if (moveable(attacker, list.get(i), Game.currMap.charYPosition(target))){
-                    move(attacker, list.get(i), Game.currMap.charYPosition(target));
-                    return true;
-                }
-            }
-            for (int i = 0 ; i < 2 ; i++){
-                if (moveable(attacker, Game.currMap.charXPosition(target), list.get(i + 2))){
-                    move(attacker, Game.currMap.charXPosition(target), list.get(i + 2));
-                    return true;
-                }
             }
         }
         return false;
