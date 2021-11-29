@@ -1,20 +1,27 @@
 public abstract class Character {
+    int NAME = 0, MAXHEALTH = 1,
+            ATTACK = 2, SPEED = 3, ALLY = 4,  MAXMETER = 5, RANGE = 6;
     private final String name;
     private boolean ally;
-    private int currHealth, maxHealth, attack, speed, max_meter, meter;
+    private int currHealth, maxHealth, attack, speed, max_meter, meter, range;
     private boolean actionUsed;
 
-
-    public Character(String name, int maxHealth, int attack, int speed, boolean ally, int max_meter) {
-        this.name = name;
-        this.maxHealth = maxHealth;
-        this.attack = attack;
-        this.speed = speed;
-        this.ally = ally;
-        this.currHealth = maxHealth;
+    /* String name, int maxHealth, int attack, int speed, boolean ally, int max_meter, int range*/
+    public Character(Object[] stats) {
+        this.name = (String) stats[NAME];
+        this.maxHealth = (int) stats[MAXHEALTH];
+        this.attack = (int) stats[ATTACK];
+        this.speed = (int) stats[SPEED];
+        this.ally = (boolean) stats[ALLY];
+        this.currHealth = this.maxHealth;
         this.actionUsed = false;
         this.meter = 0;
-        this.max_meter = max_meter;
+        this.max_meter = (int) stats[MAXMETER];
+        this.range = (int) stats[RANGE];
+    }
+
+    public int get_Range() {
+        return this.range;
     }
 
     public void increase_Meter() {
