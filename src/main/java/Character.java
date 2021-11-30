@@ -61,6 +61,7 @@ public abstract class Character {
         this.actionUsed = true;
     }
 
+
 /*    public void attack(Character user, Character target){
         target.reduceCurrHealth(user.getAttack());
         System.out.println(this.name + " attacked " + target.getName() + " for " + user.getAttack() + " damage!");
