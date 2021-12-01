@@ -1,5 +1,5 @@
 public abstract class Character {
-    int NAME = 0, MAXHEALTH = 1,
+    private int NAME = 0, MAXHEALTH = 1,
             ATTACK = 2, SPEED = 3,  MAXMETER = 4, RANGE = 5;
     private final String name;
     private int currHealth, maxHealth, attack, speed, max_meter, meter, range;

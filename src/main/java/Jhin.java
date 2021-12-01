@@ -14,7 +14,11 @@ public class Jhin extends Character {
     * you */
 
     public void ultimate(Character target) {
-
+        double half_health = target.getMaxHealth()*0.5;
+        if (target.getCurrHealth() < half_health) {
+            target.reduceCurrHealth(target.getCurrHealth());
+            this.useAction();
+        }
     }
 
 }
