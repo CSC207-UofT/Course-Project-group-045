@@ -1,6 +1,6 @@
 public class Jhin extends Character {
     public Jhin() {
-        super(new Object[]{"Jhin", 75, 60, 2, 3, 3});
+        super(new Object[]{"Jhin", 75, 40, 2, 3, 3});
     }
 
     /*A few ideas about this is how we can instead use a use ultimate method where we can determine
@@ -14,7 +14,7 @@ public class Jhin extends Character {
     * you */
 
     public void ultimate(Character target) {
-        double half_health = target.getMaxHealth()*0.5;
+        double half_health = target.getMaxHealth()*0.6;
         if (target.getCurrHealth() < half_health) {
             target.reduceCurrHealth(target.getCurrHealth());
             this.useAction();
