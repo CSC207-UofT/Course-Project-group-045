@@ -52,6 +52,8 @@ public class Game extends JFrame implements MouseListener{
             }else if (290 <= X && 605 <= Y && 500 >= X && 675 >= Y) {
                 if (playerChar.size() != 0){
                     playerChar.remove(playerChar.size() - 1);
+                }else {
+                    screen = 1;
                 }
             }else if (515 <= X && 605 <= Y && 725 >= X && 675 >= Y) {
                 screen = 1;
