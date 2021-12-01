@@ -1,14 +1,15 @@
 public abstract class Character {
     private final String name;
 
-    private int currHealth, maxHealth, attack, speed;
+    private int currHealth, maxHealth, attack, speed, range;
     private boolean actionUsed;
 
-    public Character(String name, int maxHealth, int attack, int speed) {
+    public Character(String name, int maxHealth, int attack, int speed, int range) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.attack = attack;
         this.speed = speed;
+        this.range = range;
         currHealth = maxHealth;
         actionUsed = false;
     }
@@ -27,6 +28,10 @@ public abstract class Character {
 
     public int getSpeed() {
         return this.speed;
+    }
+
+    public int getRange() {
+        return this.range;
     }
 
     public int getCurrHealth(){
@@ -67,6 +72,4 @@ public abstract class Character {
         System.out.println(target.getName() + "'s health is now " + target.getCurrHealth());
         this.actionUsed = true;
     }*/
-
-
 }
