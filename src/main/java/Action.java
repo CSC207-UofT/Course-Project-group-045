@@ -3,8 +3,14 @@ import java.util.*;
 public class Action {
 
     static ArrayList <Integer> Ranges = new ArrayList<>();
+    static int x, y;
 
     public static void attack(Character attacker, Character target) {
+        if (x != 0 && y != 0){
+            move(attacker, x, y);
+            x = 0;
+            y = 0;
+        }
         target.reduceCurrHealth(attacker.getAttack());
         System.out.println(attacker.getName() + " attacked " + target.getName() + " for " + attacker.getAttack() + " damage!");
         System.out.println(target.getName() + "'s health is now " + target.getCurrHealth());
@@ -13,25 +19,33 @@ public class Action {
 
     public static boolean attackable(Character attacker, Character target){
         if (target == null){
+            x = 0;
+            y = 0;
             return false;
         }
         if (Math.abs(Game.currMap.charXPosition(attacker) -
                 Game.currMap.charXPosition(target)) + Math.abs(Game.currMap.charYPosition(attacker)
                 - Game.currMap.charYPosition(target)) <= attacker.getRange()){
+            x = Game.currMap.charXPosition(attacker);
+            y = Game.currMap.charYPosition(attacker);
             return true;
         }
         for (int i = 0 ; i < 2 ; i++){
             if (moveable(attacker, Game.currMap.charXPosition(target) + i*2 - 1, Game.currMap.charYPosition(target))){
-                move(attacker, Game.currMap.charXPosition(target) + i*2 - 1, Game.currMap.charYPosition(target));
+                x = Game.currMap.charXPosition(target) + i*2 - 1;
+                y = Game.currMap.charYPosition(target);
                 return true;
             }
         }
         for (int i = 0 ; i < 2 ; i++){
             if (moveable(attacker, Game.currMap.charXPosition(target), Game.currMap.charYPosition(target) + i*2 - 1)){
-                move(attacker, Game.currMap.charXPosition(target), Game.currMap.charYPosition(target) + i*2 - 1);
+                x = Game.currMap.charXPosition(target);
+                y = Game.currMap.charYPosition(target) + i*2 - 1;
                 return true;
             }
         }
+        x = 0;
+        y = 0;
         return false;
     }
 
