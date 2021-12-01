@@ -1,6 +1,6 @@
 public class Irelia extends Character {
-    public Irelia(boolean team) {
-        super(new Object[]{"Irelia", 100, 40, 2, team, 4, 1});
+    public Irelia() {
+        super(new Object[]{"Irelia", 100, 40, 2, 4, 1});
     }
 
     public void ultimate(Character target) {

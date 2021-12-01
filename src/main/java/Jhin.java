@@ -1,6 +1,6 @@
 public class Jhin extends Character {
-    public Jhin(boolean team) {
-        super(new Object[]{"Jhin", 75, 60, 2, team, 3, 3});
+    public Jhin() {
+        super(new Object[]{"Jhin", 75, 60, 2, 3, 3});
     }
 
     /*A few ideas about this is how we can instead use a use ultimate method where we can determine

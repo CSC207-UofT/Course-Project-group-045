@@ -1,18 +1,16 @@
 public abstract class Character {
     int NAME = 0, MAXHEALTH = 1,
-            ATTACK = 2, SPEED = 3, ALLY = 4,  MAXMETER = 5, RANGE = 6;
+            ATTACK = 2, SPEED = 3,  MAXMETER = 4, RANGE = 5;
     private final String name;
-    private boolean ally;
     private int currHealth, maxHealth, attack, speed, max_meter, meter, range;
     private boolean actionUsed;
 
-    /* String name, int maxHealth, int attack, int speed, boolean ally, int max_meter, int range*/
+    /* String name, int maxHealth, int attack, int speed, int max_meter, int range*/
     public Character(Object[] stats) {
         this.name = (String) stats[NAME];
         this.maxHealth = (int) stats[MAXHEALTH];
         this.attack = (int) stats[ATTACK];
         this.speed = (int) stats[SPEED];
-        this.ally = (boolean) stats[ALLY];
         this.currHealth = this.maxHealth;
         this.actionUsed = false;
         this.meter = 0;
@@ -62,10 +60,6 @@ public abstract class Character {
 
     public int getCurrHealth(){
         return this.currHealth;
-    }
-
-    public boolean is_Ally() {
-        return this.ally;
     }
 
     public void reduceCurrHealth(int damage){

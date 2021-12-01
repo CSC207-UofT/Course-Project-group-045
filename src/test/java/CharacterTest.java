@@ -11,7 +11,7 @@ public class CharacterTest {
     public void setUp() {
         c = new PlayerChar("Dummy Character", 100, 40, 2);
         e = new EnemyChar("Dummy Enemy", 100, 40, 2);
-        jihn = new Jhin(true);
+        jihn = new Jhin();
     }
 
     @After
@@ -32,7 +32,6 @@ public class CharacterTest {
         assertEquals(75, jihn.getMaxHealth());
         assertEquals(60, jihn.getAttack());
         assertEquals(2, jihn.getSpeed());
-        assertTrue(jihn.is_Ally());
     }
 
 
