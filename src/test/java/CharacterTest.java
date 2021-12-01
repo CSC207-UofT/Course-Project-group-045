@@ -5,13 +5,13 @@ import static org.junit.Assert.*;
 public class CharacterTest {
     private PlayerChar c;
     private EnemyChar e;
-    private Jhin jihn;
+    private Takumi Takumi;
 
     @Before
     public void setUp() {
         c = new PlayerChar("Dummy Character", 100, 40, 2);
         e = new EnemyChar("Dummy Enemy", 100, 40, 2);
-        jihn = new Jhin();
+        Takumi = new Takumi();
     }
 
     @After
@@ -28,10 +28,10 @@ public class CharacterTest {
 
     @Test(timeout = 50)
     public void testcharacterfeatures() {
-        assertEquals("Jhin", jihn.getName());
-        assertEquals(75, jihn.getMaxHealth());
-        assertEquals(60, jihn.getAttack());
-        assertEquals(2, jihn.getSpeed());
+        assertEquals("Jhin", Takumi.getName());
+        assertEquals(75, Takumi.getMaxHealth());
+        assertEquals(60, Takumi.getAttack());
+        assertEquals(2, Takumi.getSpeed());
     }
 
 

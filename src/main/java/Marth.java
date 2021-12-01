@@ -1,6 +1,6 @@
-public class Irelia extends Character {
-    public Irelia() {
-        super(new Object[]{"Irelia", 100, 30, 2, 4, 1});
+public class Marth extends Character {
+    public Marth() {
+        super(new Object[]{"Marth", 100, 30, 2, 4, 1});
     }
 
     public void ultimate(Character target) {

@@ -1,6 +1,6 @@
-public class Jhin extends Character {
-    public Jhin() {
-        super(new Object[]{"Jhin", 75, 40, 2, 3, 3});
+public class Takumi extends Character {
+    public Takumi() {
+        super(new Object[]{"Takumi", 75, 40, 2, 3, 3});
     }
 
     /*A few ideas about this is how we can instead use a use ultimate method where we can determine
