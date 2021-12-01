@@ -5,13 +5,8 @@ public class Irelia extends Character {
 
     public void ultimate(Character target) {
         this.reset_Meter();
-        if (!(target.is_Ally())) {
-            target.reduceCurrHealth(this.getAttack());
-            this.increaseCurrHealth((int)(0.4 * this.getAttack()));
-            this.useAction();
-        }
-        else {
-            System.out.println("You can only select an enemy");
-        }
+        target.reduceCurrHealth(this.getAttack());
+        this.increaseCurrHealth((int)(0.4 * this.getAttack()));
+        this.useAction();
     }
 }
