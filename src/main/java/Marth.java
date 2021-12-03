@@ -1,6 +1,6 @@
 public class Marth extends Character {
     public Marth() {
-        super(new Object[]{"Marth", 100, 30, 2, 4, 1});
+        super(new Object[]{"Marth", 100, 30, 2, 4, 1, 0});
     }
 
     public void ultimate(Character target) {

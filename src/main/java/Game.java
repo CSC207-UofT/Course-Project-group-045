@@ -11,6 +11,7 @@ public class Game extends JFrame implements MouseListener{
     static int Selected = -1;
     static int ESelected = -1;
     static int Animation = 0;
+    static Character stunnedEnemy;
 
     public void mousePressed(MouseEvent e) {
         if (Animation == 0) {

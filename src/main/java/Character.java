@@ -1,8 +1,8 @@
 public abstract class Character {
     private int NAME = 0, MAXHEALTH = 1,
-            ATTACK = 2, SPEED = 3,  MAXMETER = 4, RANGE = 5;
+            ATTACK = 2, SPEED = 3,  MAXMETER = 4, RANGE = 5, STUNNED = 0;
     private final String name;
-    private int currHealth, maxHealth, attack, speed, max_meter, meter, range;
+    private int currHealth, maxHealth, attack, speed, max_meter, meter, range, stunned;
     private boolean actionUsed;
 
     /* String name, int maxHealth, int attack, int speed, int max_meter, int range*/
@@ -16,6 +16,19 @@ public abstract class Character {
         this.meter = 0;
         this.max_meter = (int) stats[MAXMETER];
         this.range = (int) stats[RANGE];
+        this.stunned = (int) stats[STUNNED];
+    }
+
+    public int get_Stun() {
+        return this.stunned;
+    }
+
+    public void increase_Stun(int n) {
+        this.stunned += n;
+    }
+
+    public void reduce_Stun() {
+        this.stunned -= 1;
     }
 
     public int get_Range() {
