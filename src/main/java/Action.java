@@ -51,6 +51,7 @@ public class Action {
 
     public static void AI(){
         Game.state = 3;
+
     }
     public static boolean inRange(Character selected){
         for (int i = 0 ; i < 4 ; i++){
@@ -163,4 +164,14 @@ public class Action {
         Game.currMap.addChar(selected, x, y);
         selected.useAction();
     }
+
+    public static void useItem(Character selected, consumable_Item item) {
+        if (item instanceof HpPot) {
+            selected.increaseCurrHealth(item.check_usage());
+        }
+        if (item instanceof AtkPot) {
+            selected.increaseCurrAttack(item.check_usage());
+        }
+    }
+
 }
