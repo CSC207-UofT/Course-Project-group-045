@@ -49,6 +49,9 @@ public class Action {
         return false;
     }
 
+    public static void AI(){
+        Game.state = 3;
+    }
     public static boolean inRange(Character selected){
         for (int i = 0 ; i < 4 ; i++){
             if (Ranges.get(i) < (selected.getSpeed() + selected.getRange())){
