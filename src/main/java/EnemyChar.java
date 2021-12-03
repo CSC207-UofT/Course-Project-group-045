@@ -1,6 +1,10 @@
 public class EnemyChar extends Character {
 
-    public EnemyChar(String name, int maxHealth, int attack, int speed){
-        super(name, maxHealth, attack, speed, false);
+    public EnemyChar(Object[] stats){
+        super(stats);
+    }
+
+    public void ultimate(Character target){
+
     }
 }

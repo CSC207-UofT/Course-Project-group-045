@@ -205,18 +205,18 @@ public class Game extends JFrame implements MouseListener{
     public static void main(String[] args) {
         Map map1 = new Map(6, 8);
         currMap = map1;
-        PlayerChar player1 = new PlayerChar("Marth", 75, 40, 2, 1);
-        PlayerChar player2 = new PlayerChar("Hector", 75, 60, 2, 1);
-        PlayerChar player3 = new PlayerChar("Kagero", 75, 60, 2, 1);
-        PlayerChar player4 = new PlayerChar("Takumi", 75, 60, 2, 1);
-        PlayerChar player5 = new PlayerChar("Sakura", 75, 60, 2, 1);
+        Character player1 = new Marth();
+        Character player2 = new Hector();
+        Character player3 = new Kagero();
+        Character player4 = new Takumi();
+        Character player5 = new Sakura();
         listChar.add(player1);
         listChar.add(player2);
         listChar.add(player3);
         listChar.add(player4);
         listChar.add(player5);
-        EnemyChar enemy1 = new EnemyChar("Sword", 40, 10, 2, 1);
-        EnemyChar enemy2 = new EnemyChar("Axe", 40, 10, 2, 1);
+        Character enemy1 = new EnemyChar(new Object[]{"Sword", 75, 40, 2, 3, 1});
+        Character enemy2 = new EnemyChar(new Object[]{"Axe", 75, 40, 2, 3, 1});
         enemyChar.add(enemy1);
         enemyChar.add(enemy2);
         map1.addChar(enemy1, 3,6);

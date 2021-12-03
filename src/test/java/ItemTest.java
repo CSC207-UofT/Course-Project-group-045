@@ -3,7 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ItemTest {
-    private PlayerChar c;
+    /*private PlayerChar c;
     private EnemyChar e;
 
     @Before
@@ -28,4 +28,4 @@ public class ItemTest {
         health_potion2.use_item(e);
         assertEquals(80, e.getCurrHealth());
     }
-}
+}*/}

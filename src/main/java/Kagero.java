@@ -1,6 +1,6 @@
 public class Kagero extends Character {
     public Kagero() {
-        super(new Object[]{"Takumi", 75, 40, 2, 3, 1});
+        super(new Object[]{"Kagero", 75, 40, 2, 3, 1});
     }
 
     public void ultimate(Character target) {

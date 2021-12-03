@@ -3,7 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class CharacterTest {
-    private PlayerChar c;
+    /*private Character c;
     private EnemyChar e;
     private Takumi Takumi;
 
@@ -35,4 +35,5 @@ public class CharacterTest {
     }
 
 
+}*/
 }

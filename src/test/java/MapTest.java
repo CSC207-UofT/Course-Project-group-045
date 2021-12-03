@@ -3,7 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class MapTest {
-    private PlayerChar c;
+    /*private PlayerChar c;
     private PlayerChar a;
     private EnemyChar e;
     private EnemyChar b;

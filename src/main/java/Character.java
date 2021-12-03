@@ -18,7 +18,7 @@ public abstract class Character {
         this.range = (int) stats[RANGE];
     }
 
-    public int get_Range() {
+    public int getRange() {
         return this.range;
     }
 
@@ -32,11 +32,11 @@ public abstract class Character {
         this.meter = 0;
     }
 
-    public int get_Meter() {
+    public int getMeter() {
         return this.meter;
     }
 
-    public int get_maxMeter() {
+    public int getmaxMeter() {
         return this.max_meter;
     }
 

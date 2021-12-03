@@ -1,6 +1,10 @@
 public class ObstacleChar extends Character{
 
     public ObstacleChar(String name){
-        super(name, 0, 0, 0, 0);
+        super(new Object[]{"", 75, 40, 2, 3, 1});
+    }
+
+    public void ultimate(Character target){
+
     }
 }
