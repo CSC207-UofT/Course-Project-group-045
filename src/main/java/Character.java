@@ -1,18 +1,46 @@
 public abstract class Character {
+    private int NAME = 0, MAXHEALTH = 1,
+            ATTACK = 2, SPEED = 3,  MAXMETER = 4, RANGE = 5;
     private final String name;
-
-    private int currHealth, maxHealth, attack, speed, range;
+    private int currHealth, maxHealth, attack, speed, max_meter, meter, range;
     private boolean actionUsed;
 
-    public Character(String name, int maxHealth, int attack, int speed, int range) {
-        this.name = name;
-        this.maxHealth = maxHealth;
-        this.attack = attack;
-        this.speed = speed;
-        this.range = range;
-        currHealth = maxHealth;
-        actionUsed = false;
+    /* String name, int maxHealth, int attack, int speed, int max_meter, int range*/
+    public Character(Object[] stats) {
+        this.name = (String) stats[NAME];
+        this.maxHealth = (int) stats[MAXHEALTH];
+        this.attack = (int) stats[ATTACK];
+        this.speed = (int) stats[SPEED];
+        this.currHealth = this.maxHealth;
+        this.actionUsed = false;
+        this.meter = 0;
+        this.max_meter = (int) stats[MAXMETER];
+        this.range = (int) stats[RANGE];
     }
+
+    public int get_Range() {
+        return this.range;
+    }
+
+    public void increase_Meter() {
+        if (this.meter < this.max_meter) {
+            this.meter++;
+        }
+    }
+
+    public void reset_Meter() {
+        this.meter = 0;
+    }
+
+    public int get_Meter() {
+        return this.meter;
+    }
+
+    public int get_maxMeter() {
+        return this.max_meter;
+    }
+
+    public abstract void ultimate(Character target);
 
     public String getName(){
         return name;
@@ -28,10 +56,6 @@ public abstract class Character {
 
     public int getSpeed() {
         return this.speed;
-    }
-
-    public int getRange() {
-        return this.range;
     }
 
     public int getCurrHealth(){
@@ -55,7 +79,7 @@ public abstract class Character {
     }
 
     public boolean isActionUsed(){
-        return actionUsed;
+        return this.actionUsed;
     }
 
     public void restoreAction(){
@@ -67,10 +91,5 @@ public abstract class Character {
     }
 
 
-/*    public void attack(Character user, Character target){
-        target.reduceCurrHealth(user.getAttack());
-        System.out.println(this.name + " attacked " + target.getName() + " for " + user.getAttack() + " damage!");
-        System.out.println(target.getName() + "'s health is now " + target.getCurrHealth());
-        this.actionUsed = true;
-    }*/
+
 }

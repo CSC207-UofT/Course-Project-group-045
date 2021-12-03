@@ -6,7 +6,7 @@ public class AtkPot extends consumable_Item {
     public AtkPot() {
         this.name = "Fighting Spirit";
         this.description = "This potion will increase a character's attack points by 10, and can be used only once";
-        this.curr_usage = 100;
+        this.curr_usage = 1;
     }
 
 
@@ -39,7 +39,7 @@ public class AtkPot extends consumable_Item {
     @Override
     public void use() {
         System.out.println("You have used " + get_Name());
-        this.curr_usage -= 100;
+        this.curr_usage -= 1;
     }
 }
 

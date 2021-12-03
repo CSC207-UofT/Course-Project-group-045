@@ -7,11 +7,11 @@ public class HpPot extends consumable_Item {
     public HpPot() {
         this.name = "Health Potion";
         this.description = "This potion will restore a character's health by 10 points and can be used only once";
-        this.curr_usage = 100;
+        this.curr_usage = 1;
     }
     public void use() {
         System.out.println("You have used " + get_Name());
-        this.curr_usage -= 100;
+        this.curr_usage -= 1;
     }
 
     @Override
@@ -24,8 +24,8 @@ public class HpPot extends consumable_Item {
         int excess_health;
         int total_health = avatar.getCurrHealth() + 10;
         int increase_value = 10;
-        if (total_health > 100) {
-            excess_health = total_health - 100;
+        if (total_health > avatar.getMaxHealth()) {
+            excess_health = total_health - avatar.getMaxHealth();
             increase_value -= excess_health;
         }
         avatar.increaseCurrHealth(increase_value);
