@@ -56,7 +56,7 @@ public class UI extends JPanel implements Runnable{
     for (int i = 0 ; i < 25 ; i++){
       ImageIcons.add(i, new ImageIcon(Data1.get(i)));
     }
-    for (int i = 0 ; i < 53 ; i++){
+    for (int i = 0 ; i < 55 ; i++){
       Images.add(i, ImageIcons.get(0).getImage());
     }
     Combat.add(200);
@@ -69,6 +69,7 @@ public class UI extends JPanel implements Runnable{
   private void drawBackground(Graphics g) {
     g.drawImage(Images.get(0), 0, 0, this);
     g.drawImage(Images.get(1), 275, 0, this);
+    g.drawImage(Images.get(53), 275, 0, this);
     g.drawImage(Images.get(6),350,130,this);
     for (int i = 0 ; i < 26 ; i++){
       g.drawImage(Images.get(i+17),BoardX.get(i) * 75 + 200,BoardY.get(i) * 75 - 75,this);
@@ -89,6 +90,7 @@ public class UI extends JPanel implements Runnable{
     g.drawImage(Images.get(47), Combat.get(1), 300,this);
     g.drawImage(Images.get(44),0,0,this);
     g.drawImage(Images.get(48), 0, 0, this);
+    g.drawImage(Images.get(54), 275, 0, this);
     Toolkit.getDefaultToolkit().sync();
   }
 
@@ -196,7 +198,7 @@ public class UI extends JPanel implements Runnable{
         Images.set(52 - i, ImageIcons.get(0).getImage());
       }
     }else if (Game.screen == 3){
-
+      Images.set(0, ImageIcons.get(3).getImage());
     }else if (Game.screen == 4) {
       for (int i = 0 ; i < 4 ; i++){
         Images.set(i + 49, ImageIcons.get(0).getImage());
@@ -206,29 +208,40 @@ public class UI extends JPanel implements Runnable{
         player.set(i * 2 + 1, Game.currMap.charYPosition(Game.playerChar.get(i)));
       }
       if (Game.state == -1) {
+        GetBoard();
         Images.set(0, ImageIcons.get(4).getImage());
         Images.set(1, ImageIcons.get(Game.Map + 4).getImage());
         for (int i = 0; i < Game.playerChar.size() ; i++) {
-          Images.set(i + 2, new ImageIcon("src/Images/" +
-                  Game.playerChar.get(i).getName() + "/S" + Time + ".png").getImage());
+          if (!Game.playerChar.get(i).isActionUsed()) {
+            Images.set(i + 2, new ImageIcon("src/Images/" +
+                    Game.playerChar.get(i).getName() + "/S" + Time + ".png").getImage());
+          }else{
+            Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
+                  "/S0.png").getImage());
+          }
         }
         for (int i = 0 ; i < Game.enemyChar.size() ; i++) {
-          Images.set(i + 7, new ImageIcon("src/Images/" + Game.enemyChar.get(i).getName() + "1.png").getImage());
+            Images.set(i + 7, new ImageIcon("src/Images/" + Game.enemyChar.get(i).getName() +
+                    "1.png").getImage());
         }
-        Images.set(7,ImageIcons.get(13).getImage());
-        Images.set(8,ImageIcons.get(14).getImage());
         Game.Animation = 1;
         Time++;
         if (Time == 25) {
           Game.state = 0;
           Time = 0;
           Game.Animation = 0;
-          if (Game.End == 1) {
-            Game.state = 1;
-          }
         }
       } else if (Game.state == 0) {
         GetBoard();
+        for (int i = 0; i < Game.playerChar.size() ; i++) {
+          if (!Game.playerChar.get(i).isActionUsed()) {
+            Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
+                    "/S24.png").getImage());
+          }else{
+            Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
+                    "/S0.png").getImage());
+          }
+        }
         if (Game.selectedChar != null) {
           Images.set(44, new ImageIcon("src/Images/" + Game.selectedChar.getName() + "/side.png").getImage());
         } else {
@@ -243,6 +256,8 @@ public class UI extends JPanel implements Runnable{
           }
           for (int i = 0; i < Game.playerChar.size(); i++) {
             Images.set(i + 2, ImageIcons.get(0).getImage());
+          }
+          for (int i = 0; i < Game.enemyChar.size(); i++) {
             Images.set(i + 7, ImageIcons.get(0).getImage());
           }
           Images.set(46, new ImageIcon("src/Images/" +
@@ -250,7 +265,7 @@ public class UI extends JPanel implements Runnable{
           Images.set(6, new ImageIcon("src/Images/" +
                   Game.selectedChar.getName() + "/AS" + Time + ".png").getImage());
           Images.set(47, new ImageIcon("src/Images/" + Game.selectedEnemy.getName() + "2.png").getImage());
-          Images.set(1, ImageIcons.get(9).getImage());
+          Images.set(53, ImageIcons.get(Game.Map + 8).getImage());
           int y;
           if (Game.selectedChar.getName().equals("Marth")) {
             y = 23;
@@ -262,20 +277,81 @@ public class UI extends JPanel implements Runnable{
             Game.Animation = 0;
             Game.Combat = 0;
             Time = 0;
-            Images.set(46, ImageIcons.get(0).getImage());
-            Images.set(47, ImageIcons.get(0).getImage());
             Images.set(6, ImageIcons.get(0).getImage());
             Images.set(44, ImageIcons.get(0).getImage());
-            for (int i = 0; i < 2; i++) {
+            Images.set(45, ImageIcons.get(0).getImage());
+            Images.set(46, ImageIcons.get(0).getImage());
+            Images.set(47, ImageIcons.get(0).getImage());
+            Images.set(53, ImageIcons.get(0).getImage());
+            for (int i = 0; i < Game.playerChar.size() ; i++) {
+              Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
+                        "/S24.png").getImage());
+            }
+            for (int i = 0 ; i < Game.enemyChar.size() ; i++) {
+              Images.set(i + 7, new ImageIcon("src/Images/" + Game.enemyChar.get(i).getName() +
+                      "1.png").getImage());
+            }
+            for (int i = 0; i < Game.playerChar.size() ; i++) {
               player.set(i * 2, Game.currMap.charXPosition(Game.playerChar.get(i)));
               player.set(i * 2 + 1, Game.currMap.charYPosition(Game.playerChar.get(i)));
             }
             Game.selectedChar = null;
+            if (Game.checkActions(Game.playerChar) && Game.End != 1) {
+              Game.confirmAttack = false;
+              Game.confirmMove = false;
+              System.out.print("End of Player Turn");
+              Game.enemyTurn = true;
+              Game.state = 1;
+              //this should ultimately be replaced with some method call that conducts the Enemy AI's turn
+            }
+            if (Game.End == 1) {
+              Game.state = 2;
+            }
           }
         }
-      } else if (Game.state == 1) {
-        Images.set(47, new ImageIcon("src/Images/End.png").getImage());
+      } else if (Game.state == 1){
         Game.Animation = 1;
+        Time++;
+        GetBoard();
+        Images.set(0, ImageIcons.get(4).getImage());
+        Images.set(1, ImageIcons.get(Game.Map + 4).getImage());
+        Images.set(44, ImageIcons.get(0).getImage());
+        Images.set(45, ImageIcons.get(0).getImage());
+        if (Game.enemyTurn){
+          Images.set(54, new ImageIcon("src/Images/Animations/EnemyTurn/" + Time + ".png").getImage());
+        }else {
+          Images.set(54, new ImageIcon("src/Images/Animations/AllyTurn/" + Time + ".png").getImage());
+        }
+        for (int i = 0; i < Game.playerChar.size() ; i++) {
+          Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
+                  "/S24.png").getImage());
+        }
+        for (int i = 0 ; i < Game.enemyChar.size() ; i++) {
+          Images.set(i + 7, new ImageIcon("src/Images/" + Game.enemyChar.get(i).getName() +
+                  "1.png").getImage());
+        }
+        if (Time == 20){
+          Time = 0;
+          Game.Animation = 0;
+          Game.state = -1;
+          Images.set(54, ImageIcons.get(0).getImage());
+          Game.setActions(Game.playerChar);
+          Game.state = -1;
+          if (Game.enemyTurn){
+            System.out.println("Test");
+            Game.state = 3;
+          }
+        }
+      } else if (Game.state == 2) {
+        for (int i = 0; i < Game.playerChar.size() ; i++) {
+          Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
+                    "/S1.png").getImage());
+        }
+        Images.set(48, new ImageIcon("src/Images/End.png").getImage());
+        Game.Animation = 1;
+      }else if (Game.state == 3){
+        Game.state = 1;
+        Game.enemyTurn = false;
       }
     }
   }
