@@ -9,5 +9,6 @@ public class Kagero extends Character {
         if (target.getCurrHealth() == 0) {
             this.increaseCurrAttack((int)enemy_attack);
         }
+        this.useAction();
     }
 }
