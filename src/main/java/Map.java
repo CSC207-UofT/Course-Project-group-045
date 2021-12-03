@@ -5,7 +5,7 @@ public class Map {
     private Character[][] map;
     static int col;
     static int row;
-    private ArrayList<Character> enemyList = new ArrayList<Character>();
+    private ArrayList <Character> enemyList = new ArrayList<Character>();
 
     public Map(int col, int row) {
         this.map = new Character[col][row];
@@ -20,6 +20,7 @@ public class Map {
     public ArrayList<Character> getEnemyList() {
         return enemyList;
     }
+
     public void addEnemyToList(Character enemy){
         enemyList.add(enemy);
     }
@@ -62,6 +63,18 @@ public class Map {
         }
         return null;
     }
+
+    public Character getObsclOrEnemy(int col, int row) {
+        if (col <= map.length && row <= map[0].length && col > 0 && row > 0 ) {
+            if (!Game.playerChar.contains(map[col - 1][row - 1])){
+                return map[col - 1][row - 1];
+            }else {
+                return null;
+            }
+        }
+        return null;
+    }
+
     public boolean contains(ArrayList<Character> charList) {
         for (Character character : charList) {
             for (int i = 0; i < col; i++) {
@@ -77,4 +90,3 @@ public class Map {
         return false;
     }
 }
-
