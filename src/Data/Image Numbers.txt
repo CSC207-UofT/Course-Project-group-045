@@ -39,3 +39,17 @@
 38. Square22
 39. Square23
 40. Square24
+41. Square25
+42. SquareBlue
+43. SquareRed
+44. PlayerInfo
+45. EnemyInfo
+46. CombatPlayer
+47. CombatEnemy
+48. End
+49. Char1Icon
+50. Char2Icon
+51. Char3Icon
+52. Char4Icon
+53. CombatMap
+54. Turn
