@@ -69,26 +69,29 @@ public class Action {
     }
 
     public static void AI(Character selected){
+        distances(selected);
         int closest = closest(selected);
         int range = Math.abs(Game.currMap.charXPosition(selected) -
-                Game.currMap.charXPosition(Game.playerChar.get(closest))) + 
+                Game.currMap.charXPosition(Game.playerChar.get(closest))) +
                 Math.abs(Game.currMap.charYPosition(selected)
                 - Game.currMap.charYPosition(Game.playerChar.get(closest)));
         ArrayList <Integer> Data1 = GetData("src/Data/X1.txt");
         ArrayList <Integer> Data2 = GetData("src/Data/Y1.txt");
+        ArrayList <Integer> Spaces = new ArrayList<>();
         for (int i = 0 ; i < 12 ; i++){
-            if (moveable(selected, Game.currMap.charXPosition(selected) + Data1.get(i), 
+            if (moveable(selected, Game.currMap.charXPosition(selected) + Data1.get(i),
                     Game.currMap.charYPosition(selected) + Data2.get(i))){
-                if (Math.abs(Game.currMap.charXPosition(selected) + Data1.get(i) -
+                Spaces.add(range - Math.abs(Game.currMap.charXPosition(selected) + Data1.get(i) -
                         Game.currMap.charXPosition(Game.playerChar.get(closest))) +
                         Math.abs(Game.currMap.charYPosition(selected) + Data2.get(i)
-                                - Game.currMap.charYPosition(Game.playerChar.get(closest))) == range - 2){
-                    move(selected, Game.currMap.charXPosition(selected) + Data1.get(i), 
-                            Game.currMap.charYPosition(selected) + Data2.get(i));
-                    break;
-                }
+                                - Game.currMap.charYPosition(Game.playerChar.get(closest))));
+            }else {
+                Spaces.add(-1000);
             }
         }
+        int index = Spaces.indexOf(Collections.max(Spaces));
+        move(selected, Game.currMap.charXPosition(selected) + Data1.get(index),
+                Game.currMap.charYPosition(selected) + Data2.get(index));
     }
 
     public static boolean inRange(Character selected){
