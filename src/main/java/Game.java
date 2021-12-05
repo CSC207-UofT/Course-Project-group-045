@@ -25,6 +25,7 @@ public class Game extends JFrame implements MouseListener{
     static boolean confirmMove = false;
     static ArrayList <Item> itemList = new ArrayList<>();
     static Map currMap;
+    static ArrayList<Map> mapList = new ArrayList<>();
 
     public void mousePressed(MouseEvent e) {
         if (screen == 1) {
@@ -62,7 +63,12 @@ public class Game extends JFrame implements MouseListener{
         }else if (screen == 3) {
             X = e.getX();
             Y = e.getY();
+            if (290 <= X && 245 <= Y && 725 >= X && 330 >= Y) {
+                int selection = (int) (Math.ceil((X - 290) / 87)); //
+                currMap = mapList.get(selection);
+            }
             if (290 <= X && 605 <= Y && 500 >= X && 675 >= Y) {
+                currMap = mapList.get(0);
                 screen = 1;
             }else if (515 <= X && 605 <= Y && 725 >= X && 675 >= Y) {
                 screen = 1;
@@ -204,7 +210,14 @@ public class Game extends JFrame implements MouseListener{
 
     public static void main(String[] args) {
         Map map1 = new Map(6, 8);
-        currMap = map1;
+        Map map2 = new Map(6, 8);
+        Map map3 = new Map(6, 8);
+        Map map4 = new Map(6, 8);
+        mapList.add(map1);
+        mapList.add(map2);
+        mapList.add(map3);
+        mapList.add(map4);
+        currMap = mapList.get(0);
         Character player1 = new Marth();
         Character player2 = new Hector();
         Character player3 = new Kagero();

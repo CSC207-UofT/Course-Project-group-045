@@ -49,11 +49,51 @@ public class Action {
         return false;
     }
 
-    public static void AI(){
+    public static void AI(Character actor){
         Game.state = 3;
+        distances(Game.currMap.charXPosition(actor), Game.currMap.charYPosition(actor));
+        ArrayList<Character> possibleTar = new ArrayList<>();
+        for (Character playerTar : Game.playerChar){
+            if (attackable(actor, playerTar)){
+                possibleTar.add(playerTar);
+            }
+        }
+        if (possibleTar.size() == 1){
+            Action.attack(actor, possibleTar.get(0));
+        }
+        else if (possibleTar.size() > 0){
+            Character lowestHealth = possibleTar.get(0);
+            for (Character playerTar : possibleTar){
+                if (playerTar.getCurrHealth() < lowestHealth.getCurrHealth()){
+                    lowestHealth = playerTar;
+                }
+                Action.attack(actor, lowestHealth);
+            }
+
+        }
+        else{
+            int possibleX = -1;
+            int possibleY = -1;
+            int closestYet = 100;
+            for (int i = 1; i < Game.currMap.col + 1; i++){
+                for (int j = 1; j < Game.currMap.row + 1; j++) {
+                    if (moveable(actor, i, j)) {
+                        distances(i, j);
+                        if (Ranges.get(closest()) < closestYet) {
+                            possibleX = i;
+                            possibleY = j;
+                            closestYet = Ranges.get(closest());
+                        }
+                    }
+                }
+            }
+            if (!(possibleX == -1)) {
+                Action.move(actor, possibleX, possibleY);
+            }
+        }
     }
     public static boolean inRange(Character selected){
-        for (int i = 0 ; i < 4 ; i++){
+        for (int i = 0 ; i < Game.playerChar.size() ; i++){
             if (Ranges.get(i) < (selected.getSpeed() + selected.getRange())){
                 return true;
             }
@@ -61,19 +101,18 @@ public class Action {
         return false;
     }
 
-    public static void distances(Character selected){
+    public static void distances(int x, int y){
         Ranges.clear();
-        for (int i = 0 ; i < 4 ; i++){
-            Ranges.add(Math.abs(Game.currMap.charXPosition(selected) -
-                    Game.currMap.charXPosition(Game.playerChar.get(i))) + Math.abs(Game.currMap.charYPosition(selected)
-                    - Game.currMap.charYPosition(Game.playerChar.get(i))));
+        for (int i = 0 ; i < Game.playerChar.size() ; i++){
+            Ranges.add(Math.abs(x - Game.currMap.charXPosition(Game.playerChar.get(i)))
+                    + Math.abs(y - Game.currMap.charYPosition(Game.playerChar.get(i))));
         }
     }
 
-    public static int closest(Character selected){
+    public static int closest(){
         int index = 0;
         int value = 1000;
-        for (int i = 0 ; i < 4 ; i++){
+        for (int i = 0 ; i < Game.playerChar.size() ; i++){
             if (Ranges.get(i) < value){
                 index = i;
                 value = Ranges.get(i);
@@ -161,5 +200,15 @@ public class Action {
         Game.currMap.removeChar(selected);
         Game.currMap.addChar(selected, x, y);
         selected.useAction();
+    }
+
+    public static void performAI(Character actor){
+        ArrayList<Character> possibleTar = new ArrayList<>();
+        for (Character player : Game.playerChar) {
+            if (Action.attackable(player, actor)) {
+                possibleTar.add(player);
+            }
+        }
+
     }
 }
