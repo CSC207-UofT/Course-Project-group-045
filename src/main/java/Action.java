@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 
 public class Action {
@@ -49,48 +51,72 @@ public class Action {
         return false;
     }
 
-    public static void AI(Character actor){
+    public static void AI(Character selected){
         Game.state = 3;
-        distances(Game.currMap.charXPosition(actor), Game.currMap.charYPosition(actor));
+        distances(selected);
         ArrayList<Character> possibleTar = new ArrayList<>();
         for (Character playerTar : Game.playerChar){
-            if (attackable(actor, playerTar)){
+            if (attackable(selected, playerTar)){
                 possibleTar.add(playerTar);
             }
         }
+        //check for scenario 2
         if (possibleTar.size() == 1){
-            Action.attack(actor, possibleTar.get(0));
+            Action.attack(selected, possibleTar.get(0));
         }
+        //check for scenario 3
         else if (possibleTar.size() > 0){
             Character lowestHealth = possibleTar.get(0);
             for (Character playerTar : possibleTar){
                 if (playerTar.getCurrHealth() < lowestHealth.getCurrHealth()){
                     lowestHealth = playerTar;
                 }
-                Action.attack(actor, lowestHealth);
+                Action.attack(selected, lowestHealth);
             }
 
         }
+        //scenario 1
         else{
-            int possibleX = -1;
-            int possibleY = -1;
-            int closestYet = 100;
-            for (int i = 1; i < Game.currMap.col + 1; i++){
-                for (int j = 1; j < Game.currMap.row + 1; j++) {
-                    if (moveable(actor, i, j)) {
-                        distances(i, j);
-                        if (Ranges.get(closest()) < closestYet) {
-                            possibleX = i;
-                            possibleY = j;
-                            closestYet = Ranges.get(closest());
-                        }
-                    }
+            distances(selected);
+            int closest = closest(selected);
+            int range = Math.abs(Game.currMap.charXPosition(selected) -
+                    Game.currMap.charXPosition(Game.playerChar.get(closest))) +
+                    Math.abs(Game.currMap.charYPosition(selected)
+                            - Game.currMap.charYPosition(Game.playerChar.get(closest)));
+            ArrayList <Integer> Data1 = GetData("src/Data/X1.txt");
+            ArrayList <Integer> Data2 = GetData("src/Data/Y1.txt");
+            ArrayList <Integer> Spaces = new ArrayList<>();
+            for (int i = 0 ; i < 12 ; i++){
+                if (moveable(selected, Game.currMap.charXPosition(selected) + Data1.get(i),
+                        Game.currMap.charYPosition(selected) + Data2.get(i))){
+                    Spaces.add(range - Math.abs(Game.currMap.charXPosition(selected) + Data1.get(i) -
+                            Game.currMap.charXPosition(Game.playerChar.get(closest))) +
+                            Math.abs(Game.currMap.charYPosition(selected) + Data2.get(i)
+                                    - Game.currMap.charYPosition(Game.playerChar.get(closest))));
+                }else {
+                    Spaces.add(-1000);
                 }
             }
-            if (!(possibleX == -1)) {
-                Action.move(actor, possibleX, possibleY);
-            }
+            int index = Spaces.indexOf(Collections.max(Spaces));
+            move(selected, Game.currMap.charXPosition(selected) + Data1.get(index),
+                    Game.currMap.charYPosition(selected) + Data2.get(index));
         }
+    }
+
+    private static ArrayList <Integer> GetData(String Location) {
+        String Row;
+        ArrayList <Integer> Data = new ArrayList<>();
+        try {
+            FileReader Read = new FileReader(Location);
+            BufferedReader Buffer = new BufferedReader(Read);
+            while ((Row = Buffer.readLine()) != null) {
+                Data.add(Integer.valueOf(Row));
+            }
+            Buffer.close();
+        } catch (Exception e) {
+            Data.add(Data.size(), 0);
+        }
+        return Data;
     }
     public static boolean inRange(Character selected){
         for (int i = 0 ; i < Game.playerChar.size() ; i++){
@@ -101,18 +127,19 @@ public class Action {
         return false;
     }
 
-    public static void distances(int x, int y){
+    public static void distances(Character selected){
         Ranges.clear();
         for (int i = 0 ; i < Game.playerChar.size() ; i++){
-            Ranges.add(Math.abs(x - Game.currMap.charXPosition(Game.playerChar.get(i)))
-                    + Math.abs(y - Game.currMap.charYPosition(Game.playerChar.get(i))));
+            Ranges.add(Math.abs(Game.currMap.charXPosition(selected) -
+                    Game.currMap.charXPosition(Game.playerChar.get(i))) + Math.abs(Game.currMap.charYPosition(selected)
+                    - Game.currMap.charYPosition(Game.playerChar.get(i))));
         }
     }
 
-    public static int closest(){
+    public static int closest(Character selected){
         int index = 0;
         int value = 1000;
-        for (int i = 0 ; i < Game.playerChar.size() ; i++){
+        for (int i = 0 ; i < 4 ; i++){
             if (Ranges.get(i) < value){
                 index = i;
                 value = Ranges.get(i);
@@ -202,13 +229,4 @@ public class Action {
         selected.useAction();
     }
 
-    public static void performAI(Character actor){
-        ArrayList<Character> possibleTar = new ArrayList<>();
-        for (Character player : Game.playerChar) {
-            if (Action.attackable(player, actor)) {
-                possibleTar.add(player);
-            }
-        }
-
-    }
 }
