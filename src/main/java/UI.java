@@ -10,7 +10,7 @@ public class UI extends JPanel implements Runnable{
   private final ArrayList <Integer> BoardX = new ArrayList<>();
   private final ArrayList <Integer> BoardY = new ArrayList<>();
   private final ArrayList <Integer> enemyXY = new ArrayList<>();
-  private int Time, Cycle, enemy, damageX, damageY, mapX, mapY = 0;
+  private int Time, Cycle, enemy, damageX, damageY, mapX, mapY, lose = 0;
 
   public UI() {
     initUI();
@@ -591,6 +591,14 @@ public class UI extends JPanel implements Runnable{
             Images.set(76, ImageIcons.get(0).getImage());
             enemy++;
             Time = 0;
+            if (Game.playerChar.get(Action.index).getCurrHealth() <= 0){
+              Game.currMap.removeChar(Game.playerChar.get(Action.index));
+              Game.playerChar.remove(Game.playerChar.get(Action.index));
+            }
+            if (!Game.currMap.contains(Game.playerChar)) {
+              Game.state = 3;
+              lose = 1;
+            }
           }
         }else if (Action.ai == 2) {
           Time++;
@@ -624,7 +632,11 @@ public class UI extends JPanel implements Runnable{
           Images.set(i + 2, new ImageIcon("src/Images/" + Game.playerChar.get(i).getName() +
                     "/S1.png").getImage());
         }
-        Images.set(48, new ImageIcon("src/Images/End.png").getImage());
+        if (lose == 0) {
+          Images.set(48, new ImageIcon("src/Images/End.png").getImage());
+        }else {
+          Images.set(48, new ImageIcon("src/Images/Lose.png").getImage());
+        }
         Game.Animation = 1;
         Time++;
         if (Time == 30) {
@@ -638,11 +650,15 @@ public class UI extends JPanel implements Runnable{
             Images.set(i + 2, ImageIcons.get(0).getImage());
             Game.currMap.removeChar(Game.playerChar.get(i));
           }
+          for (int i = 0; i < 4; i++) {
+            Images.set(i + 2, ImageIcons.get(0).getImage());
+          }
           for (int i = 0; i < Game.obstacleChar.size(); i++) {
             Game.currMap.removeChar(Game.obstacleChar.get(i));
           }
           for (int i = 0; i < Game.enemyChar.size(); i++) {
             Images.set(i + 7, ImageIcons.get(0).getImage());
+            Game.currMap.removeChar(Game.enemyChar.get(i));
           }
           for (int i = 0 ; i < 4 ; i++) {
             Images.set(56 + i, ImageIcons.get(0).getImage());
