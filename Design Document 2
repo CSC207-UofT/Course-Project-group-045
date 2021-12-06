@@ -53,6 +53,35 @@ the action class, or the game class, it relies upon the Item interface, which me
 
 Phase 2 Progress Report:
 
+Jack:
+-overhauled Game and UI classes to allow for menu screens
+-Added graphics and animations
+-extended UI class with additional features
+-linked UI class to all other features including the map, characters, AI, items, etc
+-worked collaboratively to optimize character movement and add obstacle pathfinding
+
+Antony:
+-implmented item class and subclasses
+-overhauled character class to eliminate code smells
+-designed character ultimate ablilities 
+
+Zihao:
+-designed and implemented logic for AI related methods
+-worked collaboratively to optimize character movement and add obstacle pathfinding
+-modified action class for additional functionaility
+
+Johnathan:
+-extended functionality of abstract character class
+-assisted in the implementation of item class and related subclasses
+-provided design oversight
+-assisted with testing features implemented by others
+
+James:
+-assisted with AI logic and implementation
+-modified Game class 
+-assisted with merging code and fixing conflicts. 
+-assisted with AI testing 
+
 Phase 2 Accessability:
 Equitable use: the project provides an similar experience for all users without segregating or stimatizing
 Flexability in use: The game is controlled using mouse, which allows for both right and left handed use. Precise clicking is unncesssary due to the size of the grid and 
