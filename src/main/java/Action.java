@@ -62,6 +62,7 @@ public class Action {
         }
         //check for scenario 2
         if (possibleTar.size() == 1){
+            attackable(selected, possibleTar.get(0));
             Action.attack(selected, possibleTar.get(0));
         }
         //check for scenario 3
@@ -71,9 +72,9 @@ public class Action {
                 if (playerTar.getCurrHealth() < lowestHealth.getCurrHealth()){
                     lowestHealth = playerTar;
                 }
-                Action.attack(selected, lowestHealth);
             }
-
+            attackable(selected, lowestHealth);
+            Action.attack(selected, lowestHealth);
         }
         //scenario 1
         else{
@@ -139,7 +140,7 @@ public class Action {
     public static int closest(Character selected){
         int index = 0;
         int value = 1000;
-        for (int i = 0 ; i < 4 ; i++){
+        for (int i = 0 ; i < Game.playerChar.size() ; i++){
             if (Ranges.get(i) < value){
                 index = i;
                 value = Ranges.get(i);
