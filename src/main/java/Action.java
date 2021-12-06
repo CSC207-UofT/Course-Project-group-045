@@ -24,14 +24,10 @@ public class Action {
             if (Game.enemyChar.contains(target)) {
                 target.reduceCurrHealth(attacker.getAttack());
                 attacker.decrease_Meter();
-                System.out.println(attacker.getName() + " attacked " + target.getName() + " for " + attacker.getAttack() +
-                        " damage!");
                 attacker.useAction();
             }else {
                 target.increaseCurrHealth(attacker.getAttack());
                 attacker.decrease_Meter();
-                System.out.println("Sakura healed " + target.getName() + " for " + attacker.getAttack() +
-                        " health!");
                 attacker.useAction();
             }
         }
@@ -46,8 +42,6 @@ public class Action {
         }
         target.decrease_Meter();
         target.reduceCurrHealth(attacker.getAttack());
-        System.out.println(attacker.getName() + " attacked " + target.getName() + " for " + attacker.getAttack() +
-                " damage!");
         attacker.useAction();
     }
 
