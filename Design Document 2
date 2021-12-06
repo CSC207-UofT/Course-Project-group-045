@@ -1,0 +1,41 @@
+The project can be accessed by running the main method of the Game class
+
+Phase 2 Specification
+
+The project is a grid based turn based strategy game based on the popular franchise Fire Emblem.
+
+A main feature added in Phase 2 was menu screens, which appear at game startup and where you can select different characters to play with and maps to play on.
+This feature allows foreasy extention in the case we want to add additional characters or maps. 
+
+The player selects a team of characters with varied stats and completes a map by eliminating all enemies. 
+The game is controlled through a mouse, which is used to issue commands to player characters or to view stats.
+A health stat keeps track of character health,and when a character's health is depleted,they are removed from the map.
+
+Commands include:
+Movement, where characters move across tiles based on a speed stat. Phase 2 work on this feature included optimization, pathfinding around obstacles, 
+and elimination of errors. 
+Attacking, Characters can also attack enemies and deal damage based on their attack stat.  Phase 2 work on this feature included the ability to attack
+an enemy character beyond close range by moving in addition to attacking, which counts as only a single aciton. Also the addition of ranged characters and healers.
+Item usage, a feature implemented entirely in phase 2, where a character selects and uses an item from a popup menu. Items currently implemented include stat modifiers. 
+
+Additional features from phase 2 include:
+Transitions and graphics that were added to indicate when character actions are used and when turns are over.
+Graphics that display stats and show when a character is selected.
+Enemy AI characters actions, which are controlled by basic logic.  
+Various UI additions.
+
+Likely areas for future extension and expansion:
+Additional characters
+Additional maps
+Additional items
+Additional graphics
+Weapon system for increased strategy
+
+Design Decisions:
+Clean Architechture:
+SOLID Design Principles:
+Design Patterns:
+
+Phase 2 Progress Report:
+
+Phase 2 Accessability:
