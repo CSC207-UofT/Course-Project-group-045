@@ -56,11 +56,11 @@ Phase 2 Progress Report:
 Phase 2 Accessability:
 Equitable use: the project provides an similar experience for all users without segregating or stimatizing
 Flexability in use: The game is controlled using mouse, which allows for both right and left handed use. Precise clicking is unncesssary due to the size of the grid and 
-character models. Game adapts completely to user's pace as it is turn based with no timer. 
+  character models. Game adapts completely to user's pace as it is turn based with no timer. 
 Simple and Intuative use: Game controls are easy to learn and straightfoward. Minimal literacy and language is needed. Relevant actions have visual feedback(moving models, attack animations).
 Perceptible information: Game uses multiple systems to highlight important information including attack and movement range indicators, character stat screens, icons.
 Tolerance for error: Character models are large and easy to click. Action preview shown for movement and attacks, allowing for cancelation if the player changes their mind.
-eliminated errors/exceptions from unexpected actions in the graphical interface.
+  eliminated errors/exceptions from unexpected actions in the graphical interface.
 Low physical effort: Game only requires mouse controls, allows for healthy body position and ease of use.
 Size and space for approach and use: Game screen is compact with large graphics, allowing for clear visuals even when standing or from a distance. Mouse controls
-neatly in a small area, no need for a giant mousepad or desk
+  neatly in a small area, no need for a giant mousepad or desk
