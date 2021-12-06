@@ -23,3 +23,4 @@ src/Images/Base.png
 src/Images/Blue.png
 src/Images/EBase.png
 src/Images/Red.png
+src/Images/Green.png
