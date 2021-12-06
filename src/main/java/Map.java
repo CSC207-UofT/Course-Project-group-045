@@ -16,14 +16,6 @@ public class Map {
         this.map[col - 1][row - 1] = char1;
     }
 
-    public ArrayList<Character> getEnemyList() {
-        return enemyList;
-    }
-
-    public void addEnemyToList(Character enemy){
-        enemyList.add(enemy);
-    }
-
     public int charXPosition(Character character) {
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
@@ -66,6 +58,17 @@ public class Map {
     public Character getObsclOrEnemy(int col, int row) {
         if (col <= map.length && row <= map[0].length && col > 0 && row > 0 ) {
             if (!Game.playerChar.contains(map[col - 1][row - 1])){
+                return map[col - 1][row - 1];
+            }else {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public Character getObsclOrAlly(int col, int row) {
+        if (col <= map.length && row <= map[0].length && col > 0 && row > 0 ) {
+            if (!Game.enemyChar.contains(map[col - 1][row - 1])){
                 return map[col - 1][row - 1];
             }else {
                 return null;
