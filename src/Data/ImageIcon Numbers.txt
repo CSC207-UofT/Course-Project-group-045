@@ -1,0 +1,27 @@
+0. Blank
+1. Background1
+2. Background2
+3. Background3
+4. Background4
+5. Map1
+6. Map2
+7. Map3
+8. Map4
+9. Combat1
+10. Combat2
+11. Combat3
+12. Combat4
+13. Enemy1
+14. Enemy2
+15. Enemy3
+16. Enemy4
+17. Enemy1Side
+18. Enemy2Side
+19. Enemy3Side
+20. Enemy4Side
+21. Selected
+22. Blue
+23. ESelected
+24. Red
+25. Green
+
