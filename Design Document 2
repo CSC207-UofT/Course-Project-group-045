@@ -1,0 +1,104 @@
+The project can be accessed by running the main method of the Game class
+
+Phase 2 Specification
+
+The project is a grid based turn based strategy game based on the popular franchise Fire Emblem.
+
+A main feature added in Phase 2 was menu screens, which appear at game startup and where you can select different characters to play with and maps to play on.
+This feature allows foreasy extention in the case we want to add additional characters or maps. 
+
+The player selects a team of characters with varied stats and completes a map by eliminating all enemies. 
+The game is controlled through a mouse, which is used to issue commands to player characters or to view stats.
+A health stat keeps track of character health,and when a character's health is depleted,they are removed from the map.
+
+Commands include:
+Movement, where characters move across tiles based on a speed stat. Phase 2 work on this feature included optimization, pathfinding around obstacles, 
+and elimination of errors. 
+Attacking, Characters can also attack enemies and deal damage based on their attack stat.  Phase 2 work on this feature included the ability to attack
+an enemy character beyond close range by moving in addition to attacking, which counts as only a single aciton. Also the addition of ranged characters and healers.
+Item usage, a feature implemented entirely in phase 2, where a character selects and uses an item from a popup menu. Items currently implemented include stat modifiers. 
+
+Additional features from phase 2 include:
+Transitions and graphics that were added to indicate when character actions are used and when turns are over.
+Graphics that display stats and show when a character is selected.
+Enemy AI characters actions, which are controlled by basic logic.  
+Various UI additions.
+
+Likely areas for future extension and expansion:
+Additional characters
+Additional maps
+Additional items
+Additional graphics
+Weapon system for increased strategy
+
+Design Decisions:
+
+Clean Architechture:
+Clean Architecture: We have segregated our classes into packages based on their roles in the clean architecture hierarchy.
+Characters, items and the map count as entities. 
+The Action class is our use case.
+The Game class is a gateway, and the UI class is self-explanatory in its purpose.
+
+SOLID Design Principles:
+Single Responsibility principle - All of our classes have a single responsibility. Open/closed principle- All of our entities can be extended and we can modify details to subclasses without changing the functionality of the entity.
+Liskov Substitution method - Our item interface, where you may make an item that is a consumable can be replaced by the parent type of Item, or Hppot the type can be substituted as a consumable.
+Interface Segregation Principle - Our item interface is relatively small, with just a view key functionalities. 
+Dependency Inversion Principle - Changing individual pieces of our code, wouldn't require us to change other pieces of our code, such as characters and item, changes to either of them are independent.
+
+Design Patterns:
+When it comes to implementation of the interactions between items and characters, I would say we used the Dependency Injection pattern, where we avoid hard dependency
+between the two classes and instead pass an object of character to a certain item method which prevents hard dependency. In a way we also implemented the Strategy
+design pattern, where we use an Item interface, where multiple different items with different statistical modifiers implement Item, so when implementing interactions like characters,
+the action class, or the game class, it relies upon the Item interface, which means it is only dependent on the particular functions that all items have.
+
+Phase 2 Progress Report:
+
+Jack:
+-overhauled Game and UI classes to allow for menu screens
+-Added graphics and animations
+-extended UI class with additional features
+-linked UI class to all other features including the map, characters, AI, items, etc
+-worked collaboratively to optimize character movement and add obstacle pathfinding
+
+Antony:
+-implmented item class and subclasses
+-overhauled character class to eliminate code smells
+-designed character ultimate ablilities 
+
+Zihao:
+-designed and implemented logic for AI related methods
+-worked collaboratively to optimize character movement and add obstacle pathfinding
+-modified action class for additional functionaility
+
+Johnathan:
+-extended functionality of abstract character class
+-assisted in the implementation of item class and related subclasses
+-provided design oversight
+-assisted with testing features implemented by others
+
+James:
+-assisted with AI logic and implementation
+-modified Game class 
+-assisted with merging code and fixing conflicts. 
+-assisted with AI testing 
+
+Phase 2 Accessability:
+Equitable use: the project provides an similar experience for all users without segregating or stimatizing
+Flexability in use: The game is controlled using mouse, which allows for both right and left handed use. Precise clicking is unncesssary due to the size of the grid and 
+  character models. Game adapts completely to user's pace as it is turn based with no timer. 
+Simple and Intuative use: Game controls are easy to learn and straightfoward. Minimal literacy and language is needed. Relevant actions have visual feedback(moving models, attack animations).
+Perceptible information: Game uses multiple systems to highlight important information including attack and movement range indicators, character stat screens, icons.
+Tolerance for error: Character models are large and easy to click. Action preview shown for movement and attacks, allowing for cancelation if the player changes their mind.
+  eliminated errors/exceptions from unexpected actions in the graphical interface.
+Low physical effort: Game only requires mouse controls, allows for healthy body position and ease of use.
+Size and space for approach and use: Game screen is compact with large graphics, allowing for clear visuals even when standing or from a distance. Mouse controls
+  neatly in a small area, no need for a giant mousepad or desk
+  
+ Target demographic is casual gamers/people with little gaming experience, and those who simply like clicking buttons and recieving visual feedback. Since the
+ game is turn based and single player, it appeals to people who dont have the time to spend long sessions gaming or are looking for a more relaxing experience.
+ The strategy element also appeals to those who play board games or have similar hobbies. 
+ 
+ There are demographics that the game is unlikely to appeal to, such as individuals who like to play games with friends, as the game is single player.
+ Individuals who prefer activities such as sports or other enterainment other than video games will also find little use in our program.
+ indivudals who prefer real time games or more action intensive games may find the turn based nature of the game unappealing.
+ The cartoony visual design may also be unappealing to older demographics who believe games and cartoons are for kids. 

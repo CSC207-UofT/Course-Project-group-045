@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.io.*;
 
 public class UI extends JPanel implements Runnable{
+
   private final ArrayList <Integer> player = new ArrayList<>();
+
   private final ArrayList <Image> Images = new ArrayList<>();
   private final ArrayList <ImageIcon> ImageIcons = new ArrayList<>();
   private final ArrayList <Integer> BoardX = new ArrayList<>();
@@ -56,6 +58,7 @@ public class UI extends JPanel implements Runnable{
     for (int i = 0 ; i < 26 ; i++){
       ImageIcons.add(i, new ImageIcon(Data1.get(i)));
     }
+
     for (int i = 0 ; i < 78 ; i++){
       Images.add(i, ImageIcons.get(0).getImage());
     }
@@ -68,6 +71,7 @@ public class UI extends JPanel implements Runnable{
     }
     mapX = -1000;
     mapY = -1000;
+
   }
 
   private void drawBackground(Graphics g) {
@@ -124,6 +128,7 @@ public class UI extends JPanel implements Runnable{
   private void GetBoard() {
     if (Game.selectedChar == null){
       for (int i = 0 ; i < 27; i++){
+
         BoardX.set(i,-1);
         BoardY.set(i,-1);
       }
@@ -176,7 +181,6 @@ public class UI extends JPanel implements Runnable{
     }
     return Data;
   }
-
   private void BoardCheck() {
     ArrayList <Integer> Data1 = GetData1("src/Data/X1.txt");
     ArrayList <Integer> Data2 = GetData1("src/Data/X2.txt");
@@ -195,6 +199,7 @@ public class UI extends JPanel implements Runnable{
         Images.set(i + 18, ImageIcons.get(24).getImage());
       }else {
         Images.set(i + 18, ImageIcons.get(0).getImage());
+
       }
     }
     for (int i = 0 ; i < 12 ; i++){
@@ -681,7 +686,46 @@ public class UI extends JPanel implements Runnable{
           Game.enemyChar.add(new EnemyChar("Axe"));
           Game.enemyChar.add(new EnemyChar("Sword"));
         }
+
+
       }
+      if (Game.Combat == 1){
+        Time++;
+        Game.Animation = 1;
+        for (int i = 0 ; i < 25 ; i++){
+          BoardX.set(i,-1);
+          BoardY.set(i,-1);
+        }
+        for (int i = 0 ; i < 2 ; i++){
+          Images.set(i + 2, ImageIcons.get(0).getImage());
+          Images.set(i + 7, ImageIcons.get(0).getImage());
+        }
+        Images.set(43, new ImageIcon("src/Images/" +
+                Game.selectedChar.getName() + "/A" + Time + ".png").getImage());
+        Images.set(6, new ImageIcon("src/Images/" +
+                Game.selectedChar.getName() + "/AS" + Time + ".png").getImage());
+        Images.set(44, new ImageIcon("src/Images/" + Game.selectedEnemy.getName() + "2.png").getImage());
+        Images.set(1, new ImageIcon("src/Images/Combat.png").getImage());
+        if (Game.selectedChar.getName() == "Marth") {
+          y = 23;
+        }else{
+          y = 42;
+        }
+        if (Time == y){
+          Game.state = -1;
+          Game.Animation = 0;
+          Game.Combat = 0;
+          Time = 0;
+          Images.set(43,ImageIcons.get(0).getImage());
+          Images.set(44,ImageIcons.get(0).getImage());
+          Images.set(6,ImageIcons.get(0).getImage());
+          Images.set(42,ImageIcons.get(0).getImage());
+          Game.selectedChar = null;
+        }
+      }
+    }else if (Game.state == 1){
+      Images.set(45, new ImageIcon("src/Images/End.png").getImage());
+      Game.Animation = 1;
     }
   }
 

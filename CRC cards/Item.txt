@@ -1,8 +1,8 @@
-Class: Item <abstract>
+Class: Item <interface>
 
-Sub class: 
+classes that implements:
 - HpPot
-- DefPot
+- SpdPot
 - AtkPot
 
 
@@ -17,3 +17,6 @@ Responsibility:
 Collaborator:
 - Character
 - Map
+- HpPot
+- SpdPot
+- AtkPot

@@ -1,11 +1,12 @@
 Class name: AtkPot
-Parent class: Item
+Parent class: consumable_Item
 
 Subclasses: None
 
 Responsibilities:
 - inherit methods from parent.
-- Specify the amount of buff this pot is providing, in this case an attack buff.  
+- Specify the amount of buff this pot is providing, in this case an attack buff, that adds 10 points
+to a characters attack power.
 
 Collaborators:
 Character, Actions, Map, Item

@@ -1,3 +1,4 @@
+
 public abstract class Character {
     private int NAME = 0, MAXHEALTH = 1, CURRHEALTH = 1,
             ATTACK = 2, SPEED = 3,  MAXMETER = 4, RANGE = 5, STUNNED = 0;
@@ -106,3 +107,4 @@ public abstract class Character {
 
 
 }
+
