@@ -183,9 +183,7 @@ public class Action {
                         Math.abs(Game.currMap.charYPosition(selected) - y)) {
             if (Math.abs(Game.currMap.charXPosition(selected) - x) +
                     Math.abs(Game.currMap.charYPosition(selected) - y) == 2){
-                if (rangeCheck(selected, x, y)){
-                    return true;
-                }
+                return rangeCheck(selected, x, y);
             }else{
                 return true;
             }
@@ -199,17 +197,11 @@ public class Action {
             int y1 = Game.currMap.charYPosition(selected);
             int dx = x - Game.currMap.charXPosition(selected);
             int dy = y - Game.currMap.charYPosition(selected);
-            if (Game.currMap.getObsclOrEnemy(x1 + dx/2, y1 + dy/2) == null){
-                return true;
-            }
+            return Game.currMap.getObsclOrEnemy(x1 + dx / 2, y1 + dy / 2) == null;
         }else {
-            if (Game.currMap.getObsclOrEnemy(Game.currMap.charXPosition(selected), y) == null |
-                    Game.currMap.getObsclOrEnemy(x, Game.currMap.charYPosition(selected)) == null){
-                return true;
-            }
-            return false;
+            return Game.currMap.getObsclOrEnemy(Game.currMap.charXPosition(selected), y) == null |
+                    Game.currMap.getObsclOrEnemy(x, Game.currMap.charYPosition(selected)) == null;
         }
-        return false;
     }
 
     public static boolean moveableAI(Character selected, int x , int y){
@@ -219,9 +211,7 @@ public class Action {
                         Math.abs(Game.currMap.charYPosition(selected) - y)) {
             if (Math.abs(Game.currMap.charXPosition(selected) - x) +
                     Math.abs(Game.currMap.charYPosition(selected) - y) == 2){
-                if (rangeCheckAI(selected, x, y)){
-                    return true;
-                }
+                return rangeCheckAI(selected, x, y);
             }else{
                 return true;
             }
@@ -235,17 +225,11 @@ public class Action {
             int y1 = Game.currMap.charYPosition(selected);
             int dx = x - Game.currMap.charXPosition(selected);
             int dy = y - Game.currMap.charYPosition(selected);
-            if (Game.currMap.getObsclOrAlly(x1 + dx/2, y1 + dy/2) == null){
-                return true;
-            }
+            return Game.currMap.getObsclOrAlly(x1 + dx / 2, y1 + dy / 2) == null;
         }else {
-            if (Game.currMap.getObsclOrAlly(Game.currMap.charXPosition(selected), y) == null |
-                    Game.currMap.getObsclOrAlly(x, Game.currMap.charYPosition(selected)) == null){
-                return true;
-            }
-            return false;
+            return Game.currMap.getObsclOrAlly(Game.currMap.charXPosition(selected), y) == null |
+                    Game.currMap.getObsclOrAlly(x, Game.currMap.charYPosition(selected)) == null;
         }
-        return false;
     }
 
     public static boolean boardAttackable(Character attacker, int x, int y){
