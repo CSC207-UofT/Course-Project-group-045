@@ -686,46 +686,7 @@ public class UI extends JPanel implements Runnable{
           Game.enemyChar.add(new EnemyChar("Axe"));
           Game.enemyChar.add(new EnemyChar("Sword"));
         }
-
-
       }
-      if (Game.Combat == 1){
-        Time++;
-        Game.Animation = 1;
-        for (int i = 0 ; i < 25 ; i++){
-          BoardX.set(i,-1);
-          BoardY.set(i,-1);
-        }
-        for (int i = 0 ; i < 2 ; i++){
-          Images.set(i + 2, ImageIcons.get(0).getImage());
-          Images.set(i + 7, ImageIcons.get(0).getImage());
-        }
-        Images.set(43, new ImageIcon("src/Images/" +
-                Game.selectedChar.getName() + "/A" + Time + ".png").getImage());
-        Images.set(6, new ImageIcon("src/Images/" +
-                Game.selectedChar.getName() + "/AS" + Time + ".png").getImage());
-        Images.set(44, new ImageIcon("src/Images/" + Game.selectedEnemy.getName() + "2.png").getImage());
-        Images.set(1, new ImageIcon("src/Images/Combat.png").getImage());
-        if (Game.selectedChar.getName() == "Marth") {
-          y = 23;
-        }else{
-          y = 42;
-        }
-        if (Time == y){
-          Game.state = -1;
-          Game.Animation = 0;
-          Game.Combat = 0;
-          Time = 0;
-          Images.set(43,ImageIcons.get(0).getImage());
-          Images.set(44,ImageIcons.get(0).getImage());
-          Images.set(6,ImageIcons.get(0).getImage());
-          Images.set(42,ImageIcons.get(0).getImage());
-          Game.selectedChar = null;
-        }
-      }
-    }else if (Game.state == 1){
-      Images.set(45, new ImageIcon("src/Images/End.png").getImage());
-      Game.Animation = 1;
     }
   }
 
