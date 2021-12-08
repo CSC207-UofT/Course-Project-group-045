@@ -3,13 +3,13 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class CharacterTest {
-    private PlayerChar c;
+    private Marth m;
     private EnemyChar e;
 
     @Before
     public void setUp() {
-        c = new PlayerChar("Dummy Character", 100, 40, 2);
-        e = new EnemyChar("Dummy Enemy", 100, 40, 2);
+        m = new Marth();
+        e = new EnemyChar("Dummy Enemy");
     }
 
     @After
@@ -18,9 +18,28 @@ public class CharacterTest {
 
     @Test(timeout = 50)
     public void testCharacterDamage() {
-        Action.attack(c, e);
-        assertEquals(90, e.getCurrHealth());
-        Action.attack(c, e);
-        assertEquals(80, e.getCurrHealth());
+        Game.enemyChar.add(e);
+        Action.attack(m, e);
+        assertEquals(70, e.getCurrHealth());
+        Action.attack(m, e);
+        assertEquals(40, e.getCurrHealth());
     }
+
+    @Test(timeout = 50)
+    public void testcharacterfeatures() {
+        assertEquals("Marth", m.getName());
+        assertEquals(90, m.getMaxHealth());
+        assertEquals(30, m.getAttack());
+        assertEquals(2, m.getSpeed());
+    }
+
+    @Test(timeout = 50)
+    public void testMarthUltimate(){
+        m.reduceCurrHealth(10);
+        m.ultimate(e);
+        assert e.getCurrHealth() == 60;
+        assert m.getCurrHealth() == 90;
+    }
+
+
 }
