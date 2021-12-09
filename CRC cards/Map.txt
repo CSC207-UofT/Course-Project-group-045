@@ -1,4 +1,4 @@
-Class name: Map
+Class name: Entity.Map
 Parent class: None
 
 Subclasses:
@@ -9,4 +9,4 @@ Responsibilities:
 - A few items are scattered around the map to be picked up. 
 
 Collaborators:
-Character, Action
+Entity.Character, UseCase.Action

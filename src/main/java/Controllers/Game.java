@@ -1,3 +1,9 @@
+package Controllers;
+
+import Entity.*;
+import Entity.Character;
+import UseCase.*;
+import UseCase.Action;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +14,7 @@ import java.awt.*;
 
 public class Game extends JFrame implements MouseListener{
     static int state = 1;
-    static int screen = 1;
+    public static int screen = 1;
     static int X = -1;
     static int Y = -1;
     static int X1 = -1;
@@ -16,20 +22,20 @@ public class Game extends JFrame implements MouseListener{
     static int Combat = 0;
     static int Animation = 0;
     static int Map = 1;
-    static int End = 0;
-    static ArrayList <Character> playerChar = new ArrayList<>();
-    static ArrayList <Character> listChar = new ArrayList<>();
-    static ArrayList <Character> enemyChar = new ArrayList<>();
+    public static int End = 0;
+    public static ArrayList <Character> playerChar = new ArrayList<>();
+    public static ArrayList <Character> listChar = new ArrayList<>();
+    public static ArrayList <Character> enemyChar = new ArrayList<>();
     static ArrayList <Character> obstacleChar = new ArrayList<>();
     static ArrayList <consumable_Item> itemList = new ArrayList<>();
-    static Character selectedChar;
-    static Character selectedEnemy;
+    public static Character selectedChar;
+    public static Character selectedEnemy;
     static boolean enemyTurn = false;
     static boolean itemSelect = false;
-    static boolean ultimateSelect = false;
+    public static boolean ultimateSelect = false;
     static boolean confirmAttack = false;
     static boolean confirmMove = false;
-    static Map currMap;
+    public static Entity.Map currMap;
 
     public void mousePressed(MouseEvent e) {
         if (screen == 1) {
@@ -132,7 +138,7 @@ public class Game extends JFrame implements MouseListener{
     }
 
     private void generateMap(int Map) {
-        ArrayList <Integer> Data = getData("src/Data/Map" + Map + ".txt");
+        ArrayList <Integer> Data = getData("src/Data/Entity.Map" + Map + ".txt");
         for (int i = 0 ; i < (Data.size() / 2) ; i++){
             obstacleChar.add(new EnemyChar("Obstacle" + i * 2));
             currMap.addChar(obstacleChar.get(i), Data.get(i * 2), Data.get(i * 2 + 1));
@@ -214,7 +220,7 @@ public class Game extends JFrame implements MouseListener{
                 selectedChar = null;
                 selectedEnemy = null;
                 Action.x = 0;
-                Action.y = 0;
+                Action.y =0;
             }
         }else if (confirmMove){
             if (X == X1 && Y == Y1){
@@ -330,7 +336,7 @@ public class Game extends JFrame implements MouseListener{
     }
 
     public static void main(String[] args) {
-        Map map1 = new Map(6, 8);
+        Entity.Map map1 = new Entity.Map(6, 8);
         currMap = map1;
         listChar.add(new Marth());
         listChar.add(new Hector());

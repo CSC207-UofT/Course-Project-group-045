@@ -1,10 +1,10 @@
-Class name: UI
+Class name: Controllers.UI
 Parent class: None
 
 Subclasses:
 
 Responsibilities:
-Create the main UI and image for the game
+Create the main Controllers.UI and image for the game
 
 Collaborators:
 Everything

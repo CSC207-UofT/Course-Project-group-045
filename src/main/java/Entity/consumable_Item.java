@@ -1,3 +1,8 @@
+package Entity;
+
+import Entity.Character;
+import Entity.Item;
+
 public abstract class consumable_Item implements Item {
     private String name;
     private String description;

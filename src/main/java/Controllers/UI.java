@@ -1,3 +1,9 @@
+package Controllers;
+
+import Controllers.Game;
+import Entity.*;
+import UseCase.Action;
+
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
@@ -155,12 +161,12 @@ public class UI extends JPanel implements Runnable{
       BoardX.set(27,-1);
       BoardY.set(27,-1);
       int x = Game.playerChar.indexOf(Game.selectedChar);
-      if (Action.x == 0) {
+      if (UseCase.Action.x == 0) {
         player.set(x * 2, Game.X);
         player.set(x * 2 + 1, Game.Y);
       }else {
-        player.set(x * 2, Action.x);
-        player.set(x * 2 + 1, Action.y);
+        player.set(x * 2, UseCase.Action.x);
+        player.set(x * 2 + 1, UseCase.Action.y);
       }
       BoardCheck();
     }
@@ -187,12 +193,12 @@ public class UI extends JPanel implements Runnable{
     ArrayList <Integer> Data3 = GetData1("src/Data/Y1.txt");
     ArrayList <Integer> Data4 = GetData1("src/Data/Y2.txt");
     for (int i = 0 ; i < 12 ; i++){
-      if (Action.boardHealable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
+      if (UseCase.Action.boardHealable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
               Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i))) {
         BoardX.set(i + 1, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i));
         BoardY.set(i + 1, Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i));
         Images.set(i + 18, ImageIcons.get(25).getImage());
-      }else if (Action.boardAttackable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
+      }else if (UseCase.Action.boardAttackable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
               Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i))){
         BoardX.set(i + 1, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i));
         BoardY.set(i + 1, Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i));
@@ -203,12 +209,12 @@ public class UI extends JPanel implements Runnable{
       }
     }
     for (int i = 0 ; i < 12 ; i++){
-      if (Action.boardHealable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data2.get(i),
+      if (UseCase.Action.boardHealable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data2.get(i),
               Game.currMap.charYPosition(Game.selectedChar) + Data4.get(i))) {
         BoardX.set(i + 13, Game.currMap.charXPosition(Game.selectedChar) + Data2.get(i));
         BoardY.set(i + 13, Game.currMap.charYPosition(Game.selectedChar) + Data4.get(i));
         Images.set(i + 30, ImageIcons.get(25).getImage());
-      }else if (Action.boardAttackable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data2.get(i),
+      }else if (UseCase.Action.boardAttackable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data2.get(i),
               Game.currMap.charYPosition(Game.selectedChar) + Data4.get(i))) {
         BoardX.set(i + 13, Game.currMap.charXPosition(Game.selectedChar) + Data2.get(i));
         BoardY.set(i + 13, Game.currMap.charYPosition(Game.selectedChar) + Data4.get(i));
@@ -218,12 +224,12 @@ public class UI extends JPanel implements Runnable{
       }
     }
     for (int i = 0 ; i < 12 ; i++){
-      if (Action.boardHealable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
+      if (UseCase.Action.boardHealable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
               Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i))) {
         BoardX.set(i + 1, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i));
         BoardY.set(i + 1, Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i));
         Images.set(i + 18, ImageIcons.get(25).getImage());
-      }else if (Action.boardMoveable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
+      }else if (UseCase.Action.boardMoveable(Game.selectedChar, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i),
               Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i))){
         BoardX.set(i + 1, Game.currMap.charXPosition(Game.selectedChar) + Data1.get(i));
         BoardY.set(i + 1, Game.currMap.charYPosition(Game.selectedChar) + Data3.get(i));
@@ -397,7 +403,7 @@ public class UI extends JPanel implements Runnable{
           }
         }
         if (Game.itemSelect){
-          Images.set(55, new ImageIcon("src/Images/Item.png").getImage());
+          Images.set(55, new ImageIcon("src/Images/Entity.Item.png").getImage());
           for (int i = 0 ; i < Game.itemList.size() ; i++) {
             Images.set(56 + i, new ImageIcon("src/Images/" + Game.itemList.get(i).get_Name() + ".png").getImage());
           }
@@ -427,27 +433,27 @@ public class UI extends JPanel implements Runnable{
           Images.set(47, new ImageIcon("src/Images/" + Game.selectedEnemy.getName() + "2.png").getImage());
           Images.set(53, ImageIcons.get(Game.Map + 8).getImage());
           int y = 0;
-          if (Game.selectedChar.getName().equals("Marth")) {
+          if (Game.selectedChar.getName().equals("Entity.Marth")) {
             y = 33;
-          }else if (Game.selectedChar.getName().equals("Hector")) {
+          }else if (Game.selectedChar.getName().equals("Entity.Hector")) {
             y = 52;
-          }else if (Game.selectedChar.getName().equals("Takumi")) {
+          }else if (Game.selectedChar.getName().equals("Entity.Takumi")) {
             y = 27;
-          }else if (Game.selectedChar.getName().equals("Kagero")) {
+          }else if (Game.selectedChar.getName().equals("Entity.Kagero")) {
             y = 29;
-          }else if (Game.selectedChar.getName().equals("Sakura")) {
+          }else if (Game.selectedChar.getName().equals("Entity.Sakura")) {
             y = 34;
           }
           if (Time > (y - 16)){
             int x = 0;
-            if (Action.ultimate == 1) {
-              if (Game.selectedChar.getName() == "Marth"){
+            if (UseCase.Action.ultimate == 1) {
+              if (Game.selectedChar.getName() == "Entity.Marth"){
                 x = 10;
-              }else if (Game.selectedChar.getName() == "Hector"){
+              }else if (Game.selectedChar.getName() == "Entity.Hector"){
                 x = 20;
-              }else if (Game.selectedChar.getName() == "Takumi"){
+              }else if (Game.selectedChar.getName() == "Entity.Takumi"){
                 x = (int) (Game.selectedChar.getAttack() * 0.5);
-              }else if (Game.selectedChar.getName() == "Kagero"){
+              }else if (Game.selectedChar.getName() == "Entity.Kagero"){
                 x = 15;
               }
             }
@@ -558,32 +564,32 @@ public class UI extends JPanel implements Runnable{
         }
       }else if (Game.state == 2){
         if (Time == 0) {
-          Action.AI(Game.enemyChar.get(enemy));
+          UseCase.Action.AI(Game.enemyChar.get(enemy));
         }
-        if (Action.ai == 1) {
+        if (UseCase.Action.ai == 1) {
           Time++;
-          if (Action.x1 != 0 | Action.y1 != 0) {
-            if (Game.currMap.charXPosition(Game.enemyChar.get(enemy)) == Action.x1) {
+          if (UseCase.Action.x1 != 0 | UseCase.Action.y1 != 0) {
+            if (Game.currMap.charXPosition(Game.enemyChar.get(enemy)) == UseCase.Action.x1) {
               enemyXY.set(enemy * 2 + 1, enemyXY.get(enemy * 2 + 1) +
-                      3 * (Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
-            } else if (Game.currMap.charYPosition(Game.enemyChar.get(enemy)) == Action.y1) {
+                      3 * (UseCase.Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
+            } else if (Game.currMap.charYPosition(Game.enemyChar.get(enemy)) == UseCase.Action.y1) {
               enemyXY.set(enemy * 2, enemyXY.get(enemy * 2) +
-                      3 * (Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
+                      3 * (UseCase.Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
             } else {
               enemyXY.set(enemy * 2, enemyXY.get(enemy * 2) +
-                      3 * (Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
+                      3 * (UseCase.Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
               enemyXY.set(enemy * 2 + 1, enemyXY.get(enemy * 2 + 1) +
-                      3 * (Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
+                      3 * (UseCase.Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
             }
             if (Time == 25) {
               enemyXY.set(enemy * 2, 85);
               enemyXY.set(enemy * 2 + 1, -200);
-              Action.move(Game.enemyChar.get(enemy), Action.x1, Action.y1);
+              UseCase.Action.move(Game.enemyChar.get(enemy), UseCase.Action.x1, UseCase.Action.y1);
             }
           }
           if (Time > 25){
-            damageX = Game.currMap.charXPosition(Game.playerChar.get(Action.index));
-            damageY = Game.currMap.charYPosition(Game.playerChar.get(Action.index));
+            damageX = Game.currMap.charXPosition(Game.playerChar.get(UseCase.Action.index));
+            damageY = Game.currMap.charYPosition(Game.playerChar.get(UseCase.Action.index));
             if (Time < 29) {
               Images.set(76, new ImageIcon("src/Images/Damage/10" + (Time * (-1) + 27) + ".png").getImage());
             }else if (Time < 48){
@@ -596,33 +602,33 @@ public class UI extends JPanel implements Runnable{
             Images.set(76, ImageIcons.get(0).getImage());
             enemy++;
             Time = 0;
-            if (Game.playerChar.get(Action.index).getCurrHealth() <= 0){
-              Game.currMap.removeChar(Game.playerChar.get(Action.index));
-              Game.playerChar.remove(Game.playerChar.get(Action.index));
+            if (Game.playerChar.get(UseCase.Action.index).getCurrHealth() <= 0){
+              Game.currMap.removeChar(Game.playerChar.get(UseCase.Action.index));
+              Game.playerChar.remove(Game.playerChar.get(UseCase.Action.index));
             }
             if (!Game.currMap.contains(Game.playerChar)) {
               Game.state = 3;
               lose = 1;
             }
           }
-        }else if (Action.ai == 2) {
+        }else if (UseCase.Action.ai == 2) {
           Time++;
-          if (Game.currMap.charXPosition(Game.enemyChar.get(enemy)) == Action.x1){
+          if (Game.currMap.charXPosition(Game.enemyChar.get(enemy)) == UseCase.Action.x1){
             enemyXY.set(enemy * 2 + 1, enemyXY.get(enemy * 2 + 1) +
-                    3 * (Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
-          }else if (Game.currMap.charYPosition(Game.enemyChar.get(enemy)) == Action.y1){
+                    3 * (UseCase.Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
+          }else if (Game.currMap.charYPosition(Game.enemyChar.get(enemy)) == UseCase.Action.y1){
             enemyXY.set(enemy * 2, enemyXY.get(enemy * 2) +
-                    3 * (Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
+                    3 * (UseCase.Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
           }else {
             enemyXY.set(enemy * 2, enemyXY.get(enemy * 2) +
-                    3 * (Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
+                    3 * (UseCase.Action.x1 - Game.currMap.charXPosition(Game.enemyChar.get(enemy))));
             enemyXY.set(enemy * 2 + 1, enemyXY.get(enemy * 2 + 1) +
-                    3 * (Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
+                    3 * (UseCase.Action.y1 - Game.currMap.charYPosition(Game.enemyChar.get(enemy))));
           }
           if (Time == 25) {
             enemyXY.set(enemy * 2, 85);
             enemyXY.set(enemy * 2 + 1, -200);
-            Action.move(Game.enemyChar.get(enemy), Action.x1, Action.y1);
+            UseCase.Action.move(Game.enemyChar.get(enemy), UseCase.Action.x1, UseCase.Action.y1);
             Time = 0;
             enemy++;
           }

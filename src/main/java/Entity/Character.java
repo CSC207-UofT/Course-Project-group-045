@@ -1,3 +1,4 @@
+package Entity;
 
 public abstract class Character {
     private int NAME = 0, MAXHEALTH = 1, CURRHEALTH = 1,

@@ -5,8 +5,8 @@ Project Specification
 
 Entity Classes
 - Characters: represent in game characters, have stats(health, attack), have a class type, store weapon item and other items. Can perform actions (move, attack, heal)
-- Item: has durability, has ability depending on type
-- Map: stores position of characters
+- Entity.Item: has durability, has ability depending on type
+- Entity.Map: stores position of characters
 
 Use Cases:
 - moving a character (changes character's position on map),
@@ -19,7 +19,7 @@ Controllers
 Command Line Interface
 -used to close/open game
   
-- different Character classes, items types (abstracct class and interface)
+- different Entity.Character classes, items types (abstracct class and interface)
 - graphical user interface displaying stats and data
 - class representing background/grid/terrain
 - basic ai (actions based on algorithm)
@@ -29,17 +29,17 @@ Command Line Interface
 
 CRC Cards
 
-Character (Abstract/interface)
+Entity.Character (Abstract/interface)
 - Subclasses: whatever we come up with
 - Responsibilities: stores information regarding stats, has inventory of items, can perform actions
 - Collaborators: item, subclasses, actions
 
-Item (Abstract/interface)
+Entity.Item (Abstract/interface)
 - Subclasses: whatever we come up with
 - Responsiblities: stores information (durability?), performs some sort of effect upon use
 - Collaborators: character
 
-Map
+Entity.Map
 - Subclasses: 
 - Responsibilites: Stores position of characters on grid
 - Collaborators:
@@ -51,4 +51,4 @@ Weapon
       providing more attack points for character ontop of their basic stats.
       provide multiplier for when combating characters with diff weapon types.
 - Collaborators:
-      Character, Item
+      Entity.Character, Entity.Item

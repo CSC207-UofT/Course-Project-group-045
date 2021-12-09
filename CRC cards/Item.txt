@@ -1,9 +1,9 @@
-Class: Item <interface>
+Class: Entity.Item <interface>
 
 classes that implements:
-- HpPot
+- Entity.HpPot
 - SpdPot
-- AtkPot
+- Entity.AtkPot
 
 
 Responsibility:
@@ -15,8 +15,8 @@ Responsibility:
 
 
 Collaborator:
-- Character
-- Map
-- HpPot
+- Entity.Character
+- Entity.Map
+- Entity.HpPot
 - SpdPot
-- AtkPot
+- Entity.AtkPot

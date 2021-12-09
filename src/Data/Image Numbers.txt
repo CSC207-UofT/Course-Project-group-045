@@ -1,5 +1,5 @@
 0. Background
-1. Map
+1. Entity.Map
 2. Char1
 3. Char2
 4. Char3
@@ -53,7 +53,7 @@
 52. Char4Icon
 53. CombatMap
 54. Turn
-55. Item
+55. Entity.Item
 56. Item1
 57. Item2
 58. Item3

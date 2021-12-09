@@ -7,4 +7,4 @@ Responsibilities:
 abstract class, lays out properties and methods of terrain type subclasses
 
 Collaborators:
-Character, Action, Map
+Entity.Character, UseCase.Action, Entity.Map

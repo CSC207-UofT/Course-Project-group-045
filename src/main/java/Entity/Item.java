@@ -1,3 +1,7 @@
+package Entity;
+
+import Entity.Character;
+
 public interface Item {
     String get_Name();
     String get_Description();

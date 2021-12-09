@@ -1,4 +1,4 @@
-Class name: Game
+Class name: Controllers.Game
 Parent class: None
 
 Subclass: None
@@ -9,4 +9,4 @@ Responsibility:
 - Initialize values
 
 Collaborator:
-Character, Map, UI, Action
+Entity.Character, Entity.Map, Controllers.UI, UseCase.Action

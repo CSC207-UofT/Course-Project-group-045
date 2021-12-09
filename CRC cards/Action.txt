@@ -1,4 +1,4 @@
-Class: Action
+Class: UseCase.Action
 Parent class: None
 Sub class: <can be expanded on>
 
@@ -9,4 +9,4 @@ Responsibility:
     - move
 
 Collaborator:
-Character, Inventory, Item, Map, Game.
+Entity.Character, Inventory, Entity.Item, Entity.Map, Controllers.Game.

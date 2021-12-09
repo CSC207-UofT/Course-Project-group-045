@@ -1,3 +1,7 @@
+package Entity;
+
+import Entity.Character;
+
 public class HpPot extends consumable_Item {
     private final String name;
     private final String description;

@@ -4,5 +4,5 @@ Responsibility:
 - store items 
 
 Collaborator:
-- Character, Item, Action 
+- Entity.Character, Entity.Item, UseCase.Action
 

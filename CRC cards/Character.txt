@@ -1,4 +1,4 @@
-Class name: Character <abstract>
+Class name: Entity.Character <abstract>
 Parent class: None
 
 Subclass:
@@ -11,4 +11,4 @@ Responsibility:
 - Perform actions.
 
 Collaborator:
-Item, Action, Map
+Entity.Item, UseCase.Action, Entity.Map

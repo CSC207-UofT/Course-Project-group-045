@@ -1,3 +1,7 @@
+import Controllers.Game;
+import Entity.EnemyChar;
+import Entity.Marth;
+import UseCase.Action;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -27,7 +31,7 @@ public class CharacterTest {
 
     @Test(timeout = 50)
     public void testcharacterfeatures() {
-        assertEquals("Marth", m.getName());
+        assertEquals("Entity.Marth", m.getName());
         assertEquals(90, m.getMaxHealth());
         assertEquals(30, m.getAttack());
         assertEquals(2, m.getSpeed());

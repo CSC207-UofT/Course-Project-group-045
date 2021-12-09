@@ -1,5 +1,5 @@
 Class name: PlayerChar
-Parent class: Character
+Parent class: Entity.Character
 
 Subclass:
 None
@@ -11,4 +11,4 @@ Responsibility:
 - Stores a personal name for the character
 
 Collaborator:
-Item, Action, Map, Character
+Entity.Item, UseCase.Action, Entity.Map, Entity.Character

@@ -1,12 +1,19 @@
+package UseCase;
+
+import Controllers.Game;
+import Entity.AtkPot;
+import Entity.Character;
+import Entity.HpPot;
+import Entity.consumable_Item;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
-import java.math.*;
 
 public class Action {
 
     static ArrayList <Integer> Ranges = new ArrayList<>();
-    static int x, y, x1, y1, ai, index, ultimate;
+    public static int x, y, x1, y1, ai, index, ultimate;
 
     public static void attack(Character attacker, Character target) {
         if (x != 0 && y != 0){
@@ -177,7 +184,7 @@ public class Action {
     }
 
     public static boolean moveable(Character selected, int x , int y){
-        if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.col && y <= Game.currMap.row
+        if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.getCol() && y <= Game.currMap.getRow()
                 && x > 0 && y > 0 &&
                 selected.getSpeed() >= Math.abs(Game.currMap.charXPosition(selected) - x) +
                         Math.abs(Game.currMap.charYPosition(selected) - y)) {
@@ -205,7 +212,7 @@ public class Action {
     }
 
     public static boolean moveableAI(Character selected, int x , int y){
-        if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.col && y <= Game.currMap.row
+        if (Game.currMap.getCharByPos(x, y) == null && x <= Game.currMap.getCol() && y <= Game.currMap.getRow()
                 && x > 0 && y > 0 &&
                 selected.getSpeed() >= Math.abs(Game.currMap.charXPosition(selected) - x) +
                         Math.abs(Game.currMap.charYPosition(selected) - y)) {
@@ -234,7 +241,7 @@ public class Action {
 
     public static boolean boardAttackable(Character attacker, int x, int y){
         if ((Game.enemyChar.contains(Game.currMap.getCharByPos(x, y)) | Game.currMap.getCharByPos(x, y) == null)
-                && x <= Game.currMap.col && y <= Game.currMap.row && x > 0 && y > 0){
+                && x <= Game.currMap.getCol() && y <= Game.currMap.getRow() && x > 0 && y > 0){
             if (Math.abs(Game.currMap.charXPosition(attacker) - x) + Math.abs(Game.currMap.charYPosition(attacker)
                     - y) <= attacker.get_Range()){
                 return true;
@@ -256,7 +263,7 @@ public class Action {
 
     public static boolean boardHealable(Character attacker, int x, int y){
         if (attacker == Game.listChar.get(4) && Game.playerChar.contains(Game.currMap.getCharByPos(x, y)) &&
-                x <= Game.currMap.col && y <= Game.currMap.row && x > 0 && y > 0){
+                x <= Game.currMap.getCol() && y <= Game.currMap.getRow() && x > 0 && y > 0){
             if (Math.abs(Game.currMap.charXPosition(attacker) - x) + Math.abs(Game.currMap.charYPosition(attacker)
                     - y) <= attacker.get_Range() && Game.currMap.getCharByPos(x, y).getCurrHealth() !=
                     Game.currMap.getCharByPos(x, y).getMaxHealth()){
@@ -281,7 +288,7 @@ public class Action {
 
     public static boolean boardMoveable(Character selected, int x , int y){
         if ((Game.currMap.getCharByPos(x, y) == null | Game.playerChar.contains(Game.currMap.getCharByPos(x, y))) &&
-                x <= Game.currMap.col && y <= Game.currMap.row && x > 0 && y > 0 &&
+                x <= Game.currMap.getCol() && y <= Game.currMap.getRow() && x > 0 && y > 0 &&
                 selected.getSpeed() >= Math.abs(Game.currMap.charXPosition(selected) - x) +
                         Math.abs(Game.currMap.charYPosition(selected) - y)) {
             if (Math.abs(Game.currMap.charXPosition(selected) - x) +
@@ -313,5 +320,7 @@ public class Action {
             selected.increaseCurrAttack(item.check_usage());
         }
     }
+    //additional code
+
 }
 

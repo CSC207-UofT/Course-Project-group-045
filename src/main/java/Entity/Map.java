@@ -1,3 +1,7 @@
+package Entity;
+
+import Entity.Character;
+import Controllers.Game;
 
 import java.util.ArrayList;
 
@@ -11,6 +15,12 @@ public class Map {
         this.map = new Character[col][row];
         this.col = col;
         this.row = row;
+    }
+    public static int getCol(){
+        return col;
+    }
+    public static int getRow(){
+        return row;
     }
 
     public void addChar(Character char1, int col, int row) {

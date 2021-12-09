@@ -1,8 +1,8 @@
+import Entity.EnemyChar;
+import Entity.Hector;
+import Entity.Map;
+import Entity.Marth;
 import org.junit.*;
-
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class MapTest {
     private Marth p1;

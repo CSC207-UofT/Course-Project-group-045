@@ -1,5 +1,5 @@
-Class name: HpPot
-Parent class: consumable_Item
+Class name: Entity.HpPot
+Parent class: Entity.consumable_Item
 
 Subclasses: None
 
@@ -8,4 +8,4 @@ Responsibilities:
 - Specify the amount of buff this pot is providing, in this case a health boost, for a character by 10 points.
 
 Collaborators:
-Character, Actions, Map, Item
+Entity.Character, Actions, Entity.Map, Entity.Item

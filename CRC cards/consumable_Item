@@ -1,12 +1,12 @@
-Class name: consumable_Item
+Class name: Entity.consumable_Item
 Parent class: None
-Implements Interface: Item
+Implements Interface: Entity.Item
 
-Subclasses: HpPot, AtkPot, SpdPot
+Subclasses: Entity.HpPot, Entity.AtkPot, SpdPot
 
 Responsibilities:
-- implements Item interface
+- implements Entity.Item interface
 - is consumed meaning the item cannot be equipped and provide buffs upon usage
 
 Collaborators:
-Character, Actions, Map, Item, HpPot, AtkPot, SpdPot
+Entity.Character, Actions, Entity.Map, Entity.Item, Entity.HpPot, Entity.AtkPot, SpdPot

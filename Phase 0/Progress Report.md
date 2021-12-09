@@ -6,30 +6,30 @@ Turn based grid based strategy game inspired by the likes of fire emblem, advanc
 
 Goal of the game is to clear all enemies characters off the map while keeping player characters alive.
 
-Game commands will be represented and issued by GUI through mouse and keyboard commands.
+Controllers.Game commands will be represented and issued by GUI through mouse and keyboard commands.
 
 Additional information will also be printed in the console/terminal
 
 As of Phase 0, commands and outputs are displayed through the terminal 
-but are intended to be implemented through the UI later on.
+but are intended to be implemented through the Controllers.UI later on.
 
 -------------------------------------------------------------------------------------
 
 Scenario Walkthrough Summary:
 
-Note:*UI is implemented but not connected to skeleton program. Instead, skeleton program prints and takes text inputs from the console/terminal*
+Note:*Controllers.UI is implemented but not connected to skeleton program. Instead, skeleton program prints and takes text inputs from the console/terminal*
 
-Game class main is run to start the program, and instances of Map, PlayerChar and EnemyChar are created.
+Controllers.Game class main is run to start the program, and instances of Entity.Map, PlayerChar and Entity.EnemyChar are created.
 
-Map class takes character classes and places them onto the map.
+Entity.Map class takes character classes and places them onto the map.
 
-Game class loops, takes inputs and performs checks to ensure inputs can be translated into commands issued through Action class.
+Controllers.Game class loops, takes inputs and performs checks to ensure inputs can be translated into commands issued through UseCase.Action class.
 
-If an Action results in a character having less than 0 health, character is removed from Map.
+If an UseCase.Action results in a character having less than 0 health, character is removed from Entity.Map.
 
-When all EnemyChar are removed from Map, the program ends.
+When all Entity.EnemyChar are removed from Entity.Map, the program ends.
 
-As of Phase 0, many classes such as Item and its subclasses have not been implemented, but are planned to be 
+As of Phase 0, many classes such as Entity.Item and its subclasses have not been implemented, but are planned to be 
 later on.
 
 ----------------------------------------------------------------------------------------------------
@@ -52,38 +52,38 @@ We have a total of 11 CRC cards as of now, though not all of them have been impl
 
 So far for our CRC cards that are implemented into code.
 
-Game Class: The Game class includes many features that tie the code together. It includes the mouse listeners, which takes mouse imputs on the JFrame also created in the Game class.
+Controllers.Game Class: The Controllers.Game class includes many features that tie the code together. It includes the mouse listeners, which takes mouse imputs on the JFrame also created in the Controllers.Game class.
 This class initializes several other classes and is in charge of keeping track of turns adn taking in inputs from the player. It will collaborate with
-classes like Character, its subclasses, Map, Action and UI
+classes like Entity.Character, its subclasses, Entity.Map, UseCase.Action and Controllers.UI
 
-Character Class: we have an abstract character class of which its methods and
-attributes are inherited by its subclasses of PlayerChar and EnemyChar.
+Entity.Character Class: we have an abstract character class of which its methods and
+attributes are inherited by its subclasses of PlayerChar and Entity.EnemyChar.
 
 As of phase 0 we have two subclasses for the abstract character class:
 
-- Class PlayerChar: This would be a subclass of the Character class inheriting its methods and setting
+- Class PlayerChar: This would be a subclass of the Entity.Character class inheriting its methods and setting
   a personal name for the PlayerChar object
 
-- Class EnemyChar: This would be a subclass of the Character class inheriting its methods and setting
-  its own personal name for this specific EnemyChar object
+- Class Entity.EnemyChar: This would be a subclass of the Entity.Character class inheriting its methods and setting
+  its own personal name for this specific Entity.EnemyChar object
 
-Action Class: Action class that modifies the attributes of other classes, when an action is performed by a player. It is in charge
+UseCase.Action Class: UseCase.Action class that modifies the attributes of other classes, when an action is performed by a player. It is in charge
 of making the necessary changes in other classes when an action if performed by a player, this includes
 attributes within classes of character, map and game, which is what we implemented so far as of now, but
 in the future it will also modify attributes within classes inventory and item.
 
-UI Class: The UI class is responsible for implimenting the features of the JFrame created in the Game class. It creates all of the 
-graphics and animations for the game. This feature is currently not fully finished as the UI is not connected to the other classes
-other than Game, it is currently more of a demonstration of what the UI would look like when it's fully connected to the other classes.
+Controllers.UI Class: The Controllers.UI class is responsible for implimenting the features of the JFrame created in the Controllers.Game class. It creates all of the 
+graphics and animations for the game. This feature is currently not fully finished as the Controllers.UI is not connected to the other classes
+other than Controllers.Game, it is currently more of a demonstration of what the Controllers.UI would look like when it's fully connected to the other classes.
 
-Map Class: The Map class essentially creates a 2D array that functions as our grid and coordinates for
+Entity.Map Class: The Entity.Map class essentially creates a 2D array that functions as our grid and coordinates for
 characters to be placed on and move around in the array. Although we have yet to implement this feature yet
 in the future items will be scattered across coordinates of the 2D array that can be picked up by characters
 on the map.
 
-As if phase 0 we have 1 subclass for the Map Class:
+As if phase 0 we have 1 subclass for the Entity.Map Class:
 
-- Grass Class: This would be a subclass of Class Map and would serve as a default terrain type, not
+- Grass Class: This would be a subclass of Class Entity.Map and would serve as a default terrain type, not
   giving any benefits or penalties for characters
 
 Classes that we have planned in our CRC model, but have yet to implement it as of phase 0.
@@ -92,27 +92,27 @@ Inventory Class: The inventory class creates an inventory or storage for item ob
 with the classes character, item and actions, with actions utilizing items in the inventory and
 provide bonuses to characters
 
-Item Class: The abstract item class will store information on the status of different items, perform
+Entity.Item Class: The abstract item class will store information on the status of different items, perform
 a certain action or functionality when used, and they can all be picked up when randomly scattered
 on the map by a character in range of the item or dropped, in order to do this it will have to interact
 with the character and map classes
 
 As of phase 0 we have 3 subclasses or unique items for the abstract class item
 
-- Class AtkPot: As a subclass of item is inherits methods from its parents, enhances a character's
+- Class Entity.AtkPot: As a subclass of item is inherits methods from its parents, enhances a character's
   attack power by a certain amount, it will collaborate with classes Characters, any character subclasses,
-  Actions, map and of course its parent class Item
+  Actions, map and of course its parent class Entity.Item
 
 - Class DefPot: As a subclass of item is inherits methods from its parents, enhances a character's
   defense power by a certain amount, it will collaborate with classes Characters, any character subclasses,
-  Actions, map and of course its parent class Item
+  Actions, map and of course its parent class Entity.Item
 
-- Class HpPot: As a subclass of item is inherits methods from its parents, enhances a character's
+- Class Entity.HpPot: As a subclass of item is inherits methods from its parents, enhances a character's
   total health by a certain amount, it will collaborate with classes Characters, any character subclasses,
-  Actions, map and of course its parent class Item
+  Actions, map and of course its parent class Entity.Item
 
 Something to keep in mind is that as of now so far, we have decided that the AI will not have its
-own inventory and EnemyChar will not be able to pick up items
+own inventory and Entity.EnemyChar will not be able to pick up items
 
 ----------------------------------------------------------------
 
@@ -127,13 +127,13 @@ and checking on each other's work whenever we can as well as raising important q
 about the state and potential future of our game.
 
 In particular Jack has been working on the graphics that we will be implementing for
-the game as well the UI, Antony and Jonathan constantly reviewed the work we have done by
+the game as well the Controllers.UI, Antony and Jonathan constantly reviewed the work we have done by
 checking the structure of certain code and editing it to fit intellij's parameters as well
 as the rules of clean architechture, and refactoring the code. Jonathan specifically
 worked on making a test case for our program, while Antony wrote the progress report and
 added the necessary modifications to the CRC cards to match the code that we have so far
 as much as possible. Zihao in particular coded the map class and actions class, while James
-wrote the Game class.
+wrote the Controllers.Game class.
 
 ----------------------------------------------------------------
 
@@ -145,6 +145,6 @@ and modifies the attributes of the characters exactly as it should.
 
 -----------------------------------------------------------------
 
-We do have one important question for the TA that involves the graphics and UI we are implementing
+We do have one important question for the TA that involves the graphics and Controllers.UI we are implementing
 and that is if we are allowed to use assets that are not personally created by us,
 specifically sprites that we will use and if that is allowed.

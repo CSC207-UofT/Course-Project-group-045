@@ -1,3 +1,9 @@
+import Controllers.Game;
+import Entity.EnemyChar;
+import Entity.HpPot;
+import Entity.Item;
+import Entity.Marth;
+import UseCase.Action;
 import org.junit.*;
 
 import static org.junit.Assert.*;

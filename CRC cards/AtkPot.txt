@@ -1,5 +1,5 @@
-Class name: AtkPot
-Parent class: consumable_Item
+Class name: Entity.AtkPot
+Parent class: Entity.consumable_Item
 
 Subclasses: None
 
@@ -9,4 +9,4 @@ Responsibilities:
 to a characters attack power.
 
 Collaborators:
-Character, Actions, Map, Item
+Entity.Character, Actions, Entity.Map, Entity.Item
